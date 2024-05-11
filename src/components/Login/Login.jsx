@@ -113,7 +113,7 @@ const LoginPage = () => {
           />
         </div>
         <div className="w-full h-full center">
-          <div className="h-[70vh] w-1/2 bg-[#0075ff] bg-opacity-25 rounded-3xl flex flex-col items-start justify-start gap-4 p-4">
+          <div className="h-[70vh] w-1/2 bg-[#8d5bf0] bg-opacity-60 rounded-3xl flex flex-col items-start justify-start gap-4 p-4">
             <div className="w-full flex items-center justify-between">
               <span className="w-full">
                 <p className="w-full capitalize text-white text-lg font-bold">
@@ -129,7 +129,7 @@ const LoginPage = () => {
                   alt=""
                   width={800}
                   height={600}
-                  className=" w-20 h-20 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] rounded-full"
+                  className=" w-20 h-20 shadow-[0_20px_50px_rgba(158,_128,_217,_0.7)] rounded-full"
                 />
               </span>
             </div>
@@ -190,7 +190,7 @@ const LoginPage = () => {
             </div>
 
             <button
-              className="w-full py-3 bg-[#205CC3] rounded-md text-white font-bold capitalize z-50 mt-4 transition-all duration-300 ease-in-out active:scale-90"
+              className="w-full py-3 bg-[#9e80d9] rounded-md text-white font-bold capitalize z-50 mt-4 transition-all duration-300 ease-in-out active:scale-90"
               type="submit"
               onClick={handleLogin}
             >
