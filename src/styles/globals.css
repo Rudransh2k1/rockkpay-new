@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,500&display=swap");
+
+/* Global styles */
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Components */
+@layer components {
+  /* Main Container */
+  .main-container {
+    @apply container mx-auto px-4 lg:px-20;
+  }
+
+  /* Flexbox utilities */
+  .center {
+    @apply flex items-center justify-center;
+  }
+
+  .center_column {
+    @apply flex flex-col items-center justify-center;
+  }
+
+  .center_between {
+    @apply flex items-center justify-between;
+  }
+
+  .start_column {
+    @apply flex flex-col items-start justify-center;
+  }
+
+  /* Navigation styles */
+  .navSpan {
+    @apply h-16 flex items-center justify-evenly cursor-pointer relative;
+  }
+
+  .resNavDiv {
+    @apply w-full p-2 text-white text-start text-lg font-bold border border-gray-800 bg-gray-700 capitalize;
+  }
+
+  .navH1 {
+    @apply text-base font-bold capitalize;
+  }
+
+  .bookingbutton {
+    @apply bg-white rounded-md text-[#FF0000] text-lg font-bold border-bgColour border uppercase px-5 py-2 lg:px-8 lg:py-3;
+  }
+
+  /* Other components */
+  .notchedOutline {
+    border: none !important;
+  }
+
+  .input-field {
+    background-color: white !important;
+    border-radius: 0.25rem !important;
+    width: 100% !important;
+  }
+
+  /* Add more component styles as needed */
+}
+
+/* Responsive styles */
+@media (min-width: 640px) {
+  /* Example: Increasing padding for larger screens */
+  .input-field {
+    padding: 16.5px 20px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Example: Adjusting layout for tablets */
+  .main-container {
+    @apply px-8;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Example: Adjusting layout for desktops */
+  .main-container {
+    @apply px-12;
+  }
+}
+
+/* Keyframe animations */
+@keyframes slide {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  100% {
+    left: 100%;
+    opacity: 1;
+  }
+}
