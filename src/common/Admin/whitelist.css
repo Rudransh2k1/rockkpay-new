@@ -1,0 +1,25 @@
+.whitelist-container {
+    background-color: #ffffff;
+  }
+  
+  .whitelist-container ul {
+    list-style-type: none;
+    padding-left: 30%;
+  }
+  
+  .whitelist-container .MuiGrid-container {
+    margin-top: 5%;
+    margin-right: -15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .whitelist-container .MuiGrid-item {
+    width: 100%;
+  }
+  
+  .whitelist-container .MuiGrid-item:first-child {
+    margin-bottom: 16px;
+  }
+  

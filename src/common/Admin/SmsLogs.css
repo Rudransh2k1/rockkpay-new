@@ -1,0 +1,19 @@
+.main-container {
+    padding: 20%;
+    margin-top: 50%;
+    display: flex;
+    width: 300%;
+  }
+  
+  .arrow-icon {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 20px;
+  } */
+  
