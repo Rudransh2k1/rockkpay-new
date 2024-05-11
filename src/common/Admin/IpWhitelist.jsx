@@ -19,7 +19,7 @@ const Whitelist = () => {
 
     return (
         <Container maxWidth="md">
-            <Box mt={4} p={3} boxShadow={3} borderRadius={4} className="whitelist-container">
+            <Box mt={4} p={3} boxShadow={3} borderRadius={4} display="flex" className="whitelist-container">
                 <Typography variant="h6" gutterBottom>
                     IP Whitelist
                 </Typography>
