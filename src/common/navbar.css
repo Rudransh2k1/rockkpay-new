@@ -1,0 +1,27 @@
+/* styles.css */
+
+/* AppBar */
+.AppBar-root {
+    background-color: #1976d2; 
+  }
+  
+  /* Toolbar */
+  .Toolbar-root {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* Typography */
+  .Typography-root {
+    flex-grow: 5;
+    text-align: left; 
+    margin-left: 50%;
+  }
+  
+  
+  .Toolbar-root .end-icons {
+    display: flex;
+    align-items: center;
+    margin-left: 0%;
+  }
+  
