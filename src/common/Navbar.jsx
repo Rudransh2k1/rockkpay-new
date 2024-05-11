@@ -5,7 +5,7 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import "./navbar.css";
+// import "./navbar.css";
 
 const Navbar = () => {
   const data = {
@@ -14,8 +14,11 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="relative" style={{backgroundColor: "#6916F2"}}>
-    <Toolbar className="Toolbar-root">
+    // <AppBar position="relative" 
+    // // style={{backgroundColor: "#6916F2",marginBottom: "2%"}}
+    // >
+    // <Toolbar className="Toolbar-root">
+    <>
       <div className="w-full flex items-center">
         <Typography variant="h6" component="div" className="Typography-root">
           {data.heading}
@@ -33,8 +36,9 @@ const Navbar = () => {
           <AccountCircleIcon />
         </IconButton>
       </div>
-    </Toolbar>
-  </AppBar>
+      </>
+    // </Toolbar>
+//   </AppBar>
 
   );
 };

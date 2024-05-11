@@ -12,7 +12,6 @@ import axios from "axios";
 import Swal from "sweetalert2";
 // import Image from "next/image";
 // import ForgotPassword from "./ForgotPassword";
- const mainLogo = "../../Assets/navbar/mainLogo.png"
 const LoginPage = () => {
 //   const dispatch = useDispatch();
   const [credentials, setCredentials] = useState({
