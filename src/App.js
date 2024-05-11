@@ -9,8 +9,9 @@ function App() {
     <div className="App">
     {/* <LoginPage />
      */}
-     <Dashboard />
+   
     <Navbar />
+    <Dashboard />
     </div>
   );
 }

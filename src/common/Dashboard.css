@@ -1,9 +1,11 @@
+.section {
+    margin-bottom: 2%;
+}
 .mainCardDiv {
     display: flex;
     justify-content: center;
     gap: 4%; 
     margin-top: 2%;
-    
   }
   
   .my-card {
@@ -28,3 +30,8 @@
     color: white;
   }
   
+  .image{
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+  }

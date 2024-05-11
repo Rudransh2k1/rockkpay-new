@@ -14,7 +14,7 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="relative" color="primary">
+    <AppBar position="relative" style={{backgroundColor: "#6916F2"}}>
     <Toolbar className="Toolbar-root">
       <div className="w-full flex items-center">
         <Typography variant="h6" component="div" className="Typography-root">
