@@ -32,10 +32,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import LoginPage from './components/Login/Login';
-import Index from './components/Login/Index';
-import Whitelist from './common/Admin/IpWhitelist';
-import ProviderTypes from './common/Admin/Providertypes';
-import SmsLogs from './common/Admin/Smslogs';
+import Whitelist from './components/admin/drawerAdmin/ipWhitelist'; 
+import SMSLogs from './components/admin/drawerAdmin/SMSLogs';
+import Dashboard from './common/Dashboard';
 
 function App() {
   return (
@@ -43,10 +42,9 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<LoginPage />} />
-          <Route path="/index" element={<Index />} />
           <Route path="/whitelist" element={<Whitelist />} />
-          <Route path="/provider-types" element={<ProviderTypes />} />
-          <Route path="/sms-logs" element={<SmsLogs />} />
+          <Route path="/sms-logs" element={<SMSLogs />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </div>
     </Router>
