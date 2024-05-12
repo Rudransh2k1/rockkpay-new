@@ -12,7 +12,7 @@ export const menuArray  =  [
     id: 1,
     title: "Dashboard",
     icon: <DashboardIcon className="!text-white" />,
-    path: "./",
+    path: "/",
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ export const menuArray  =  [
       {
         id: 21,
         subTitle: "Create Package",
-        path: "/admincreatecommission",
+        path: "/createComission",
       },
       {
         id: 22,

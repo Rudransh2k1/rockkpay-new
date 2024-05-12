@@ -160,7 +160,9 @@ const SideDrawer = () => {
       
       </Drawer>
       <Main sx={{marginTop: "5%"}} open={open}>
-        <Dashboard />
+        {/* <Dashboard />
+         */}
+         <Routing />
       </Main>
       </Box>
   )

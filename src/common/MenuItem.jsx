@@ -7,6 +7,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import MailIcon from '@mui/icons-material/Mail';
 import { List, styled } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 // const MenuItem = ({text,index}) => {
 //     const [toggleMenu,setToggleMenu] = useState(false);
 //     const onMenuClick = () => {
@@ -61,15 +62,31 @@ const SubMenuList = styled(List)(
 
 const MenuItem = ({ text, index }) => {
   const [expanded, setExpanded] = useState(false);
-
+console.log(text)
+  const navigate = useNavigate();
   const toggleMenu = () => {
     setExpanded(!expanded);
   };
+  const onClickRoute = () => {
+    console.log()
+    if(text?.subMenu && text?.subMenu.length > 0){
+      toggleMenu();
+      console.log("IfFFFFFFFFFFFFFFFFFFcondition");
+    }
+    else {
+      console.log("ELSEEEEEEE condition")
+      navigate(text.path)
+    }
+    
+  }
+  const onClickSubMenu =(path) => {
+    navigate(path);
+  }
 
   return (
     <ListItem sx={{ display: "block" }} key={text.id} disablePadding>
-      <ListItemButton sx={{ display: "block" }}>
-        <div style={{ display: "flex" }} onClick={toggleMenu}>
+      <ListItemButton onClick={onClickRoute} sx={{ display: "block" }}>
+        <div style={{ display: "flex" }}>
           <ListItemIcon>
             {text.icon}
           </ListItemIcon>
@@ -83,7 +100,7 @@ const MenuItem = ({ text, index }) => {
       <SubMenuList expanded={expanded}>
         {text?.subMenu?.map((title, id) => (
           <ListItem key={id}>
-            <ListItemButton>
+            <ListItemButton onClick={()=>onClickSubMenu(title.path)}>
               <ListItemText primary={title.subTitle} />
             </ListItemButton>
           </ListItem>

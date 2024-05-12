@@ -11,19 +11,22 @@ import Routing from './routes/Routing';
 function App() {
   return (
     <BrowserRouter>
-    {/* <div className="App"> */}
-    {/* <LoginPage />
-     */}
-   
-    {/* <Navbar /> */}
-  
-    {/* <CreateComissionAdmin />
-     */}
     <SideDrawer />
-    {/* <Dashboard /> */}
-    {/* <Routing /> */}
-    {/* </div> */}
-    </BrowserRouter>
+     </BrowserRouter>
+    // <BrowserRouter>
+    // {/* <div className="App"> */}
+    // {/* <LoginPage />
+    //  */}
+   
+    // {/* <Navbar /> */}
+  
+    // {/* <CreateComissionAdmin />
+    //  */}
+   
+    // {/* <Dashboard /> */}
+    // {/* <Routing /> */}
+    // {/* </div> */}
+    //  {/* </BrowserRouter> */}
   );
 }
 
