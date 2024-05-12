@@ -152,7 +152,7 @@ const SideDrawer = () => {
   </RightAlignedIcon>
         </DrawerHeader>
         <Divider />
-        <List sx={{color:"white",          backgroundColor: '#b49ce5',  }}>
+        <List sx={{color:"white",backgroundColor: '#b49ce5',  }}>
           {menuArray.map((text, index) => (
            <MenuItem text ={text} index={index} />
           ))}
