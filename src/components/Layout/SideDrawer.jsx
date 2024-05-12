@@ -17,6 +17,7 @@ import MenuItem from '../../common/MenuItem';
 import { menuArray } from './data';
 import Routing from '../../routes/Routing';
 import MainLogo from '../../Assets/navbar/RockkpayLogo.png'
+import Dashboard from '../../common/Dashboard';
 // import Routing from '../../routes/Rou';
 // import Routes from '../../routes/Routes';
 
@@ -159,7 +160,7 @@ const SideDrawer = () => {
       
       </Drawer>
       <Main sx={{marginTop: "5%"}} open={open}>
-        <Routing />
+        <Dashboard />
       </Main>
       </Box>
   )
