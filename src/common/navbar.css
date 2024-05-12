@@ -3,7 +3,7 @@
 /* AppBar */
 .AppBar-root {
   /* margin-bottom: 2%; */
-    background-color: #6916F2; 
+    background-color: #6916F2 !important; 
   }
   
   /* Toolbar */

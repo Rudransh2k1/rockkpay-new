@@ -16,13 +16,13 @@ export const menuArray  =  [
   },
   {
     id: 2,
-    title: "commission",
+    title: "Commission",
     icon: <CurrencyExchangeIcon className="!text-white" />,
 
     subMenu: [
       {
         id: 21,
-        subTitle: "Create package",
+        subTitle: "Create Package",
         path: "/admincreatecommission",
       },
       {
@@ -40,13 +40,13 @@ export const menuArray  =  [
 
   {
     id: 4,
-    title: "users",
+    title: "Users",
     icon: <SupervisedUserCircleIcon className="!text-white" />,
 
     subMenu: [
       {
         id: 41,
-        subTitle: "Channal_Partner",
+        subTitle: "Channal Partner",
         ultraSubMenu: [
           {
             id: 411,
@@ -62,7 +62,7 @@ export const menuArray  =  [
       },
       {
         id: 42,
-        subTitle: "Super_distributors",
+        subTitle: "Super distributors",
         ultraSubMenu: [
           {
             id: 421,
@@ -78,7 +78,7 @@ export const menuArray  =  [
       },
       {
         id: 43,
-        subTitle: "Master_distributors",
+        subTitle: "Master distributors",
         ultraSubMenu: [
           {
             id: 431,
@@ -159,17 +159,17 @@ export const menuArray  =  [
   },
   {
     id: 5,
-    title: "balance",
+    title: "Balance",
     icon: <CurrencyRupeeIcon className="!text-white" />,
     subMenu: [
       {
         id: 51,
-        subTitle: "Add MAIN balance",
+        subTitle: "Add Main Balance",
         path: "./addmainbalance",
       },
       {
         id: 52,
-        subTitle: "Reverse MAIN balance",
+        subTitle: "Reverse Main Balance",
         path: "./addmainbalance_2",
       },
       {
@@ -181,17 +181,17 @@ export const menuArray  =  [
   },
   {
     id: 6,
-    title: "report",
+    title: "Report",
     icon: <SummarizeIcon className="!text-white" />,
     subMenu: [
       {
         id: 62,
-        subTitle: "Transaction history",
+        subTitle: "Transaction History",
         path: "./transactionhistory",
       },
       {
         id: 63,
-        subTitle: "Transaction history with parent",
+        subTitle: "Transaction history with Parent",
         path: "./transactionhistwithparent",
       },
 
@@ -202,7 +202,7 @@ export const menuArray  =  [
       },
       {
         id: 67,
-        subTitle: "Complaints history",
+        subTitle: "Complaints History",
         path: "./complainthistory",
       },
       {
@@ -232,7 +232,7 @@ export const menuArray  =  [
       // },
       {
         id: 73,
-        subTitle: "Balance requests",
+        subTitle: "Balance Requests",
         path: "./balancerequests",
       },
       // {
@@ -242,7 +242,7 @@ export const menuArray  =  [
       // },
       {
         id: 75,
-        subTitle: "Balance request history",
+        subTitle: "Balance request History",
         path: "./balancereqhist",
       },
       // {
@@ -252,19 +252,19 @@ export const menuArray  =  [
       // },
       {
         id: 77,
-        subTitle: "Activation report",
+        subTitle: "Activation Report",
         path: "./activationreport",
       },
       {
         id: 78,
-        subTitle: "User cashback report",
+        subTitle: "User Cashback Report",
         path: "./usercashback",
       },
     ],
   },
   {
     id: 7,
-    title: "other reports",
+    title: "Other Reports",
     icon: <BarChartIcon className="!text-white" />,
     subMenu: [
       {
@@ -342,12 +342,12 @@ export const menuArray  =  [
   },
   {
     id: 8,
-    title: "admin",
+    title: "Admin",
     icon: <PersonOutlineIcon className="!text-white" />,
     subMenu: [
       {
         id: 89,
-        subTitle: "Add admin MAIN balance",
+        subTitle: "Add admin Main Balance",
         path: "./addadmin",
       },
       {
@@ -362,22 +362,22 @@ export const menuArray  =  [
       },
       {
         id: 92,
-        subTitle: "Send sms",
+        subTitle: "Send SMS",
         path: "./sendsms",
       },
       {
         id: 93,
-        subTitle: "Send whatsapp",
+        subTitle: "Send WhatsApp",
         path: "./sendwhatsapp",
       },
       {
         id: 94,
-        subTitle: "Send email",
+        subTitle: "Send Email",
         path: "./sendemail",
       },
       {
         id: 95,
-        subTitle: "Send notification",
+        subTitle: "Send Notification",
         path: "./sendnotification",
       },
       {
@@ -392,32 +392,32 @@ export const menuArray  =  [
       },
       {
         id: 98,
-        subTitle: "Circle master",
+        subTitle: "Circle Master",
         path: "./circlemasterscreenn",
       },
       {
         id: 99,
-        subTitle: "Website logs",
+        subTitle: "Website Logs",
         path: "./websitelogsscreen",
       },
       {
         id: 100,
-        subTitle: "Website logs archive",
+        subTitle: "Website Logs Archive",
         path: "./weblogsarchive",
       },
       {
         id: 101,
-        subTitle: "SMS logs",
+        subTitle: "SMS Logs",
         path: "./smslogs",
       },
       {
         id: 102,
-        subTitle: "IP whitelist",
+        subTitle: "IP Whitelist",
         path: "./ipwhitelistss",
       },
       {
         id: 103,
-        subTitle: "Provider types",
+        subTitle: "Provider Types",
         path: "./providertypescreen",
       },
       {
