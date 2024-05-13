@@ -24,10 +24,10 @@ import MTR from './components/admin/other reports/MTR';
 function App() {
   return (
     <>
-    {/* <BrowserRouter>
+    <BrowserRouter>
     <SideDrawer />
-    </BrowserRouter> */}
-     <MTR />
+    </BrowserRouter>
+     {/* <MTR /> */}
     </>
     // <UserWiseReport />
     // <ComingSoon />
