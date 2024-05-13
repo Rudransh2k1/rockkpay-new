@@ -20,13 +20,19 @@ import IndividualReport from './components/admin/other reports/IndividualReport'
 import UserWiseReport from './components/admin/other reports/UserWiseReport';
 import ComingSoon from './components/admin/other reports/ComingSoon';
 import MTR from './components/admin/other reports/MTR';
+import UserCashback from './components/admin/reports/UserCashback';
+import ActivationReport from './components/admin/reports/ActivationReport';
+import PaymentRequestPage from './components/admin/reports/PaymentRequestPage';
 
 function App() {
   return (
 
     // <UserWiseReport />
     // <ComingSoon />
-    <MTR />
+    // <MTR />
+    // <UserCashback />
+    // <ActivationReport />
+    <PaymentRequestPage />
   );
 }
 
