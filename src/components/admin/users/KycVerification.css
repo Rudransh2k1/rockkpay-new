@@ -1,0 +1,35 @@
+.kyc-container {
+    padding: 8rem;
+  }
+  
+  .kyc-box {
+    margin-left: 10%;
+    padding: 5%;
+  }
+  
+  .kyc-form {
+    width: 100%;
+  }
+  
+  .kyc-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4;
+  }
+  
+  .kyc-label {
+    font-weight: bold;
+  }
+  
+  .kyc-input-field {
+    width: 64%;
+  }
+  
+  .kyc-button-group {
+    margin-top: 6%;
+  }
+  
+  .kyc-submit-button {
+    margin-left: 18%;
+  }
+  
