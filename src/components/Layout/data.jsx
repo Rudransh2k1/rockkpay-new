@@ -20,11 +20,11 @@ export const menuArray  =  [
     icon: <CurrencyExchangeIcon className="!text-white" />,
 
     subMenu: [
-      {
-        id: 21,
-        subTitle: "Create Package",
-        path: "/createComission",
-      },
+      // {
+      //   id: 21,
+      //   subTitle: "Commission Pay",
+      //   path: "/commissionPay",
+      // },
       {
         id: 22,
         subTitle: "Commission Pay",
@@ -32,8 +32,8 @@ export const menuArray  =  [
       },
       {
         id: 23,
-        subTitle: "Commission packs",
-        path: "./commissionpacks",
+        subTitle: "Surcharge Pay",
+        path: "./surchargePay",
       },
     ],
   },
@@ -46,19 +46,8 @@ export const menuArray  =  [
     subMenu: [
       {
         id: 41,
-        subTitle: "Channal Partner",
-        ultraSubMenu: [
-          {
-            id: 411,
-            subTitle: "Channal Partner List",
-            path: "./channalpartnerlist",
-          },
-          {
-            id: 412,
-            subTitle: "Add Channal Partner",
-            path: "./addchannalpartner",
-          },
-        ],
+        subTitle: "Add User",
+        path: "./userList",
       },
       {
         id: 42,

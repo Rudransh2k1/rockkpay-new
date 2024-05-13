@@ -3,6 +3,7 @@ import { Route, RouterProvider, Routes, createBrowserRouter } from 'react-router
 import Dashboard from '../common/Dashboard'
 import CreateComissionAdmin from '../components/admin/commission/CreateComissionAdmin'
 import SideDrawer from '../components/Layout/SideDrawer'
+import UserList from '../common/UserList'
 
 const Routing = () => {
   // const router = createBrowserRouter([
@@ -21,8 +22,10 @@ const Routing = () => {
     <Routes>
     <Route path="/" element={<Dashboard />} />
       <Route index element={<Dashboard />} />
-      <Route path="/createComission" element={<CreateComissionAdmin />} />
-    
+      <Route path="/commissionPay" element={<CreateComissionAdmin />} />
+      <Route path="/surchargePay" element={<CreateComissionAdmin />} />
+      <Route path="/userList" element={<UserList />} />
+
   </Routes>
   </>
   )
