@@ -22,9 +22,13 @@ import ComingSoon from './components/admin/other reports/ComingSoon';
 
 function App() {
   return (
-
+    <>
+    <BrowserRouter>
+    <SideDrawer />
+    </BrowserRouter>
+    </>
     // <UserWiseReport />
-    <ComingSoon />
+    // <ComingSoon />
   );
 }
 
