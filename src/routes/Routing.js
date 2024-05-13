@@ -15,6 +15,7 @@ import SendNotification from '../components/admin/drawerAdmin/SendNotification'
 import Banks from '../components/admin/drawerAdmin/banks'
 import ChangeParent from '../components/admin/users/ChangeParent'
 import ChangeMobileNoKYC from '../components/admin/users/ChangeMobileNoKYC'
+import KycVerfication from '../components/admin/users/KycVerfication'
 
 const Routing = () => {
   // const router = createBrowserRouter([
@@ -39,6 +40,7 @@ const Routing = () => {
       <Route path="/userList" element={<UserList />} />
       <Route path="/user/changeParent" element={<ChangeParent />} />
       <Route path="/user/changeMobileNoKYC" element={<ChangeMobileNoKYC />} />
+      <Route path="/user/KYCVerification" element={<KycVerfication />} />
 
       <Route path="/admin/addAdmin" element={<AddAdmin />} />
       <Route path="/admin/notice" element={<Notice />} />

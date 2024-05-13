@@ -8,12 +8,12 @@ const AddAdmin = () => {
         initialValues: {
             user: "",
             paymentInfo: "",
-            token: "",
+            // token: "",
         },
         validationSchema: Yup.object({
             user: Yup.string().required("User is required"),
             paymentInfo: Yup.string().required("Payment info is required"),
-            token: Yup.string().required("Token is required"),
+            // token: Yup.string().required("Token is required"),
         }),
         onSubmit: (values, { setSubmitting }) => {
             setTimeout(() => {
@@ -63,7 +63,7 @@ const AddAdmin = () => {
                     error={formik.touched.paymentInfo && Boolean(formik.errors.paymentInfo)}
                     helperText={formik.touched.paymentInfo && formik.errors.paymentInfo}
                 />
-                <TextField
+                {/* <TextField
                     fullWidth
                     id="token"
                     name="token"
@@ -74,7 +74,7 @@ const AddAdmin = () => {
                     onBlur={formik.handleBlur}
                     error={formik.touched.token && Boolean(formik.errors.token)}
                     helperText={formik.touched.token && formik.errors.token}
-                />
+                /> */}
                 <Button
                     type="submit"
                     variant="contained"

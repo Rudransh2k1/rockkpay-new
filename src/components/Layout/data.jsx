@@ -126,8 +126,8 @@ export const menuArray  =  [
       },
       {
         id: 49,
-        subTitle: "KYC verification",
-        path: "./kycverificationn",
+        subTitle: "KYC Verification",
+        path: "./user/KYCVerification",
       },
       {
         id: 50,

@@ -26,13 +26,19 @@ import PaymentRequestPage from './components/admin/reports/PaymentRequestPage';
 
 function App() {
   return (
-
+    <>
+    <BrowserRouter>
+    <SideDrawer />
+    </BrowserRouter>
+     {/* <MTR /> */}
+    </>
     // <UserWiseReport />
     // <ComingSoon />
     // <MTR />
     // <UserCashback />
     // <ActivationReport />
-    <PaymentRequestPage />
+    // <PaymentRequestPage />
+   
   );
 }
 
