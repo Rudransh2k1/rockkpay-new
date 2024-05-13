@@ -7,26 +7,24 @@ import CreateComissionAdmin from './components/admin/commission/CreateComissionA
 import SideDrawer from './components/Layout/SideDrawer';
 import { BrowserRouter } from 'react-router-dom';
 import Routing from './routes/Routing';
+import UserSaleDone from './components/admin/other reports/userSaleDone';
+import RetailerSaleNotDone from './components/admin/other reports/RetailerSaleNotDone';
+import RetailerStockNotDone from './components/admin/other reports/RetailerStockNotDone';
+import LastDaySecReport from './components/admin/other reports/LastDaySecReport';
+import StatusChangeReport from './components/admin/other reports/StatusChangeReport';
+import RefundSucessStory from './components/admin/other reports/RefundSucessStory';
+import CommissionDistriReport from './components/admin/other reports/CommissionDistriReport';
+import OperatorWCReport from './components/admin/other reports/OperatorWCReport';
+import OpeningClosingReport from './components/admin/other reports/OpeningClosingReport';
+import IndividualReport from './components/admin/other reports/IndividualReport';
+import UserWiseReport from './components/admin/other reports/UserWiseReport';
+import ComingSoon from './components/admin/other reports/ComingSoon';
 
 function App() {
   return (
-    <BrowserRouter>
-    <SideDrawer />
-     </BrowserRouter>
-    // <BrowserRouter>
-    // {/* <div className="App"> */}
-    // {/* <LoginPage />
-    //  */}
-   
-    // {/* <Navbar /> */}
-  
-    // {/* <CreateComissionAdmin />
-    //  */}
-   
-    // {/* <Dashboard /> */}
-    // {/* <Routing /> */}
-    // {/* </div> */}
-    //  {/* </BrowserRouter> */}
+
+    // <UserWiseReport />
+    <ComingSoon />
   );
 }
 
