@@ -19,16 +19,19 @@ import OpeningClosingReport from './components/admin/other reports/OpeningClosin
 import IndividualReport from './components/admin/other reports/IndividualReport';
 import UserWiseReport from './components/admin/other reports/UserWiseReport';
 import ComingSoon from './components/admin/other reports/ComingSoon';
+import MTR from './components/admin/other reports/MTR';
 
 function App() {
   return (
     <>
-    <BrowserRouter>
+    {/* <BrowserRouter>
     <SideDrawer />
-    </BrowserRouter>
+    </BrowserRouter> */}
+     <MTR />
     </>
     // <UserWiseReport />
     // <ComingSoon />
+   
   );
 }
 

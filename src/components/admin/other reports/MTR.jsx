@@ -4,7 +4,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-const AEPSReport = () => {
+const MTR = () => {
     const formik = useFormik({
         initialValues: {
             startDate: "",
@@ -37,7 +37,7 @@ const AEPSReport = () => {
                 marginLeft={10}
             >
                 <Typography variant="h5" gutterBottom>
-                    Money Transfer Report
+                    User Wise Report
                 </Typography>
                 <form onSubmit={formik.handleSubmit}>
                     <Grid container spacing={2} alignItems="center">
@@ -117,4 +117,4 @@ const AEPSReport = () => {
     );
 };
 
-export default AEPSReport;
+export default MTR;
