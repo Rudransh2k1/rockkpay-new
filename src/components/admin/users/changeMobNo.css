@@ -1,0 +1,30 @@
+.change-mobile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .change-form-group {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .change-form-label {
+    font-weight: bold;
+  }
+  
+  .change-input-field {
+    width: 100%;
+  }
+  
+  .change-submit-button {
+    width: 30%;
+    margin-top: 1rem;
+  }
+  
+  @media only screen and (min-width: 768px) {
+    .change-form-group {
+      width: 50%;
+    }
+  }
+  

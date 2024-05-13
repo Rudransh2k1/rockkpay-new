@@ -12,7 +12,7 @@ export const menuArray  =  [
     id: 1,
     title: "Dashboard",
     icon: <DashboardIcon className="!text-white" />,
-    path: "/",
+    path: "/", 
   },
   {
     id: 2,
@@ -47,24 +47,14 @@ export const menuArray  =  [
       {
         id: 41,
         subTitle: "Add User",
-        path: "./userList",
+        path: "./addUser",
       },
       {
         id: 42,
-        subTitle: "Super distributors",
-        ultraSubMenu: [
-          {
-            id: 421,
-            subTitle: "Super distributor list",
-            path: "./superdistrilist",
-          },
-          {
-            id: 422,
-            subTitle: "Add super distributor",
-            path: "./addsuperdistributor",
-          },
-        ],
+        subTitle: "User List",
+        path: "./userList",
       },
+     
       {
         id: 43,
         subTitle: "Master distributors",
@@ -126,13 +116,13 @@ export const menuArray  =  [
       },
       {
         id: 47,
-        subTitle: "Change parent",
-        path: "./assignparentuserr",
+        subTitle: "Change Parent",
+        path: "./user/changeParent",
       },
       {
         id: 48,
         subTitle: "Change mobile number in KYC",
-        path: "./changemobilenumber",
+        path: "./user/changeMobileNoKYC",
       },
       {
         id: 49,
@@ -283,7 +273,7 @@ export const menuArray  =  [
         path: "./individualreport",
       },
       {
-        id: 79,
+        id: 79, 
         subTitle: "Opening closing report MAIN",
         path: "./openingclosingreportmain",
       },
@@ -336,43 +326,43 @@ export const menuArray  =  [
     subMenu: [
       {
         id: 89,
-        subTitle: "Add admin Main Balance",
-        path: "./addadmin",
+        subTitle: "Add Admin Main Balance",
+        path: "./admin/addAdmin",
       },
       {
         id: 90,
         subTitle: "Notice",
-        path: "./notice",
+        path: "./admin/notice",
       },
       {
         id: 91,
-        subTitle: "USER KYC",
-        path: "./userkyc",
+        subTitle: "User KYC",
+        path: "./admin/userKYC",
       },
       {
         id: 92,
         subTitle: "Send SMS",
-        path: "./sendsms",
+        path: "./admin/sendSMS",
       },
       {
         id: 93,
         subTitle: "Send WhatsApp",
-        path: "./sendwhatsapp",
+        path: "./admin/sendWhatsapp",
       },
       {
         id: 94,
         subTitle: "Send Email",
-        path: "./sendemail",
+        path: "./admin/sendEmail",
       },
       {
         id: 95,
         subTitle: "Send Notification",
-        path: "./sendnotification",
+        path: "./admin/sendNotification",
       },
       {
         id: 96,
         subTitle: "Banks",
-        path: "./banks",
+        path: "./admin/banks",
       },
       {
         id: 97,

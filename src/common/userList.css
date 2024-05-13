@@ -6,15 +6,15 @@
     margin-top: 2rem;
 }
 
-.registration-form input[type="text"],
+/* .registration-form input[type="text"],
 .registration-form input[type="number"],
-.registration-form select {
-    width: 18rem;
-    height: 2.5rem;
+.registration-form select { */
+    /* width: 18rem; */
+    /* height: 2.5rem;
     padding: 0.5rem;
     border-radius: 0.25rem;
-    border: 1px solid #ccc;
-}
+    border: 1px solid #ccc; */
+/* } */
 
 .registration-form button {
     padding: 0.5rem 1rem;
@@ -48,6 +48,6 @@
 .registration-form th {
     background-color: #f2f2f2;
 }
-.input-group {
+.input-grou {
 margin-bottom:  5%;
 }

@@ -77,15 +77,15 @@ const UserList = () => {
 
 <section  className="registration-form">
 <div className="form-container" style={{ width: "25%" }}>
-    <div className="input-group">
-        <label htmlFor="username" className="input-label">User name</label>
-        <TextField id="username" variant="outlined" placeholder="Username/Outlet/Pancard Name" fullWidth />
+    <div className="input-grou">
+        <label htmlFor="username" className="input-label">User Name</label>
+        <TextField id="username" variant="outlined" placeholder="Username" fullWidth />
     </div>
-    <div className="input-group">
+    <div className="input-grou">
         <label htmlFor="location" className="input-label">Location</label>
         <TextField id="location" variant="outlined" type="number" placeholder="%" fullWidth />
     </div>
-    <div className="input-group">
+    <div className="input-grou">
         <label htmlFor="created-by" className="input-label">Created By:</label>
         <TextField id="created-by" select variant="outlined" fullWidth>
             <option value="">Select dealer</option>

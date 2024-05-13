@@ -54,7 +54,7 @@ import { useNavigate } from 'react-router-dom';
 
 const SubMenuList = styled(List)(
   ({ expanded }) => ({
-    maxHeight: expanded ? '500px' : '0',
+    maxHeight: expanded ? '1100px' : '0',
     overflow: 'hidden',
     transition: 'max-height 0.3s ease',
   })
