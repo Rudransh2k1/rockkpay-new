@@ -33,6 +33,10 @@ function App() {
     </>
     // <UserWiseReport />
     // <ComingSoon />
+    // <MTR />
+    // <UserCashback />
+    // <ActivationReport />
+    // <PaymentRequestPage />
    
   );
 }
