@@ -16,6 +16,29 @@ import Banks from '../components/admin/drawerAdmin/banks'
 import ChangeParent from '../components/admin/users/ChangeParent'
 import ChangeMobileNoKYC from '../components/admin/users/ChangeMobileNoKYC'
 import KycVerfication from '../components/admin/users/KycVerfication'
+import AddMainBalance from '../components/admin/balance/AddMainBalance'
+import ReverseMainBalance from '../components/admin/balance/ReverseMainBalance'
+import AddBalanceEasebuzz from '../components/admin/balance/AddBalanceEasebuzz'
+import Settings from '../components/admin/drawerAdmin/Settings'
+import CircleMasterScreen from '../components/admin/drawerAdmin/CircleMasterScreen'
+import WebsiteLogsScreen from '../components/admin/drawerAdmin/WebsiteLogsScreen'
+import WebLogsArchive from '../components/admin/drawerAdmin/WebLogsArchive'
+import SMSLogs from '../components/admin/drawerAdmin/SMSLogs'
+import Whitelist from '../components/admin/drawerAdmin/ipWhitelist'
+import MTR from '../components/admin/other reports/MTR'
+import AEPSReport from '../components/admin/other reports/AEPSReport'
+import UserWiseReport from '../components/admin/other reports/UserWiseReport'
+import IndividualReport from '../components/admin/other reports/IndividualReport'
+import OpeningClosingReport from '../components/admin/other reports/OpeningClosingReport'
+import OperatorWCReport from '../components/admin/other reports/OperatorWCReport'
+import CommissionDistriReport from '../components/admin/other reports/CommissionDistriReport'
+import RefundSucessStory from '../components/admin/other reports/RefundSucessStory'
+import StatusChangeReport from '../components/admin/other reports/StatusChangeReport'
+import LastDaySecReport from '../components/admin/other reports/LastDaySecReport'
+import RetailerStockNotDone from '../components/admin/other reports/RetailerStockNotDone'
+import RetailerSaleNotDone from '../components/admin/other reports/RetailerSaleNotDone'
+import UserSaleDone from '../components/admin/other reports/userSaleDone'
+import LoginPage from '../components/Login/Login'
 
 const Routing = () => {
   // const router = createBrowserRouter([
@@ -33,7 +56,8 @@ const Routing = () => {
     {/* <RouterProvider router={router} /> */}
     <Routes>
     <Route path="/" element={<Dashboard />} />
-      <Route index element={<Dashboard />} />
+      {/* <Route index element={<Dashboard />} /> */}
+      {/* <Route path="/dashboard" element={<Dashboard />} /> */}
       <Route path="/commissionPay" element={<CreateComissionAdmin />} />
       <Route path="/surchargePay" element={<CreateComissionAdmin />} />
       <Route path="/addUser" element={<AddUser />} />
@@ -41,6 +65,22 @@ const Routing = () => {
       <Route path="/user/changeParent" element={<ChangeParent />} />
       <Route path="/user/changeMobileNoKYC" element={<ChangeMobileNoKYC />} />
       <Route path="/user/KYCVerification" element={<KycVerfication />} />
+      <Route path="/balance/addMainBalance" element={<AddMainBalance />} />
+      <Route path="/balance/reverseBalance" element={<ReverseMainBalance />} />
+      <Route path="/balance/addBalanceEaseBuzz" element={<AddBalanceEasebuzz />} />
+      <Route path="/otherReport/mtr" element={<MTR />} />
+      <Route path="/otherReport/aeps" element={<AEPSReport />} />
+      <Route path="/otherReport/userWise" element={<UserWiseReport />} />
+      <Route path="/otherReport/individual" element={<IndividualReport />} />
+      <Route path="/otherReport/opening-closing" element={<OpeningClosingReport />} />
+      <Route path="/otherReport/operatorWiseCommission" element={<OperatorWCReport />} />
+      <Route path="/otherReport/commissionDistribution" element={<CommissionDistriReport />} />
+      <Route path="/otherReport/refundSuccess" element={<RefundSucessStory />} />
+      <Route path="/otherReport/statusChange" element={<StatusChangeReport />} />
+      <Route path="/otherReport/lastDaySecondary" element={<LastDaySecReport />} />
+      <Route path="/otherReport/retailerStockNotDone" element={<RetailerStockNotDone />} />
+      <Route path="/otherReport/retailerSaleNotDone" element={<RetailerSaleNotDone />} />
+      <Route path="/otherReport/userSaleDone" element={<UserSaleDone />} />
 
       <Route path="/admin/addAdmin" element={<AddAdmin />} />
       <Route path="/admin/notice" element={<Notice />} />
@@ -50,6 +90,12 @@ const Routing = () => {
       <Route path="/admin/sendEmail" element={<SendEmail />} />
       <Route path="/admin/sendNotification" element={<SendNotification />} />
       <Route path="/admin/banks" element={<Banks />} />
+      <Route path="/admin/settings" element={<Settings />} />
+      <Route path="/admin/circleMaster" element={<CircleMasterScreen />} />
+      <Route path="/admin/websiteLog" element={<WebsiteLogsScreen />} />
+      <Route path="/admin/websiteLogArchive" element={<WebLogsArchive />} />
+      <Route path="/admin/smsLogs" element={<SMSLogs />} />
+      <Route path="/admin/ipWhitelist" element={<Whitelist />} />
 
   </Routes>
   </>

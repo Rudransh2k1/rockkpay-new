@@ -10,6 +10,7 @@ import breadcrumimg from "../../Assets/login/groupscreen.png"
 import axios from "axios";
 // import { login } from "../../redux/actions/authActions";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 // import Image from "next/image";
 // import ForgotPassword from "./ForgotPassword";
 const LoginPage = () => {
@@ -20,6 +21,7 @@ const LoginPage = () => {
   });
 //   const [showForgotPassword, setShowForgotPassword] = useState(false);
 //   const router = useRouter();
+const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -35,12 +37,13 @@ const LoginPage = () => {
       return; // Stop further execution
     }
     try {
+      navigate("/home")
       // const response = await axios.post(
       //   "http://localhost:5000/api/auth/signin",
       //   credentials
       // );
-      localStorage.setItem("jwt", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJSUjE3MTMxMDAyNDc3MDIiLCJpYXQiOjE3MTUwNzU3ODUsImV4cCI6MTcxNTA3OTM4NX0.1iJhOew5pzxAeDWslZOYfI1j0CD-LQixr4olntFDKmE");
-      localStorage.setItem("navData", "Distributor");
+      // localStorage.setItem("jwt", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJSUjE3MTMxMDAyNDc3MDIiLCJpYXQiOjE3MTUwNzU3ODUsImV4cCI6MTcxNTA3OTM4NX0.1iJhOew5pzxAeDWslZOYfI1j0CD-LQixr4olntFDKmE");
+      // localStorage.setItem("navData", "Distributor");
       // const userData = response.data.user;
       // dispatch(login(userData));
       // Redirect based on user type
@@ -93,7 +96,7 @@ const LoginPage = () => {
       style={{ backgroundImage: `url(${desktopscreen})`}} 
 
     >
-      <section className=" main-container  w-full h-screen flex  gap-6 pt-12">
+      <section className=" web-container  w-full h-screen flex  gap-6 pt-12">
         <div className="w-full h-full flex flex-col item-start justify-start gap-10">
           <span className="w-full">
             <p className="w-full text-center text-white text-4xl">
@@ -134,7 +137,7 @@ const LoginPage = () => {
             </div>
             <div className="w-full flex flex-col items-start justify-start gap-2">
               <p className="text-white font-bold capitalize">
-                enter your userId
+                enter your user Id
               </p>
               <TextField
                 fullWidth
@@ -146,7 +149,7 @@ const LoginPage = () => {
                   style: {
                     border: "1px solid white",
                     borderRadius: "5px",
-                    height: "10px",
+                    // height: "10px",
                     backgroundColor: "white",
                   },
                 }}
@@ -166,7 +169,7 @@ const LoginPage = () => {
                   style: {
                     border: "1px solid white",
                     borderRadius: "5px",
-                    height: "10px",
+                    // height: "10px",
                     backgroundColor: "white",
                   },
                 }}
