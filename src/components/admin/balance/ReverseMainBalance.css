@@ -1,0 +1,48 @@
+.add-main-balance-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* width: 50% ; */
+  }
+  
+  .add-main-balance-form-group {
+    width: 50%;
+    margin-bottom: 1rem;
+  }
+  
+  .add-main-balance-input {
+    width: 100%;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .add-main-balance-select {
+    width: 100%;
+    height: 40px;
+    padding: 0.5rem;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+  }
+  
+  .add-main-balance-submit-button {
+    padding: 1rem 2rem;
+    background-color: #6573c3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .add-main-balance-submit-button:hover {
+    background-color: #3f51b5;
+
+  }
+  
+  @media (max-width: 768px) {
+    .add-main-balance-input,
+    .add-main-balance-select {
+      width: 90%;
+    }
+  }
+  

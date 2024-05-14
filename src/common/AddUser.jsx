@@ -88,270 +88,270 @@ const AddUser = () => {
   return (
     <>
       <section className="main-containe bg-white">
-        <p className="form-heading">Create New User</p>
-        <form onSubmit={handleSubmit} className="form-container">
-          <div className="form-row">
-            <div   className="form-column">
-              <div  className="input-group">
-                <p className="input-label">Name:</p>
+        <p className="formHeaderr">Create New User</p>
+        <form onSubmit={handleSubmit} className="formCont">
+          <div className="formRoww">
+            <div   className="formCol">
+              <div  className="addUserInputGroup">
+                <p className="addUserInputLabel">Name:</p>
                 <TextField
                   type="text"
                   name="name"
                   variant="outlined"
                   value={userData.name}
                   onChange={handleChange}
-                  className="input-field"
+                  className="addUserInputField"
                 />
               </div>
-              <div className="input-group">
-                <p className="input-label">Email:</p>
+              <div className="addUserInputGroup">
+                <p className="addUserInputLabel">Email:</p>
                 <TextField
                   type="email"
                   name="email"
                   variant="outlined"
                   value={userData.email}
                   onChange={handleChange}
-                  className="input-field"
+                  className="addUserInputField"
                 />
               </div>
-              <div className="input-group">
-                <p className="input-label">Password:</p>
+              <div className="addUserInputGroup">
+                <p className="addUserInputLabel">Password:</p>
                 <TextField
                   type="password"
                   name="password"
                   variant="outlined"
                   value={userData.password}
                   onChange={handleChange}
-                  className="input-field"
+                  className="addUserInputField"
                 />
               </div>
             </div>
-            <div className="form-column">
-              <div className="input-group">
-                <p className="input-label">Middle Name:</p>
+            <div className="formCol">
+              <div className="addUserInputGroup">
+                <p className="addUserInputLabel">Middle Name:</p>
                 <TextField
                   type="text"
                   name="middleName"
                   variant="outlined"
                   value={userData.middleName}
                   onChange={handleChange}
-                  className="input-field"
+                  className="addUserInputField"
                 />
               </div>
-              <div className="input-group">
-                <p className="input-label">User Type:</p>
+              <div className="addUserInputGroup">
+                <p className="addUserInputLabel">User Type:</p>
                 <select
-                style={{height:"100%"}}
+                style={{height:"3.5rem"}}
                   name="user_Type"
                   value={userData.user_Type}
                   onChange={handleChange}
-                  className="input-field"
+                  className="addUserInputField"
                 >
                   <option value="">Select User Type</option>
                   <option value="Channel_Partner">Channel Partner</option>
                 </select>
               </div>
            
-              <div className="input-group">
-                <p className="input-label">Mobile Number:</p>
+              <div className="addUserInputGroup">
+                <p className="addUserInputLabel">Mobile Number:</p>
                 <TextField
                   type="number"
                   name="mobileNumber"
                   variant="outlined"
                   value={userData.mobileNumber}
                   onChange={handleChange}
-                  className="input-field"
+                  className="addUserInputField"
                 />
               </div>
               {/* More input groups */}
             </div>
-            <div className="form-column">
-            <div className="input-group">
-                <p className="input-label">Last Name:</p>
+            <div className="formCol">
+            <div className="addUserInputGroup">
+                <p className="addUserInputLabel">Last Name:</p>
                 <TextField
                   type="text"
                   name="lastName"
                   variant="outlined"
                   value={userData.lastName}
                   onChange={handleChange}
-                  className="input-field"
+                  className="addUserInputField"
                 />
               </div>
               
-              <div className="input-group">
-                <p className="input-label">Category:</p>
+              <div className="addUserInputGroup">
+                <p className="addUserInputLabel">Category:</p>
                 <select
-                style={{height:"100%" }}
-                  name="category"
+                style={{height:"3.5rem"}}
+                name="category"
                   value={userData.category}
                   onChange={handleChange}
-                  className="input-field"
+                  className="addUserInputField"
                 >
                   <option value="">Select Category</option>
                   <option value="Fixed">Fixed</option>
                   <option value="Variable">Variable</option>
                 </select>
               </div>
-              <div className="input-group">
-                <p className="input-label">Date Of Birth:</p>
+              <div className="addUserInputGroup">
+                <p className="addUserInputLabel">Date Of Birth:</p>
                 <TextField
                   type="date"
                   name="dateOfBirth"
                   variant="outlined"
                   value={userData.dateOfBirth}
                   onChange={handleChange}
-                  className="input-field"
+                  className="addUserInputField"
                 />
               </div>
               {/* More input groups */}
             </div>
           </div>
-          <div style={{}} className="form-row">
-            <div className="form-column">
-              <div className="input-group">
-                <p className="input-label">Outlet Name:</p>
+          <div style={{}} className="formRoww">
+            <div className="formCol">
+              <div className="addUserInputGroup">
+                <p className="addUserInputLabel">Outlet Name:</p>
                 <TextField
                   type="text"
                   name="outletName"
                   variant="outlined"
                   value={userData.outletName}
                   onChange={handleChange}
-                  className="input-field"
+                  className="addUserInputField"
                 />
               </div>
-              <div className="input-group">
-                <p className="input-label">Aadharcard Number:</p>
+              <div className="addUserInputGroup">
+                <p className="addUserInputLabel">Aadharcard Number:</p>
                 <TextField
                   type="number"
                   name="aadharcardNumber"
                   variant="outlined"
                   value={userData.aadharcardNumber}
                   onChange={handleChange}
-                  className="input-field"
+                  className="addUserInputField"
                 />
               </div>
-              <div className="input-group">
-                <p className="input-label">Gstin:</p>
+              <div className="addUserInputGroup">
+                <p className="addUserInputLabel">Gstin:</p>
                 <TextField
                   type="text"
                   name="gstin"
                   variant="outlined"
                   value={userData.gstin}
                   onChange={handleChange}
-                  className="input-field"
+                  className="addUserInputField"
                 />
               </div>
             </div>
-            <div className="form-column">
-              <div className="input-group">
-                <p className="input-label">Bank Account Number:</p>
+            <div className="formCol">
+              <div className="addUserInputGroup">
+                <p className="addUserInputLabel">Bank Account Number:</p>
                 <TextField
                   type="text"
                   name="bankAccountNumber"
                   variant="outlined"
                   value={userData.bankAccountNumber}
                   onChange={handleChange}
-                  className="input-field"
+                  className="addUserInputField"
                 />
               </div>
-              <div className="input-group">
-                <p className="input-label">IFSC:</p>
+              <div className="addUserInputGroup">
+                <p className="addUserInputLabel">IFSC:</p>
                 <TextField
                   type="text"
                   name="ifsc"
                   variant="outlined"
                   value={userData.ifsc}
                   onChange={handleChange}
-                  className="input-field"
+                  className="addUserInputField"
                 />
               </div>
-              <div className="input-group">
-                <p className="input-label">Address:</p>
+              <div className="addUserInputGroup">
+                <p className="addUserInputLabel">Address:</p>
                 <TextField
                   type="text"
                   name="address"
                   variant="outlined"
                   value={userData.address}
                   onChange={handleChange}
-                  className="input-field"
+                  className="addUserInputField"
                 />
               </div>
               {/* More input groups */}
             </div>
-            <div className="form-column">
-              <div className="input-group">
-                <p className="input-label">Pincode:</p>
+            <div className="formCol">
+              <div className="addUserInputGroup">
+                <p className="addUserInputLabel">Pincode:</p>
                 <TextField
                   type="number"
                   name="pincode"
                   variant="outlined"
                   value={userData.pincode}
                   onChange={handleChange}
-                  className="input-field"
+                  className="addUserInputField"
                 />
               </div>
-              <div className="input-group">
-                <p className="input-label">District:</p>
+              <div className="addUserInputGroup">
+                <p className="addUserInputLabel">District:</p>
                 <TextField
                   type="text"
                   name="district"
                   variant="outlined"
                   value={userData.district}
                   onChange={handleChange}
-                  className="input-field"
+                  className="addUserInputField"
                 />
               </div>
-              <div className="input-group">
-                <p className="input-label">State:</p>
+              <div className="addUserInputGroup">
+                <p className="addUserInputLabel">State:</p>
                 <TextField
                   type="text"
                   name="state"
                   variant="outlined"
                   value={userData.state}
                   onChange={handleChange}
-                  className="input-field"
+                  className="addUserInputField"
                 />
               </div>
               {/* More input groups */}
             </div>
           </div>
-          <div class="form-row">
-  <div class="form-column">
-    <div class="input-group">
-      <p class="input-label">City:</p>
+          <div class="formRoww">
+  <div class="formCol">
+    <div class="addUserInputGroup">
+      <p class="addUserInputLabel">City:</p>
       <TextField
         type="text"
         name="city"
         variant="outlined"
         value={userData.city}
         onChange={handleChange}
-        className="input-field"
+        className="addUserInputField"
       />
     </div>
   </div>
-  <div class="form-column">
-    <div class="input-group">
-      <p class="input-label">Alternate Number:</p>
+  <div class="formCol">
+    <div class="addUserInputGroup">
+      <p class="addUserInputLabel">Alternate Number:</p>
       <TextField
         type="number"
         name="alternateNumber"
         variant="outlined"
         value={userData.alternateNumber}
         onChange={handleChange}
-        className="input-field"
+        className="addUserInputField"
       />
     </div>
   </div>
-  <div class="form-column">
-    <div class="input-group">
-      <p class="input-label">Pancard Number:</p>
+  <div class="formCol">
+    <div class="addUserInputGroup">
+      <p class="addUserInputLabel">Pancard Number:</p>
       <TextField
         type="text"
         name="pancardNumber"
         variant="outlined"
         value={userData.pancardNumber}
         onChange={handleChange}
-        className="input-field"
+        className="addUserInputField"
       />
     </div>
   </div>

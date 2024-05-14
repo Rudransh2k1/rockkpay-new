@@ -12,7 +12,7 @@ export const menuArray  =  [
     id: 1,
     title: "Dashboard",
     icon: <DashboardIcon className="!text-white" />,
-    path: "/", 
+    path: ".", 
   },
   {
     id: 2,
@@ -144,17 +144,17 @@ export const menuArray  =  [
       {
         id: 51,
         subTitle: "Add Main Balance",
-        path: "./addmainbalance",
+        path: "./balance/addMainBalance",
       },
       {
         id: 52,
         subTitle: "Reverse Main Balance",
-        path: "./addmainbalance_2",
+        path: "./balance/reverseBalance",
       },
       {
         id: 53,
         subTitle: "Add Balance",
-        path: "./easebuzpayment",
+        path: "./balance/addBalanceEaseBuzz",
       },
     ],
   },
@@ -241,84 +241,84 @@ export const menuArray  =  [
       },
     ],
   },
-  {
-    id: 7,
-    title: "Other Reports",
-    icon: <BarChartIcon className="!text-white" />,
-    subMenu: [
-      {
-        id: 71,
-        subTitle: "Money transfer reports",
-        path: "./moneytransferreport",
-      },
-      {
-        id: 72,
-        subTitle: "AEPS report",
-        path: "./aepsreport",
-      },
-      {
-        id: 73,
-        subTitle: "Operator wise report",
-        path: "./comingsoon",
-      },
-      {
-        id: 74,
-        subTitle: "User wise report",
-        path: "./userwisereport",
-      },
+  // {
+  //   id: 7,
+  //   title: "Other Reports",
+  //   icon: <BarChartIcon className="!text-white" />,
+  //   subMenu: [
+  //     {
+  //       id: 71,
+  //       subTitle: "Money transfer reports",
+  //       path: "./otherReport/mtr",
+  //     },
+  //     {
+  //       id: 72,
+  //       subTitle: "AEPS report",
+  //       path: "./otherReport/aeps",
+  //     },
+  //     {
+  //       id: 73,
+  //       subTitle: "Operator wise report",
+  //       path: "./comingsoon",
+  //     },
+  //     {
+  //       id: 74,
+  //       subTitle: "User wise report",
+  //       path: "./otherReport/userWise",
+  //     },
 
-      {
-        id: 78,
-        subTitle: "Individual report",
-        path: "./individualreport",
-      },
-      {
-        id: 79, 
-        subTitle: "Opening closing report MAIN",
-        path: "./openingclosingreportmain",
-      },
-      {
-        id: 80,
-        subTitle: "Operatorwise commission report",
-        path: "./operatorwcreport",
-      },
-      {
-        id: 81,
-        subTitle: "Commission distribution report",
-        path: "./comissiondistribreport",
-      },
-      {
-        id: 82,
-        subTitle: "Refund success report",
-        path: "./refundsucessstory",
-      },
-      {
-        id: 83,
-        subTitle: "Status change report",
-        path: "./statuschangereport",
-      },
-      {
-        id: 84,
-        subTitle: "Last 3 days secondary report",
-        path: "./lastdaysecondaryreport",
-      },
-      {
-        id: 85,
-        subTitle: "Retailers stock not taken",
-        path: "./retailerstocknottaken",
-      },
-      {
-        id: 86,
-        subTitle: "Retailers sale not done",
-        path: "./retailersalenotdone",
-      },
-      {
-        id: 87,
-        subTitle: "Users sale done",
-        path: "./usersaledone",
-      },
-    ],
-  },
+  //     {
+  //       id: 78,
+  //       subTitle: "Individual report",
+  //       path: "./otherReport/individual",
+  //     },
+  //     {
+  //       id: 79, 
+  //       subTitle: "Opening closing report Main",
+  //       path: "./otherReport/opening-closing",
+  //     },
+  //     {
+  //       id: 80,
+  //       subTitle: "Operatorwise Commission Report",
+  //       path: "./otherReport/operatorWiseCommission",
+  //     },
+  //     {
+  //       id: 81,
+  //       subTitle: "Commission Distribution Report",
+  //       path: "./otherReport/commissionDistribution",
+  //     },
+  //     {
+  //       id: 82,
+  //       subTitle: "Refund success report",
+  //       path: "./otherReport/refundSuccess",
+  //     },
+  //     {
+  //       id: 83,
+  //       subTitle: "Status change report",
+  //       path: "./otherReport/statusChange",
+  //     },
+  //     {
+  //       id: 84,
+  //       subTitle: "Last 3 days secondary report",
+  //       path: "./otherReport/lastDaySecondary",
+  //     },
+  //     {
+  //       id: 85,
+  //       subTitle: "Retailers stock not taken",
+  //       path: "./otherReport/retailerStockNotDone",
+  //     },
+  //     {
+  //       id: 86,
+  //       subTitle: "Retailers sale not done",
+  //       path: "./otherReport/retailerSaleNotDone",
+  //     },
+  //     {
+  //       id: 87,
+  //       subTitle: "Users sale done",
+  //       path: "./otherReport/userSaleDone",
+  //     },
+  //   ],
+  // },
   {
     id: 8,
     title: "Admin",
@@ -367,32 +367,32 @@ export const menuArray  =  [
       {
         id: 97,
         subTitle: "Settings",
-        path: "./setting",
+        path: "./admin/settings",
       },
       {
         id: 98,
         subTitle: "Circle Master",
-        path: "./circlemasterscreenn",
+        path: "./admin/circleMaster",
       },
       {
         id: 99,
         subTitle: "Website Logs",
-        path: "./websitelogsscreen",
+        path: "./admin/websiteLog",
       },
       {
         id: 100,
         subTitle: "Website Logs Archive",
-        path: "./weblogsarchive",
+        path: "./admin/websiteLogArchive",
       },
       {
         id: 101,
         subTitle: "SMS Logs",
-        path: "./smslogs",
+        path: "./admin/smsLogs",
       },
       {
         id: 102,
         subTitle: "IP Whitelist",
-        path: "./ipwhitelistss",
+        path: "./admin/ipWhitelist",
       },
       {
         id: 103,
