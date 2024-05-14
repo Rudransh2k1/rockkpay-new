@@ -23,12 +23,16 @@ import MTR from './components/admin/other reports/MTR';
 import UserCashback from './components/admin/reports/UserCashback';
 import ActivationReport from './components/admin/reports/ActivationReport';
 import PaymentRequestPage from './components/admin/reports/PaymentRequestPage';
+// import ChartComponent from './common/ChartComponent';
+import TransactionHistory from './components/admin/reports/TransactionHistory';
+import TransactionHistWithParent from './components/admin/reports/TransactionHistWithParent';
 
 function App() {
   return (
     <>
     <BrowserRouter>
-    <SideDrawer />
+    {/* <TransactionHistory /> */}
+    <TransactionHistWithParent />
     </BrowserRouter>
      {/* <MTR /> */}
     </>
