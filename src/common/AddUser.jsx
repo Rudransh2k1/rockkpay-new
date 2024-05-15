@@ -38,7 +38,7 @@ const AddUser = () => {
         try {
           const token = localStorage.getItem("jwt");
           const response = await axios.post(
-            "https://62.2.118.186/api/auth/register",
+            "http://localhost:5000/api/auth/register",
             userData,
             {
               headers: {
@@ -85,6 +85,8 @@ const AddUser = () => {
           // Handle error, such as displaying an error message to the user
         }
       };
+
+      const userType = localStorage.getItem("user_type");
   return (
     <>
       <section className="main-containe bg-white">
@@ -138,7 +140,7 @@ const AddUser = () => {
                   className="addUserInputField"
                 />
               </div>
-              <div className="addUserInputGroup">
+              {userType == "Admin" ? <><div className="addUserInputGroup">
                 <p className="addUserInputLabel">User Type:</p>
                 <select
                 style={{height:"3.5rem"}}
@@ -147,10 +149,93 @@ const AddUser = () => {
                   onChange={handleChange}
                   className="addUserInputField"
                 >
+                
                   <option value="">Select User Type</option>
                   <option value="Channel_Partner">Channel Partner</option>
+                  <option value="Super_Distributor">Super Distributor</option>
+                  <option value="Master_Distributor">Master Distributor </option>
+                  <option value="Distributor">Distributor</option>
+                  
+                  <option value="Retailer">Retailer</option>
                 </select>
-              </div>
+              </div></> : null }
+              {userType == "Channel_Partner" ? <><div className="addUserInputGroup">
+                <p className="addUserInputLabel">User Type:</p>
+                <select
+                style={{height:"3.5rem"}}
+                  name="user_Type"
+                  value={userData.user_Type}
+                  onChange={handleChange}
+                  className="addUserInputField"
+                >
+                
+                  <option value="">Select User Type</option>
+                  {/* <option value="Channel_Partner">Channel Partner</option> */}
+                  <option value="Super_Distributor">Super Distributor</option>
+                  <option value="Master_Distributor">Master Distributor </option>
+                  <option value="Distributor">Distributor</option>
+                  
+                  <option value="Retailer">Retailer</option>
+                </select>
+              </div></> : null}
+              {userType == "Super_Distributor" ? <><div className="addUserInputGroup">
+                <p className="addUserInputLabel">User Type:</p>
+                <select
+                style={{height:"3.5rem"}}
+                  name="user_Type"
+                  value={userData.user_Type}
+                  onChange={handleChange}
+                  className="addUserInputField"
+                >
+                
+                  <option value="">Select User Type</option>
+                  {/* <option value="Channel_Partner">Channel Partner</option> */}
+                  {/* <option value="Super_Distributor">Super Distributor</option> */}
+                  <option value="Master_Distributor">Master Distributor </option>
+                  <option value="Distributor">Distributor</option>
+                  
+                  <option value="Retailer">Retailer</option>
+                </select>
+              </div></> : null}
+              {userType == "Master_Distributor" ? <><div className="addUserInputGroup">
+                <p className="addUserInputLabel">User Type:</p>
+                <select
+                style={{height:"3.5rem"}}
+                  name="user_Type"
+                  value={userData.user_Type}
+                  onChange={handleChange}
+                  className="addUserInputField"
+                >
+                
+                  <option value="">Select User Type</option>
+                  {/* <option value="Channel_Partner">Channel Partner</option> */}
+                  {/* <option value="Super_Distributor">Super Distributor</option> */}
+                  {/* <option value="Master_Distributor">Master Distributor </option> */}
+                  <option value="Distributor">Distributor</option>
+                  
+                  <option value="Retailer">Retailer</option>
+                </select>
+              </div></> : null}
+              {userType == "Distributor" ? <><div className="addUserInputGroup">
+                <p className="addUserInputLabel">User Type:</p>
+                <select
+                style={{height:"3.5rem"}}
+                  name="user_Type"
+                  value={userData.user_Type}
+                  onChange={handleChange}
+                  className="addUserInputField"
+                >
+                
+                  <option value="">Select User Type</option>
+                  {/* <option value="Channel_Partner">Channel Partner</option> */}
+                  {/* <option value="Super_Distributor">Super Distributor</option> */}
+                  {/* <option value="Master_Distributor">Master Distributor </option> */}
+                  {/* <option value="Distributor">Distributor</option> */}
+                  
+                  <option value="Retailer">Retailer</option>
+                </select>
+              </div></> : null}
+              
            
               <div className="addUserInputGroup">
                 <p className="addUserInputLabel">Mobile Number:</p>

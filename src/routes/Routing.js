@@ -71,6 +71,8 @@ const Routing = () => {
       <Route path="/balance/addMainBalance" element={<AddMainBalance />} />
       <Route path="/balance/reverseBalance" element={<ReverseMainBalance />} />
       <Route path="/balance/addBalanceEaseBuzz" element={<AddBalanceEasebuzz />} />
+      <Route path="/report/transactionHistory" element={<TransactionHistory />} />
+      <Route path="/report/transactionHistorywithParent" element={<TransactionHistWithParent />} />
       <Route path="/otherReport/mtr" element={<MTR />} />
       <Route path="/otherReport/aeps" element={<AEPSReport />} />
       <Route path="/otherReport/userWise" element={<UserWiseReport />} />

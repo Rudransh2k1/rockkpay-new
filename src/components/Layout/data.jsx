@@ -6,7 +6,7 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
-// const user_type = localStorage.getItem(user_type);
+const userType = localStorage.getItem("user_type");
 
 export const menuArray  =  [
   {
@@ -164,37 +164,37 @@ export const menuArray  =  [
     title: "Report",
     icon: <SummarizeIcon className="!text-white" />,
     subMenu: [
-      {
-        id: 62,
-        subTitle: "Transaction History",
-        path: "./report/transactionHistory",
-      },
-      {
-        id: 63,
-        subTitle: "Transaction history with Parent",
-        path: "./report/transactionHistorywithParent",
-      },
+      // {
+      //   id: 62,
+      //   subTitle: "Transaction History",
+      //   path: "./report/transactionHistory",
+      // },
+      // {
+      //   id: 63,
+      //   subTitle: "Transaction history with Parent",
+      //   path: "./report/transactionHistorywithParent",
+      // },
 
-      {
-        id: 66,
-        subTitle: "Complaints",
-        path: "./refund_2",
-      },
-      {
-        id: 67,
-        subTitle: "Complaints History",
-        path: "./complainthistory",
-      },
-      {
-        id: 68,
-        subTitle: "Refunds",
-        path: "./refund",
-      },
-      {
-        id: 69,
-        subTitle: "Reports",
-        path: "./reports",
-      },
+      // {
+      //   id: 66,
+      //   subTitle: "Complaints",
+      //   path: "./refund_2",
+      // },
+      // {
+      //   id: 67,
+      //   subTitle: "Complaints History",
+      //   path: "./complainthistory",
+      // },
+      // {
+      //   id: 68,
+      //   subTitle: "Refunds",
+      //   path: "./refund",
+      // },
+      // {
+      //   id: 69,
+      //   subTitle: "Reports",
+      //   path: "./reports",
+      // },
       {
         id: 69,
         subTitle: "My Transactions",
@@ -215,36 +215,35 @@ export const menuArray  =  [
       //   subTitle: "MAIN Gateway/AEPS/MATM commission distribution report",
       //   path: "./maingatewaycommidistribution",
       // },
-      {
-        id: 73,
-        subTitle: "Balance Requests",
-        path: "./balancerequests",
-      },
+      // {
+      //   id: 73,
+      //   subTitle: "Balance Requests",
+      //   path: "./balancerequests",
+      // },
       // {
       //   id: 74,
       //   subTitle: "Balance requests gateway / AEPS",
       //   path: "./balancereqgateway",
       // },
-      {
-        id: 75,
-        subTitle: "Balance request History",
-        path: "./balancereqhist",
-      },
+      // {
+      //   id: 75,
+      //   subTitle: "Balance request History",
+      //   path: "./balancereqhist",
+      // },
       // {
       //   id: 76,
       //   subTitle: "Distributor primary report",
       //   path: "./distriprimaryreport",
       // },
-      {
-        id: 77,
-        subTitle: "Activation Report",
-        path: "./activationreport",
-      },
-      {
-        id: 78,
-        subTitle: "User Cashback Report",
-        path: "./usercashback",
-      },
+      // {
+      //   id: 77,
+      //   subTitle: "Activation Report",
+      // },
+      // {
+      //   id: 78,
+      //   subTitle: "User Cashback Report",
+      //   path: "./usercashback",
+      // },
     ],
   },
   // {

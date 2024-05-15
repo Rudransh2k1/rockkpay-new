@@ -35,6 +35,8 @@ const AddMainBalance = () => {
       receiverType: "",
       amount: "",
       reason: "",
+      senderName:"Ram",
+      senderType:"Admin"
     });
   
     const [message, setMessage] = useState("");
