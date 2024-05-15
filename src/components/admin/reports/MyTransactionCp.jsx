@@ -30,7 +30,7 @@ export default function MyTransactionCp() {
       console.error("Error fetching transactions:", error);
     }
   };
-
+console.log(transactions,"these are the transactionnnnnnnn")
   return (
     <Container>
       <Grid container spacing={2}>
