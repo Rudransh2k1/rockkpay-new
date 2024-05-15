@@ -1,22 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './userList.css'
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from '@mui/material'
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const UserList = () => {
-  const handleEdit = (userId) => {
-    console.log(`Edit user with ID: ${userId}`);
-  };
+  const [openEditModal, setOpenEditModal] = useState(false);
 
-  const handleView = (userId) => {
-    console.log(`View user with ID: ${userId}`);
-  };
+    const handleEdit = (userId) => {
+        console.log(`Edit user with ID: ${userId}`);
+        setOpenEditModal(true);
+    };
 
-  const handleDelete = (userId) => {
-    console.log(`Delete user with ID: ${userId}`);
-  };
+    const handleCloseEditModal = () => {
+        setOpenEditModal(false);
+    };
+
+    const handleView = (userId) => {
+        console.log(`View user with ID: ${userId}`);
+    };
+
+    const handleDelete = (userId) => {
+        console.log(`Delete user with ID: ${userId}`);
+    };
   const userType = localStorage.getItem("user_type");
 
   return (
@@ -147,6 +154,32 @@ const UserList = () => {
             </Table>
           </TableContainer>
     </div>
+    <Dialog open={openEditModal} onClose={handleCloseEditModal}>
+                <DialogTitle>Edit User</DialogTitle>
+                <DialogContent>
+                    {/* Form fields for editing user */}
+                    <DialogContentText>
+                        {/* Display instructions or description */}
+                    </DialogContentText>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label="Name"
+                        type="text"
+                        fullWidth
+                    />
+                    {/* Add more text fields for other user details */}
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCloseEditModal} color="primary">
+                        Cancel
+                    </Button>
+                    <Button onClick={handleCloseEditModal} color="primary">
+                        Submit
+                    </Button>
+                </DialogActions>
+            </Dialog>
 </section>
   )
 }
