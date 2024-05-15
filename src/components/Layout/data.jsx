@@ -6,6 +6,7 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
+// const user_type = localStorage.getItem(user_type);
 
 export const menuArray  =  [
   {
