@@ -24,6 +24,7 @@ import Dashboard from '../../common/Dashboard';
 
 const drawerWidth = 300;
 
+
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
       flexGrow: 1,
@@ -107,6 +108,7 @@ const SideDrawer = () => {
     const handleDrawerClose = () => {
       setOpen(false);
     };
+    console.log(menuArray,"THis is menuArray")
    
   return (
     <Box sx={{ display: 'flex', height:"100vh", backgroundColor:"#f2eefa" }}>

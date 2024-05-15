@@ -37,18 +37,19 @@ const navigate = useNavigate();
       return; // Stop further execution
     }
     try {
+      
+      const response = await axios.post(
+        "https://api.ipaisa.site/api/auth/signin",
+        credentials
+      );
+      localStorage.setItem("jwt", response.data.token);
+      localStorage.setItem("user_type", response.data.user.user_type );
+      const userData = response.data.user;
       navigate("/home")
-      // const response = await axios.post(
-      //   "http://localhost:5000/api/auth/signin",
-      //   credentials
-      // );
-      // localStorage.setItem("jwt", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJSUjE3MTMxMDAyNDc3MDIiLCJpYXQiOjE3MTUwNzU3ODUsImV4cCI6MTcxNTA3OTM4NX0.1iJhOew5pzxAeDWslZOYfI1j0CD-LQixr4olntFDKmE");
-      // localStorage.setItem("navData", "Distributor");
-      // const userData = response.data.user;
       // dispatch(login(userData));
       // Redirect based on user type
       // switch (response.data.user.user_type) {
-      //   case "Admin":
+        // case "Admin":
           // router.push("/admin-dashboard");
       //     break;
       //   case "Channel_Partner":
