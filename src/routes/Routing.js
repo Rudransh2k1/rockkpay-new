@@ -41,6 +41,7 @@ import UserSaleDone from '../components/admin/other reports/userSaleDone'
 import LoginPage from '../components/Login/Login'
 import TransactionHistory from '../components/admin/reports/TransactionHistory'
 import TransactionHistWithParent from '../components/admin/reports/TransactionHistWithParent'
+import MyTransactionCp from '../components/admin/reports/MyTransactionCp'
 
 const Routing = () => {
   // const router = createBrowserRouter([
@@ -85,6 +86,9 @@ const Routing = () => {
       <Route path="/otherReport/retailerStockNotDone" element={<RetailerStockNotDone />} />
       <Route path="/otherReport/retailerSaleNotDone" element={<RetailerSaleNotDone />} />
       <Route path="/otherReport/userSaleDone" element={<UserSaleDone />} />
+      <Route path="/report/transactionHistory" element={<TransactionHistory />} />
+      <Route path="/report/transactionHistorywithParent" element={<TransactionHistWithParent />} />
+      <Route path="/report/myTransaction" element={<MyTransactionCp />} />
 
       <Route path="/admin/addAdmin" element={<AddAdmin />} />
       <Route path="/admin/notice" element={<Notice />} />

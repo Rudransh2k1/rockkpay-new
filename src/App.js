@@ -27,6 +27,7 @@ import PaymentRequestPage from './components/admin/reports/PaymentRequestPage';
 import TransactionHistory from './components/admin/reports/TransactionHistory';
 import TransactionHistWithParent from './components/admin/reports/TransactionHistWithParent';
 import WebRoutes from './routes/WebRoutes';
+import MyTransactionCp from './components/admin/reports/MyTransactionCp';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
     <BrowserRouter>
     {/* <TransactionHistory /> */}
     {/* <TransactionHistWithParent /> */}
+    <MyTransactionCp />
     {/* <SideDrawer /> */}
     <WebRoutes />
     </BrowserRouter>

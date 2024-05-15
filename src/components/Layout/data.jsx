@@ -195,6 +195,11 @@ export const menuArray  =  [
         subTitle: "Reports",
         path: "./reports",
       },
+      {
+        id: 69,
+        subTitle: "My Transactions",
+        path: "./report/myTransaction",
+      },
       // {
       //   id: 70,
       //   subTitle: "MAIN payment summary gateway",
