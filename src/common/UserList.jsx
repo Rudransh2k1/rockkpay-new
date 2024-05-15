@@ -1,6 +1,6 @@
-import React from 'react';
-import './userList.css';
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Grid, Box } from '@mui/material';
+import React from 'react'
+import './userList.css'
+import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -19,39 +19,37 @@ const UserList = () => {
   };
 
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={12} sm={6} md={3}>
-        <Box p={2} bgcolor="background.paper">
-          <div className="input-group">
-            <label htmlFor="username" className="input-label">User Name</label>
-            <TextField id="username" variant="outlined" placeholder="Username" fullWidth />
-          </div>
-          <div className="input-group">
-            <label htmlFor="location" className="input-label">Location</label>
-            <TextField id="location" variant="outlined" type="number" placeholder="%" fullWidth />
-          </div>
-          <div className="input-group">
-            <label htmlFor="created-by" className="input-label">Created By:</label>
-            <TextField id="created-by" select variant="outlined" fullWidth>
-              <option value="">Select dealer</option>
-              <option value="1">Dealer 1</option>
-              <option value="2">Dealer 2</option>
-              <option value="3">Dealer 3</option>
-            </TextField>
-            <div style={{marginTop:"4%"}} className="checkbox-group">
-              <input type="checkbox" id="direct-downline" />
-              <label htmlFor="direct-downline">Search Direct Downline only</label>
-            </div>
-          </div>
-          <div style={{marginTop:"4%"}} className="button-group">
-            <Button  variant="contained" color="primary">SEARCH</Button>
-            <Button sx={{marginLeft:"4%"}} variant="contained" color="primary">EXPORT</Button>
-          </div>
-        </Box>
-      </Grid>
-      <Grid item xs={12} sm={6} md={9}>
-        <Box p={2} bgcolor="background.paper">
-          <TableContainer component={Paper}>
+<section  className="registration-form">
+<div className="form-container" style={{ width: "25%" }}>
+    <div className="input-grou">
+        <label htmlFor="username" className="input-label">User Name</label>
+        <TextField id="username" variant="outlined" placeholder="Username" fullWidth />
+    </div>
+    <div className="input-grou">
+        <label htmlFor="location" className="input-label">Location</label>
+        <TextField id="location" variant="outlined" type="number" placeholder="%" fullWidth />
+    </div>
+    <div className="input-grou">
+        <label htmlFor="created-by" className="input-label">Created By:</label>
+        <TextField id="created-by" select variant="outlined" fullWidth>
+            <option value="">Select dealer</option>
+            <option value="1">Dealer 1</option>
+            <option value="2">Dealer 2</option>
+            <option value="3">Dealer 3</option>
+        </TextField>
+        <div style={{marginTop:"4%"}} className="checkbox-group">
+            <input type="checkbox" id="direct-downline" />
+            <label htmlFor="direct-downline">Search Direct Downline only</label>
+        </div>
+    </div>
+    <div style={{marginTop:"4%"}} className="button-group">
+        <Button  variant="contained" color="primary">SEARCH</Button>
+        <Button sx={{marginLeft:"4%"}} variant="contained" color="primary">EXPORT</Button>
+    </div>
+    </div>
+    <div className="table-container">
+        <p className="table-title">Registered Channel Partner</p>
+        <TableContainer component={Paper}>
             <Table>
               <TableHead>
                 <TableRow>
@@ -95,10 +93,9 @@ const UserList = () => {
               </TableBody>
             </Table>
           </TableContainer>
-        </Box>
-      </Grid>
-    </Grid>
-  );
+    </div>
+</section>
+  )
 }
 
-export default UserList;
+export default UserList
