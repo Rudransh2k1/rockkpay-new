@@ -1,4 +1,4 @@
-import { Button, TextField } from '@mui/material';
+import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react'
 import Swal from 'sweetalert2';
@@ -27,6 +27,8 @@ const AddUser = () => {
         city: "",
         alternateNumber: "",
         pancardNumber: "",
+        commissionSurcharge: "", // Added field for commission/surcharge selection
+        percentage: "",
       });
     
       const handleChange = (e) => {
@@ -38,7 +40,7 @@ const AddUser = () => {
         try {
           const token = localStorage.getItem("jwt");
           const response = await axios.post(
-            "http://localhost:5000/api/auth/register",
+            "https://62.2.118.186/api/auth/register",
             userData,
             {
               headers: {
@@ -72,6 +74,8 @@ const AddUser = () => {
             city: "",
             alternateNumber: "",
             pancardNumber: "",
+            commissionSurcharge: "",
+                percentage: "",
           });
           Swal.fire({
             icon: "success",
@@ -85,8 +89,6 @@ const AddUser = () => {
           // Handle error, such as displaying an error message to the user
         }
       };
-
-      const userType = localStorage.getItem("user_type");
   return (
     <>
       <section className="main-containe bg-white">
@@ -140,7 +142,7 @@ const AddUser = () => {
                   className="addUserInputField"
                 />
               </div>
-              {userType == "Admin" ? <><div className="addUserInputGroup">
+              <div className="addUserInputGroup">
                 <p className="addUserInputLabel">User Type:</p>
                 <select
                 style={{height:"3.5rem"}}
@@ -149,93 +151,11 @@ const AddUser = () => {
                   onChange={handleChange}
                   className="addUserInputField"
                 >
-                
                   <option value="">Select User Type</option>
                   <option value="Channel_Partner">Channel Partner</option>
-                  <option value="Super_Distributor">Super Distributor</option>
-                  <option value="Master_Distributor">Master Distributor </option>
-                  <option value="Distributor">Distributor</option>
-                  
-                  <option value="Retailer">Retailer</option>
                 </select>
-              </div></> : null }
-              {userType == "Channel_Partner" ? <><div className="addUserInputGroup">
-                <p className="addUserInputLabel">User Type:</p>
-                <select
-                style={{height:"3.5rem"}}
-                  name="user_Type"
-                  value={userData.user_Type}
-                  onChange={handleChange}
-                  className="addUserInputField"
-                >
-                
-                  <option value="">Select User Type</option>
-                  {/* <option value="Channel_Partner">Channel Partner</option> */}
-                  <option value="Super_Distributor">Super Distributor</option>
-                  <option value="Master_Distributor">Master Distributor </option>
-                  <option value="Distributor">Distributor</option>
-                  
-                  <option value="Retailer">Retailer</option>
-                </select>
-              </div></> : null}
-              {userType == "Super_Distributor" ? <><div className="addUserInputGroup">
-                <p className="addUserInputLabel">User Type:</p>
-                <select
-                style={{height:"3.5rem"}}
-                  name="user_Type"
-                  value={userData.user_Type}
-                  onChange={handleChange}
-                  className="addUserInputField"
-                >
-                
-                  <option value="">Select User Type</option>
-                  {/* <option value="Channel_Partner">Channel Partner</option> */}
-                  {/* <option value="Super_Distributor">Super Distributor</option> */}
-                  <option value="Master_Distributor">Master Distributor </option>
-                  <option value="Distributor">Distributor</option>
-                  
-                  <option value="Retailer">Retailer</option>
-                </select>
-              </div></> : null}
-              {userType == "Master_Distributor" ? <><div className="addUserInputGroup">
-                <p className="addUserInputLabel">User Type:</p>
-                <select
-                style={{height:"3.5rem"}}
-                  name="user_Type"
-                  value={userData.user_Type}
-                  onChange={handleChange}
-                  className="addUserInputField"
-                >
-                
-                  <option value="">Select User Type</option>
-                  {/* <option value="Channel_Partner">Channel Partner</option> */}
-                  {/* <option value="Super_Distributor">Super Distributor</option> */}
-                  {/* <option value="Master_Distributor">Master Distributor </option> */}
-                  <option value="Distributor">Distributor</option>
-                  
-                  <option value="Retailer">Retailer</option>
-                </select>
-              </div></> : null}
-              {userType == "Distributor" ? <><div className="addUserInputGroup">
-                <p className="addUserInputLabel">User Type:</p>
-                <select
-                style={{height:"3.5rem"}}
-                  name="user_Type"
-                  value={userData.user_Type}
-                  onChange={handleChange}
-                  className="addUserInputField"
-                >
-                
-                  <option value="">Select User Type</option>
-                  {/* <option value="Channel_Partner">Channel Partner</option> */}
-                  {/* <option value="Super_Distributor">Super Distributor</option> */}
-                  {/* <option value="Master_Distributor">Master Distributor </option> */}
-                  {/* <option value="Distributor">Distributor</option> */}
-                  
-                  <option value="Retailer">Retailer</option>
-                </select>
-              </div></> : null}
-              
+              </div>
+
            
               <div className="addUserInputGroup">
                 <p className="addUserInputLabel">Mobile Number:</p>
@@ -441,17 +361,41 @@ const AddUser = () => {
     </div>
   </div>
 </div>
-<div style={{display:"flex", justifyContent: "center"}}>
-          <Button
-          onClick={handleSubmit}
-            type="submit"
-            variant="contained"
-            color="primary"
-            className="submit-button"
-          >
-            Create User
-          </Button>
-          </div>
+<div className="addUserInputGroup">
+                        <FormControl style={{ width: '45%' }}>
+                            <InputLabel id="commission-surcharge-label">Commission/Surcharge</InputLabel>
+                            <Select
+                                labelId="commission-surcharge-label"
+                                id="commission-surcharge"
+                                name="commissionSurcharge"
+                                value={userData.commissionSurcharge}
+                                onChange={handleChange}
+                            >
+                                <MenuItem value="commission">Commission</MenuItem>
+                                <MenuItem value="surcharge">Surcharge</MenuItem>
+                            </Select>
+                        </FormControl>
+                        <TextField
+                            style={{ marginLeft: '10px', width: '45%' }}
+                            type="number"
+                            name="percentage"
+                            label="Percentage"
+                            variant="outlined"
+                            value={userData.percentage}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                        <Button
+                            onClick={handleSubmit}
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            className="submit-button"
+                        >
+                            Create User
+                        </Button>
+                    </div>
         </form>
       </section>
     </>
