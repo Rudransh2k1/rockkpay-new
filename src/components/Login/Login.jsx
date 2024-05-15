@@ -38,13 +38,13 @@ const navigate = useNavigate();
     }
     try {
       
-    //   const response = await axios.post(
-    //     "https://api.ipaisa.site/api/auth/signin",
-    //     credentials
-    //   );
-    //   localStorage.setItem("jwt", response.data.token);
-    //   localStorage.setItem("user_type", response.data.user.user_type );
-    //   const userData = response.data.user;
+      const response = await axios.post(
+        "https://api.ipaisa.site/api/auth/signin",
+        credentials
+      );
+      localStorage.setItem("jwt", response.data.token);
+      localStorage.setItem("user_type", response.data.user.user_type );
+      const userData = response.data.user;
       navigate("/home")
       // dispatch(login(userData));
       // Redirect based on user type

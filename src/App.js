@@ -33,7 +33,7 @@ function App() {
     <>
     <BrowserRouter>
     {/* <TransactionHistory /> */}
-    <TransactionHistWithParent />
+    {/* <TransactionHistWithParent /> */}
     {/* <SideDrawer /> */}
     <WebRoutes />
     </BrowserRouter>
