@@ -167,12 +167,12 @@ export const menuArray  =  [
       {
         id: 62,
         subTitle: "Transaction History",
-        path: "./transactionhistory",
+        path: "./report/transactionHistory",
       },
       {
         id: 63,
         subTitle: "Transaction history with Parent",
-        path: "./transactionhistwithparent",
+        path: "./report/transactionHistorywithParent",
       },
 
       {

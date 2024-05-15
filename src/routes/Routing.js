@@ -39,6 +39,8 @@ import RetailerStockNotDone from '../components/admin/other reports/RetailerStoc
 import RetailerSaleNotDone from '../components/admin/other reports/RetailerSaleNotDone'
 import UserSaleDone from '../components/admin/other reports/userSaleDone'
 import LoginPage from '../components/Login/Login'
+import TransactionHistory from '../components/admin/reports/TransactionHistory'
+import TransactionHistWithParent from '../components/admin/reports/TransactionHistWithParent'
 
 const Routing = () => {
   // const router = createBrowserRouter([
@@ -68,6 +70,8 @@ const Routing = () => {
       <Route path="/balance/addMainBalance" element={<AddMainBalance />} />
       <Route path="/balance/reverseBalance" element={<ReverseMainBalance />} />
       <Route path="/balance/addBalanceEaseBuzz" element={<AddBalanceEasebuzz />} />
+      <Route path="/report/transactionHistory" element={<TransactionHistory />} />
+      <Route path="/report/transactionHistorywithParent" element={<TransactionHistWithParent />} />
       <Route path="/otherReport/mtr" element={<MTR />} />
       <Route path="/otherReport/aeps" element={<AEPSReport />} />
       <Route path="/otherReport/userWise" element={<UserWiseReport />} />

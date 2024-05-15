@@ -38,7 +38,7 @@ const AddUser = () => {
         try {
           const token = localStorage.getItem("jwt");
           const response = await axios.post(
-            "https://62.2.118.186/api/auth/register",
+            "http://localhost:5000/api/auth/register",
             userData,
             {
               headers: {
