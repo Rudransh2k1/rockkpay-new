@@ -2108,11 +2108,11 @@ export const menuRetailArray  =  [
       //   subTitle: "Add User",
       //   path: "./addUser",
       // },
-      {
-        id: 42,
-        subTitle: "User List",
-        path: "./userList",
-      },
+      // {
+      //   id: 42,
+      //   subTitle: "User List",
+      //   path: "./userList",
+      // },
      
       // {
       //   id: 43,

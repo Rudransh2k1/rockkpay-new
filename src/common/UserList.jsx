@@ -17,6 +17,7 @@ const UserList = () => {
   const handleDelete = (userId) => {
     console.log(`Delete user with ID: ${userId}`);
   };
+  const userType = localStorage.getItem("user_type");
 
   return (
 <section  className="registration-form">
@@ -37,11 +38,63 @@ const UserList = () => {
             <option value="2">Dealer 2</option>
             <option value="3">Dealer 3</option>
         </TextField>
-        <div style={{marginTop:"4%"}} className="checkbox-group">
+        
+        <label htmlFor="created-by" className="input-label">User Type:</label>
+        {userType == "Admin" ? <> <TextField id="created-by" select variant="outlined" fullWidth>
+        {/* <option value="">Select User Type</option> */}
+                  <option value="Channel_Partner">Channel Partner</option>
+                  <option value="Super_Distributor">Super Distributor</option>
+                  <option value="Master_Distributor">Master Distributor </option>
+                  <option value="Distributor">Distributor</option>
+                  
+                  <option value="Retailer">Retailer</option>
+        </TextField></> : null}
+
+        {userType == "Channel Partner" ? <> <TextField id="created-by" select variant="outlined" fullWidth>
+        {/* <option value="">Select User Type</option> */}
+                  {/* <option value="Channel_Partner">Channel Partner</option> */}
+                  <option value="Super_Distributor">Super Distributor</option>
+                  <option value="Master_Distributor">Master Distributor </option>
+                  <option value="Distributor">Distributor</option>
+                  
+                  <option value="Retailer">Retailer</option>
+        </TextField></> : null}
+        {userType == "Super_Distributor" ? <> <TextField id="created-by" select variant="outlined" fullWidth>
+        {/* <option value="">Select User Type</option> */}
+                  {/* <option value="Channel_Partner">Channel Partner</option> */}
+                  {/* <option value="Super_Distributor">Super Distributor</option> */}
+                  <option value="Master_Distributor">Master Distributor </option>
+                  <option value="Distributor">Distributor</option>
+                  
+                  <option value="Retailer">Retailer</option>
+        </TextField></> : null}
+        {userType == "Master_Distributor" ? <> <TextField id="created-by" select variant="outlined" fullWidth>
+        {/* <option value="">Select User Type</option> */}
+                  {/* <option value="Channel_Partner">Channel Partner</option> */}
+                  {/* <option value="Super_Distributor">Super Distributor</option> */}
+                  {/* <option value="Master_Distributor">Master Distributor </option> */}
+                  <option value="Distributor">Distributor</option>
+                  
+                  <option value="Retailer">Retailer</option>
+        </TextField></> : null}
+        {userType == "Distributor" ? <> <TextField id="created-by" select variant="outlined" fullWidth>
+        {/* <option value="">Select User Type</option> */}
+                  {/* <option value="Channel_Partner">Channel Partner</option> */}
+                  {/* <option value="Super_Distributor">Super Distributor</option> */}
+                  {/* <option value="Master_Distributor">Master Distributor </option> */}
+                  {/* <option value="Distributor">Distributor</option> */}
+                  
+                  <option value="Retailer">Retailer</option>
+        </TextField></> : null}
+             
+       
+       
+       
+    </div>
+    <div style={{marginTop:"4%"}} className="checkbox-group">
             <input type="checkbox" id="direct-downline" />
             <label htmlFor="direct-downline">Search Direct Downline only</label>
         </div>
-    </div>
     <div style={{marginTop:"4%"}} className="button-group">
         <Button  variant="contained" color="primary">SEARCH</Button>
         <Button sx={{marginLeft:"4%"}} variant="contained" color="primary">EXPORT</Button>
