@@ -14,7 +14,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Navbar from '../../common/Navbar';
 import MenuItem from '../../common/MenuItem';
-import { menuArray } from './data';
+import { menuAdminArray, menuChannelArray, menuMasterArray, menuRetailArray, menuSuperArray } from './data';
 import Routing from '../../routes/Routing';
 import MainLogo from '../../Assets/navbar/RockkpayLogo.png'
 import Dashboard from '../../common/Dashboard';
@@ -97,6 +97,7 @@ const AppBar = styled(MuiAppBar, {
     marginRight: '1rem', // Ensure no extra margin on the right
   });
 const SideDrawer = () => {
+  const userType = localStorage.getItem("user_type");
 
     const theme = useTheme();
     const [open, setOpen] = React.useState(true);
@@ -108,8 +109,6 @@ const SideDrawer = () => {
     const handleDrawerClose = () => {
       setOpen(false);
     };
-    console.log(menuArray,"THis is menuArray")
-   
   return (
     <Box sx={{ display: 'flex', height:"100vh", backgroundColor:"#f2eefa" }}>
       <CssBaseline />
@@ -154,11 +153,20 @@ const SideDrawer = () => {
   </RightAlignedIcon>
         </DrawerHeader>
         <Divider />
-        <List sx={{color:"white",backgroundColor: '#b49ce5',  }}>
-          {menuArray.map((text, index) => (
+        {
+userType == "Retailer" ? <>
+  <List sx={{color:"white",backgroundColor: '#b49ce5',  }}>
+          {menuRetailArray.map((text, index) => (
            <MenuItem text ={text} index={index} />
           ))}
         </List>
+</> :  <List sx={{color:"white",backgroundColor: '#b49ce5',  }}>
+          {menuAdminArray.map((text, index) => (
+           <MenuItem text ={text} index={index} />
+          ))}
+        </List>
+        }
+       
       
       </Drawer>
       <Main sx={{marginTop: "5%"}} open={open}>
