@@ -1,21 +1,26 @@
 import React, { useState } from 'react'
 import './userList.css'
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from '@mui/material'
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Switch } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 const UserList = () => {
-  
+
   const [openEditModal, setOpenEditModal] = useState(false);
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
   const [createdBy, setCreatedBy] = useState('');
+
+  const [createdByModal, setCreatedByModal] = useState('');
   const [dob, setDob] = useState('');
   const [mobileNumber, setMobileNumber] = useState('');
   const [city, setCity] = useState('');
   const [pincode, setPincode] = useState('');
   const [address, setAddress] = useState('');
+  const [status, setStatus] = useState(true);
 
   const handleEdit = (userId) => {
     console.log(`Edit user with ID: ${userId}`);
@@ -25,7 +30,33 @@ const UserList = () => {
   const handleCloseEditModal = () => {
     setOpenEditModal(false);
   };
+  const initialValues = {
+    name: '',
+    location: '',
+    createdByModal: '',
+    dob: '',
+    mobileNumber: '',
+    city: '',
+    pincode: '',
+    address: '',
+  };
+  const handleSubmit = (values, { setSubmitting }) => {
 
+    console.log('Form values:', values);
+
+    setSubmitting(false);
+    handleCloseEditModal();
+  };
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required('Name is required'),
+    location: Yup.string().required('Location is required'),
+    createdByModal: Yup.string().required('Created By is required'),
+    dob: Yup.date().required('Date of Birth is required'),
+    mobileNumber: Yup.string().required('Mobile Number is required'),
+    city: Yup.string().required('City is required'),
+    pincode: Yup.string().required('PIN Code is required'),
+    address: Yup.string().required('Address is required'),
+  });
   const handleView = (userId) => {
     console.log(`View user with ID: ${userId}`);
   };
@@ -45,6 +76,10 @@ const UserList = () => {
   const handleCreatedByChange = (event) => {
     setCreatedBy(event.target.value);
   };
+  const handleCreatedByChangeModal = (event) => {
+    setCreatedByModal(event.target.value);
+  };
+
 
   const handleDobChange = (event) => {
     setDob(event.target.value);
@@ -78,7 +113,7 @@ const UserList = () => {
         </div>
         <div className="input-grou">
           <label htmlFor="created-by" className="input-label">Created By:</label>
-          <TextField id="created-by" select variant="outlined" fullWidth>
+          <TextField id="created-by" select variant="outlined" fullWidth onChange={handleCreatedByChange}>
             <option value="">Select dealer</option>
             <option value="1">Dealer 1</option>
             <option value="2">Dealer 2</option>
@@ -165,8 +200,8 @@ const UserList = () => {
                 <TableCell sx={{ width: '10%' }}>Created Date</TableCell>
                 <TableCell sx={{ width: '10%' }}>User Type</TableCell>
                 <TableCell sx={{ width: '10%' }}>Status</TableCell>
-                {userType == "Admin" ?<TableCell sx={{ width: '10%' }}>Action</TableCell>:<></>}
-                
+                {userType == "Admin" ? <TableCell sx={{ width: '10%' }}>Action</TableCell> : <></>}
+
               </TableRow>
             </TableHead>
             <TableBody>
@@ -183,117 +218,147 @@ const UserList = () => {
                 <TableCell>123, Street Name,gfdtydtydddfssfdsfdsffd</TableCell>
                 <TableCell>2024-05-11</TableCell>
                 <TableCell>Dealer</TableCell>
-                <TableCell>Active</TableCell>
-                {userType == "Admin" ?<TableCell>
+                <Switch
+                  checked={status}
+                  color={status ? "primary" : "default"}
+                  onChange={() => setStatus(!status)}
+                />
+                {userType == "Admin" ? <TableCell>
                   <EditIcon color="primary" onClick={() => handleEdit(12345)} />
                   {/* <VisibilityIcon color="primary" onClick={() => handleView(12345)} /> */}
                   <DeleteIcon color="error" onClick={() => handleDelete(12345)} />
-                </TableCell>:<></>}
+                </TableCell> : <></>}
 
-                
+
               </TableRow>
             </TableBody>
           </Table>
         </TableContainer>
       </div>
+
       <Dialog open={openEditModal} onClose={handleCloseEditModal}>
         <DialogTitle>Edit User</DialogTitle>
         <DialogContent>
-          
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Name"
-            type="text"
-            fullWidth
-            value={name}
-            onChange={handleNameChange}
-          />
-          <TextField
-            margin="dense"
-            id="location"
-            label="Location"
-            type="number"
-            fullWidth
-            value={location}
-            onChange={handleLocationChange}
-          />
-          <TextField
-            margin="dense"
-            id="createdBy"
-            label="Created By"
-            select
-            variant="outlined"
-            fullWidth
-            value={createdBy}
-            onChange={handleCreatedByChange}
+          <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={handleSubmit}
           >
-            <option value="">Select dealer</option>
-            <option value="1">Dealer 1</option>
-            <option value="2">Dealer 2</option>
-            <option value="3">Dealer 3</option>
-          </TextField>
-          <TextField
-            margin="dense"
-            id="dob"
-            label="Date of Birth"
-            type="date"
-            fullWidth
-            InputLabelProps={{ shrink: true }}
-            value={dob}
-            onChange={handleDobChange}
-          />
-          <TextField
-            margin="dense"
-            id="mobileNumber"
-            label="Mobile Number"
-            type="tel"
-            fullWidth
-            value={mobileNumber}
-            onChange={handleMobileNumberChange}
-          />
-          <TextField
-            margin="dense"
-            id="city"
-            label="City"
-            type="text"
-            fullWidth
-            value={city}
-            onChange={handleCityChange}
-          />
-          <TextField
-            margin="dense"
-            id="pincode"
-            label="PIN Code"
-            type="text"
-            fullWidth
-            value={pincode}
-            onChange={handlePincodeChange}
-          />
-          <TextField
-            margin="dense"
-            id="address"
-            label="Address"
-            multiline
-            rows={3}
-            fullWidth
-            value={address}
-            onChange={handleAddressChange}
-          />
+            {({ isSubmitting, errors }) => (
+              <Form>
+                <Field
+                  as={TextField}
+                  autoFocus
+                  margin="dense"
+                  id="name"
+                  name="name"
+                  label="Name"
+                  type="text"
+                  fullWidth
+                  error={Boolean(errors.name)}
+                  helperText={<ErrorMessage name="name" />}
+                />
+                <Field
+                  as={TextField}
+                  margin="dense"
+                  id="location"
+                  name="location"
+                  label="Location"
+                  type="text"
+                  fullWidth
+                  error={Boolean(errors.location)}
+                  helperText={<ErrorMessage name="location" />}
+                />
+                {/* <Field
+                  as={TextField}
+                  margin="dense"
+                  id="createdByModal"
+                  name="createdByModal"
+                  label="Created By"
+                  select
+                  variant="outlined"
+                  fullWidth
+                  error={Boolean(errors.createdByModal)}
+                  helperText={errors.createdByModal && <ErrorMessage name="createdByModal" />}
+                  onChange={handleCreatedByChangeModal}
+                >
+                  <option value="">Select dealer</option>
+                  <option value="1">Dealer 1</option>
+                  <option value="2">Dealer 2</option>
+                  <option value="3">Dealer 3</option>
+                </Field> */}
+                <Field
+                  as={TextField}
+                  margin="dense"
+                  id="dob"
+                  name="dob"
+                  label="Date of Birth"
+                  type="date"
+                  fullWidth
+                  InputLabelProps={{ shrink: true }}
+                  error={Boolean(errors.dob)}
+                  helperText={<ErrorMessage name="dob" />}
+                />
+                <Field
+                  as={TextField}
+                  margin="dense"
+                  id="mobileNumber"
+                  name="mobileNumber"
+                  label="Mobile Number"
+                  type="tel"
+                  fullWidth
+                  error={Boolean(errors.mobileNumber)}
+                  helperText={<ErrorMessage name="mobileNumber" />}
+                />
+                <Field
+                  as={TextField}
+                  margin="dense"
+                  id="city"
+                  name="city"
+                  label="City"
+                  type="text"
+                  fullWidth
+                  error={Boolean(errors.city)}
+                  helperText={<ErrorMessage name="city" />}
+                />
+                <Field
+                  as={TextField}
+                  margin="dense"
+                  id="pincode"
+                  name="pincode"
+                  label="PIN Code"
+                  type="text"
+                  fullWidth
+                  error={Boolean(errors.pincode)}
+                  helperText={<ErrorMessage name="pincode" />}
+                />
+                <Field
+                  as={TextField}
+                  margin="dense"
+                  id="address"
+                  name="address"
+                  label="Address"
+                  multiline
+                  rows={3}
+                  fullWidth
+                  error={Boolean(errors.address)}
+                  helperText={<ErrorMessage name="address" />}
+                />
+                <DialogActions>
+                  <Button onClick={handleCloseEditModal} color="primary">
+                    Cancel
+                  </Button>
+                  <Button type="submit" disabled={isSubmitting} color="primary">
+                    Submit
+                  </Button>
+                </DialogActions>
+              </Form>
+            )}
+          </Formik>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleCloseEditModal} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleCloseEditModal} color="primary">
-            Submit
-          </Button>
-        </DialogActions>
       </Dialog>
-
     </section>
   )
 }
 
-export default UserList
+export default UserList;
