@@ -110,7 +110,7 @@ const SideDrawer = () => {
       setOpen(false);
     };
   return (
-    <Box sx={{ display: 'flex', height:"100vh", backgroundColor:"#f2eefa" }}>
+    <Box sx={{ display: 'flex', height:"100vh" }}>
       <CssBaseline />
       <AppBar sx={{backgroundColor:"#835bd4"}} position="fixed" open={open}>
         <Toolbar>
