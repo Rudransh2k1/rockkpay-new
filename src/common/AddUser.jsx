@@ -3,6 +3,9 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import Swal from 'sweetalert2';
 import './addUser.css'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const AddUser = () => {
   const [userData, setUserData] = useState({
@@ -79,7 +82,7 @@ const AddUser = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      // Handle success, such as showing a success message or redirecting the user
+      toast.success("User created successfully!");
     } catch (error) {
       console.error("Error creating user:", error.response.data.message);
       // Handle error, such as displaying an error message to the user
@@ -88,7 +91,9 @@ const AddUser = () => {
 
   const userType = localStorage.getItem("user_type");
   return (
+
     <>
+      <ToastContainer />
       <section className="main-containe bg-white">
         <p className="formHeaderr">Create New User</p>
         <form onSubmit={handleSubmit} className="formCont">

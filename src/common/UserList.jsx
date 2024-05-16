@@ -121,7 +121,7 @@ const UserList = () => {
           </TextField>
 
           <label htmlFor="created-by" className="input-label">User Type:</label>
-          {userType == "Admin" ? <> <TextField id="created-by" select variant="outlined" fullWidth>
+          {userType == "Admin" ? null : <> <TextField id="created-by" select variant="outlined" fullWidth>
             {/* <option value="">Select User Type</option> */}
             <option value="Channel_Partner">Channel Partner</option>
             <option value="Super_Distributor">Super Distributor</option>
@@ -129,7 +129,7 @@ const UserList = () => {
             <option value="Distributor">Distributor</option>
 
             <option value="Retailer">Retailer</option>
-          </TextField></> : null}
+          </TextField></>}
 
           {userType == "Channel Partner" ? <> <TextField id="created-by" select variant="outlined" fullWidth>
             {/* <option value="">Select User Type</option> */}
@@ -199,8 +199,8 @@ const UserList = () => {
                 <TableCell sx={{ width: '20%' }}>Address</TableCell>
                 <TableCell sx={{ width: '10%' }}>Created Date</TableCell>
                 <TableCell sx={{ width: '10%' }}>User Type</TableCell>
-                <TableCell sx={{ width: '10%' }}>Status</TableCell>
-                {userType == "Admin" ? <TableCell sx={{ width: '10%' }}>Action</TableCell> : <></>}
+                {userType === "Admin" ? <TableCell sx={{ width: '10%' }}>Status</TableCell> : <></>}
+                {userType === "Admin" ? <TableCell sx={{ width: '10%' }}>Action</TableCell> : <></>}
 
               </TableRow>
             </TableHead>
@@ -218,12 +218,13 @@ const UserList = () => {
                 <TableCell>123, Street Name,gfdtydtydddfssfdsfdsffd</TableCell>
                 <TableCell>2024-05-11</TableCell>
                 <TableCell>Dealer</TableCell>
-                <Switch
-                  checked={status}
-                  color={status ? "primary" : "default"}
-                  onChange={() => setStatus(!status)}
-                />
-                {userType == "Admin" ? <TableCell>
+                {userType === "Admin" ?  <Switch
+                    checked={status}
+                    color={status ? "primary" : "default"}
+                    onChange={() => setStatus(!status)}
+                  />:<></>
+                  }
+                {userType === "Admin" ? <TableCell>
                   <EditIcon color="primary" onClick={() => handleEdit(12345)} />
                   {/* <VisibilityIcon color="primary" onClick={() => handleView(12345)} /> */}
                   <DeleteIcon color="error" onClick={() => handleDelete(12345)} />
