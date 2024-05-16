@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './userList.css'
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Switch } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
@@ -6,6 +6,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import axios from 'axios';
 
 const UserList = () => {
 
@@ -21,32 +22,91 @@ const UserList = () => {
   const [pincode, setPincode] = useState('');
   const [address, setAddress] = useState('');
   const [status, setStatus] = useState(true);
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem("jwt"); // Get JWT token
+        const response = await axios.get("http://localhost:5000/api/auth/fetch-hierarchical-data", {
+          headers: {
+            "Authorization": token // Pass JWT token in the Authorization header
+          }
+        });
+        console.log(response.data);
+        setUsers(response.data);// Handle the response data as needed
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
+    fetchData();
+  }, []);
   const handleEdit = (userId) => {
-    console.log(`Edit user with ID: ${userId}`);
-    setOpenEditModal(true);
+    const selectedUser = users.find(user => user.user_id === userId);
+    if (selectedUser) {
+      setName(selectedUser.name);
+      setLocation(selectedUser.location);
+      setCreatedByModal(selectedUser.createdBy);
+      setDob(selectedUser.dob);
+      setMobileNumber(selectedUser.mobileNumber);
+      setCity(selectedUser.city);
+      setPincode(selectedUser.pincode);
+      setAddress(selectedUser.address);
+      setOpenEditModal(true);
+    }
   };
+
 
   const handleCloseEditModal = () => {
     setOpenEditModal(false);
   };
   const initialValues = {
-    name: '',
-    location: '',
-    createdByModal: '',
-    dob: '',
-    mobileNumber: '',
-    city: '',
-    pincode: '',
-    address: '',
+    name: name, // Assign the state values directly here
+    location: location,
+    createdByModal: createdByModal,
+    dob: dob,
+    mobileNumber: mobileNumber,
+    city: city,
+    pincode: pincode,
+    address: address,
   };
-  const handleSubmit = (values, { setSubmitting }) => {
-
-    console.log('Form values:', values);
-
-    setSubmitting(false);
-    handleCloseEditModal();
+  const handleSubmit = async (values, { setSubmitting }) => {
+    try {
+      // Make sure to replace 'your_edit_user_api_url' with the actual URL of your edit_user API
+      const editUserUrl = 'your_edit_user_api_url';
+  
+      // Prepare the data to be sent in the request body
+      const userData = {
+        name: values.name,
+        location: values.location,
+        createdBy: values.createdByModal, // Assuming createdByModal is the correct field name
+        dob: values.dob,
+        mobileNumber: values.mobileNumber,
+        city: values.city,
+        pincode: values.pincode,
+        address: values.address
+      };
+  
+      // Add any additional headers if required
+      const headers = {
+        'Authorization': localStorage.getItem('jwt') // Assuming you need to send the JWT token for authorization
+      };
+  
+      // Make the API call
+      const response = await axios.post(editUserUrl, userData, { headers });
+  
+      // Handle the response
+      console.log('Edit user API response:', response.data);
+  
+      // Reset form values and close the modal
+      setSubmitting(false);
+      handleCloseEditModal();
+    } catch (error) {
+      console.error('Error editing user:', error);
+      // Handle errors here
+    }
   };
+
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
     location: Yup.string().required('Location is required'),
@@ -60,7 +120,22 @@ const UserList = () => {
   const handleView = (userId) => {
     console.log(`View user with ID: ${userId}`);
   };
-
+  const handleSwitchChange = async (userId, isActive) => {
+    console.log(`User ID: ${userId}, Active: ${isActive}`);
+    try {
+      const token = localStorage.getItem("jwt");
+      const response = await axios.post(`http://localhost:5000/api/auth/inactive_user?userId=${userId}`, null, {
+        headers: {
+          "Authorization": token
+        }
+      });
+      console.log(response.data);
+      // If you need to update the UI based on the response, do it here
+    } catch (error) {
+      console.error("Error:", error);
+      // Handle errors here
+    }
+  };
   const handleDelete = (userId) => {
     console.log(`Delete user with ID: ${userId}`);
   };
@@ -102,85 +177,6 @@ const UserList = () => {
   };
   return (
     <section className="registration-form">
-      <div className="form-container" style={{ width: "25%" }}>
-        <div className="input-grou">
-          <label htmlFor="username" className="input-label">User Name</label>
-          <TextField id="username" variant="outlined" placeholder="Username" fullWidth />
-        </div>
-        <div className="input-grou">
-          <label htmlFor="location" className="input-label">Location</label>
-          <TextField id="location" variant="outlined" type="number" placeholder="%" fullWidth />
-        </div>
-        <div className="input-grou">
-          <label htmlFor="created-by" className="input-label">Created By:</label>
-          <TextField id="created-by" select variant="outlined" fullWidth onChange={handleCreatedByChange}>
-            <option value="">Select dealer</option>
-            <option value="1">Dealer 1</option>
-            <option value="2">Dealer 2</option>
-            <option value="3">Dealer 3</option>
-          </TextField>
-
-          <label htmlFor="created-by" className="input-label">User Type:</label>
-          {userType == "Admin" ? null : <> <TextField id="created-by" select variant="outlined" fullWidth>
-            {/* <option value="">Select User Type</option> */}
-            <option value="Channel_Partner">Channel Partner</option>
-            <option value="Super_Distributor">Super Distributor</option>
-            <option value="Master_Distributor">Master Distributor </option>
-            <option value="Distributor">Distributor</option>
-
-            <option value="Retailer">Retailer</option>
-          </TextField></>}
-
-          {userType == "Channel Partner" ? <> <TextField id="created-by" select variant="outlined" fullWidth>
-            {/* <option value="">Select User Type</option> */}
-            {/* <option value="Channel_Partner">Channel Partner</option> */}
-            <option value="Super_Distributor">Super Distributor</option>
-            <option value="Master_Distributor">Master Distributor </option>
-            <option value="Distributor">Distributor</option>
-
-            <option value="Retailer">Retailer</option>
-          </TextField></> : null}
-          {userType == "Super_Distributor" ? <> <TextField id="created-by" select variant="outlined" fullWidth>
-            {/* <option value="">Select User Type</option> */}
-            {/* <option value="Channel_Partner">Channel Partner</option> */}
-            {/* <option value="Super_Distributor">Super Distributor</option> */}
-            <option value="Master_Distributor">Master Distributor </option>
-            <option value="Distributor">Distributor</option>
-
-            <option value="Retailer">Retailer</option>
-          </TextField></> : null}
-          {userType == "Master_Distributor" ? <> <TextField id="created-by" select variant="outlined" fullWidth>
-            {/* <option value="">Select User Type</option> */}
-            {/* <option value="Channel_Partner">Channel Partner</option> */}
-            {/* <option value="Super_Distributor">Super Distributor</option> */}
-            {/* <option value="Master_Distributor">Master Distributor </option> */}
-            <option value="Distributor">Distributor</option>
-
-            <option value="Retailer">Retailer</option>
-          </TextField></> : null}
-          {userType == "Distributor" ? <> <TextField id="created-by" select variant="outlined" fullWidth>
-            {/* <option value="">Select User Type</option> */}
-            {/* <option value="Channel_Partner">Channel Partner</option> */}
-            {/* <option value="Super_Distributor">Super Distributor</option> */}
-            {/* <option value="Master_Distributor">Master Distributor </option> */}
-            {/* <option value="Distributor">Distributor</option> */}
-
-            <option value="Retailer">Retailer</option>
-          </TextField></> : null}
-
-
-
-
-        </div>
-        <div style={{ marginTop: "4%" }} className="checkbox-group">
-          <input type="checkbox" id="direct-downline" />
-          <label htmlFor="direct-downline">Search Direct Downline only</label>
-        </div>
-        <div style={{ marginTop: "4%" }} className="button-group">
-          <Button variant="contained" color="primary">SEARCH</Button>
-          <Button sx={{ marginLeft: "4%" }} variant="contained" color="primary">EXPORT</Button>
-        </div>
-      </div>
       <div className="table-container">
         <p className="table-title">Registered Channel Partner</p>
         <TableContainer component={Paper}>
@@ -191,47 +187,53 @@ const UserList = () => {
                 <TableCell sx={{ width: '10%' }}>User Id</TableCell>
                 <TableCell sx={{ width: '10%' }}>Parent ID</TableCell>
                 <TableCell sx={{ width: '15%' }}>Name</TableCell>
-                <TableCell sx={{ width: '10%' }}>DOB</TableCell>
+                {/* <TableCell sx={{ width: '10%' }}>DOB</TableCell> */}
                 <TableCell sx={{ width: '15%' }}>Email</TableCell>
                 <TableCell sx={{ width: '10%' }}>Mobile Number</TableCell>
                 <TableCell sx={{ width: '10%' }}>City</TableCell>
                 <TableCell sx={{ width: '5%' }}>PIN code</TableCell>
                 <TableCell sx={{ width: '20%' }}>Address</TableCell>
-                <TableCell sx={{ width: '10%' }}>Created Date</TableCell>
+                {/* <TableCell sx={{ width: '10%' }}>Created Date</TableCell> */}
                 <TableCell sx={{ width: '10%' }}>User Type</TableCell>
                 {userType === "Admin" ? <TableCell sx={{ width: '10%' }}>Status</TableCell> : <></>}
                 {userType === "Admin" ? <TableCell sx={{ width: '10%' }}>Action</TableCell> : <></>}
 
+
               </TableRow>
             </TableHead>
             <TableBody>
-              <TableRow>
-                <TableCell>1</TableCell>
-                <TableCell>12345</TableCell>
-                <TableCell>67890</TableCell>
-                <TableCell>John Doe</TableCell>
-                <TableCell>1990-01-01</TableCell>
-                <TableCell>john@example.com</TableCell>
-                <TableCell>9876543210</TableCell>
-                <TableCell>City</TableCell>
-                <TableCell>123456</TableCell>
-                <TableCell>123, Street Name,gfdtydtydddfssfdsfdsffd</TableCell>
-                <TableCell>2024-05-11</TableCell>
-                <TableCell>Dealer</TableCell>
-                {userType === "Admin" ?  <Switch
-                    checked={status}
-                    color={status ? "primary" : "default"}
-                    onChange={() => setStatus(!status)}
-                  />:<></>
-                  }
-                {userType === "Admin" ? <TableCell>
-                  <EditIcon color="primary" onClick={() => handleEdit(12345)} />
-                  {/* <VisibilityIcon color="primary" onClick={() => handleView(12345)} /> */}
-                  <DeleteIcon color="error" onClick={() => handleDelete(12345)} />
-                </TableCell> : <></>}
+              {users.map((user, index) => (
+                <TableRow key={user.user_id}>
+                  <TableCell sx={{ width: '5%' }}>{index + 1}</TableCell>
+                  <TableCell sx={{ width: '10%' }}>{user.user_id}</TableCell>
+                  <TableCell sx={{ width: '10%' }}>{user.parent_id}</TableCell>
+                  <TableCell sx={{ width: '15%' }}>{user.name}</TableCell>
+                  {/* <TableCell sx={{ width: '10%' }}>{user.date_of_birth}</TableCell> */}
+                  <TableCell sx={{ width: '15%' }}>{user.email}</TableCell>
+                  <TableCell sx={{ width: '10%' }}>{user.mobile_number}</TableCell>
+                  <TableCell sx={{ width: '10%' }}>{user.city}</TableCell>
+                  <TableCell sx={{ width: '5%' }}>{user.pincode}</TableCell>
+                  <TableCell sx={{ width: '20%' }}>{user.address}</TableCell>
+                  {/* <TableCell sx={{ width: '10%' }}>{user.created_at}</TableCell> */}
+                  <TableCell sx={{ width: '10%' }}>{user.user_type}</TableCell>
+                  {userType === "Admin" && (
+                    <TableCell sx={{ width: '10%' }}>
+                      <Switch
+                        checked={user.status === "Active"}
+                        color={user.status === "Active" ? "primary" : "default"}
+                        onChange={(event) => handleSwitchChange(user.user_id, event.target.checked)}
+                      />
+                    </TableCell>
+                  )}
+                  {userType === "Admin" && (
+                    <TableCell sx={{ width: '10%' }}>
+                      <EditIcon color="primary" onClick={() => handleEdit(user.user_id)} />
+                      <DeleteIcon color="error" onClick={() => handleDelete(user.user_id)} />
+                    </TableCell>
+                  )}
+                </TableRow>
+              ))}
 
-
-              </TableRow>
             </TableBody>
           </Table>
         </TableContainer>
