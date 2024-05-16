@@ -1,11 +1,59 @@
-import { Button, TextField } from '@mui/material';
+import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react'
 import Swal from 'sweetalert2';
 import './addUser.css'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const AddUser = () => {
-    const [userData, setUserData] = useState({
+  const [userData, setUserData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    user_Type: "",
+    category: "",
+    middleName: "",
+    lastName: "",
+    mobileNumber: "",
+    outletName: "",
+    aadharcardNumber: "",
+    gstin: "",
+    dateOfBirth: "",
+    bankAccountNumber: "",
+    ifsc: "",
+    address: "",
+    pincode: "",
+    district: "",
+    state: "",
+    city: "",
+    alternateNumber: "",
+    pancardNumber: "",
+  });
+
+  const handleChange = (e) => {
+    setUserData({ ...userData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const token = localStorage.getItem("jwt");
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/register",
+        userData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+        }
+      );
+      console.log(response.data);
+      console.log("User created successfully!");
+
+      setUserData({
         name: "",
         email: "",
         password: "",
@@ -28,73 +76,30 @@ const AddUser = () => {
         alternateNumber: "",
         pancardNumber: "",
       });
-    
-      const handleChange = (e) => {
-        setUserData({ ...userData, [e.target.name]: e.target.value });
-      };
-    
-      const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-          const token = localStorage.getItem("jwt");
-          const response = await axios.post(
-            "http://localhost:5000/api/auth/register",
-            userData,
-            {
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: token,
-              },
-            }
-          );
-          console.log(response.data);
-          console.log("User created successfully!");
-    
-          setUserData({
-            name: "",
-            email: "",
-            password: "",
-            user_Type: "",
-            category: "",
-            middleName: "",
-            lastName: "",
-            mobileNumber: "",
-            outletName: "",
-            aadharcardNumber: "",
-            gstin: "",
-            dateOfBirth: "",
-            bankAccountNumber: "",
-            ifsc: "",
-            address: "",
-            pincode: "",
-            district: "",
-            state: "",
-            city: "",
-            alternateNumber: "",
-            pancardNumber: "",
-          });
-          Swal.fire({
-            icon: "success",
-            title: "User Created Successfully!",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          // Handle success, such as showing a success message or redirecting the user
-        } catch (error) {
-          console.error("Error creating user:", error.response.data.message);
-          // Handle error, such as displaying an error message to the user
-        }
-      };
+      Swal.fire({
+        icon: "success",
+        title: "User Created Successfully!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      toast.success("User created successfully!");
+    } catch (error) {
+      console.error("Error creating user:", error.response.data.message);
+      // Handle error, such as displaying an error message to the user
+    }
+  };
 
-      const userType = localStorage.getItem("user_type");
+  const userType = localStorage.getItem("user_type");
   return (
+
     <>
+      <ToastContainer />
       <section className="main-containe bg-white">
         <p className="formHeaderr">Create New User</p>
         <form onSubmit={handleSubmit} className="formCont">
           <div className="formRoww">
-            <div   className="formCol">
-              <div  className="addUserInputGroup">
+            <div className="formCol">
+              <div className="addUserInputGroup">
                 <p className="addUserInputLabel">Name:</p>
                 <TextField
                   type="text"
@@ -143,100 +148,100 @@ const AddUser = () => {
               {userType == "Admin" ? <><div className="addUserInputGroup">
                 <p className="addUserInputLabel">User Type:</p>
                 <select
-                style={{height:"3.5rem"}}
+                  style={{ height: "3.5rem" }}
                   name="user_Type"
                   value={userData.user_Type}
                   onChange={handleChange}
                   className="addUserInputField"
                 >
-                
+
                   <option value="">Select User Type</option>
                   <option value="Channel_Partner">Channel Partner</option>
                   <option value="Super_Distributor">Super Distributor</option>
                   <option value="Master_Distributor">Master Distributor </option>
                   <option value="Distributor">Distributor</option>
-                  
+
                   <option value="Retailer">Retailer</option>
                 </select>
-              </div></> : null }
+              </div></> : null}
               {userType == "Channel_Partner" ? <><div className="addUserInputGroup">
                 <p className="addUserInputLabel">User Type:</p>
                 <select
-                style={{height:"3.5rem"}}
+                  style={{ height: "3.5rem" }}
                   name="user_Type"
                   value={userData.user_Type}
                   onChange={handleChange}
                   className="addUserInputField"
                 >
-                
+
                   <option value="">Select User Type</option>
                   {/* <option value="Channel_Partner">Channel Partner</option> */}
                   <option value="Super_Distributor">Super Distributor</option>
                   <option value="Master_Distributor">Master Distributor </option>
                   <option value="Distributor">Distributor</option>
-                  
+
                   <option value="Retailer">Retailer</option>
                 </select>
               </div></> : null}
               {userType == "Super_Distributor" ? <><div className="addUserInputGroup">
                 <p className="addUserInputLabel">User Type:</p>
                 <select
-                style={{height:"3.5rem"}}
+                  style={{ height: "3.5rem" }}
                   name="user_Type"
                   value={userData.user_Type}
                   onChange={handleChange}
                   className="addUserInputField"
                 >
-                
+
                   <option value="">Select User Type</option>
                   {/* <option value="Channel_Partner">Channel Partner</option> */}
                   {/* <option value="Super_Distributor">Super Distributor</option> */}
                   <option value="Master_Distributor">Master Distributor </option>
                   <option value="Distributor">Distributor</option>
-                  
+
                   <option value="Retailer">Retailer</option>
                 </select>
               </div></> : null}
               {userType == "Master_Distributor" ? <><div className="addUserInputGroup">
                 <p className="addUserInputLabel">User Type:</p>
                 <select
-                style={{height:"3.5rem"}}
+                  style={{ height: "3.5rem" }}
                   name="user_Type"
                   value={userData.user_Type}
                   onChange={handleChange}
                   className="addUserInputField"
                 >
-                
+
                   <option value="">Select User Type</option>
                   {/* <option value="Channel_Partner">Channel Partner</option> */}
                   {/* <option value="Super_Distributor">Super Distributor</option> */}
                   {/* <option value="Master_Distributor">Master Distributor </option> */}
                   <option value="Distributor">Distributor</option>
-                  
+
                   <option value="Retailer">Retailer</option>
                 </select>
               </div></> : null}
               {userType == "Distributor" ? <><div className="addUserInputGroup">
                 <p className="addUserInputLabel">User Type:</p>
                 <select
-                style={{height:"3.5rem"}}
+                  style={{ height: "3.5rem" }}
                   name="user_Type"
                   value={userData.user_Type}
                   onChange={handleChange}
                   className="addUserInputField"
                 >
-                
+
                   <option value="">Select User Type</option>
                   {/* <option value="Channel_Partner">Channel Partner</option> */}
                   {/* <option value="Super_Distributor">Super Distributor</option> */}
                   {/* <option value="Master_Distributor">Master Distributor </option> */}
                   {/* <option value="Distributor">Distributor</option> */}
-                  
+
                   <option value="Retailer">Retailer</option>
                 </select>
               </div></> : null}
-              
-           
+
+
               <div className="addUserInputGroup">
                 <p className="addUserInputLabel">Mobile Number:</p>
                 <TextField
@@ -251,7 +256,7 @@ const AddUser = () => {
               {/* More input groups */}
             </div>
             <div className="formCol">
-            <div className="addUserInputGroup">
+              <div className="addUserInputGroup">
                 <p className="addUserInputLabel">Last Name:</p>
                 <TextField
                   type="text"
@@ -262,12 +267,12 @@ const AddUser = () => {
                   className="addUserInputField"
                 />
               </div>
-              
+
               <div className="addUserInputGroup">
                 <p className="addUserInputLabel">Category:</p>
                 <select
-                style={{height:"3.5rem"}}
-                name="category"
+                  style={{ height: "3.5rem" }}
+                  name="category"
                   value={userData.category}
                   onChange={handleChange}
                   className="addUserInputField"
@@ -401,47 +406,82 @@ const AddUser = () => {
             </div>
           </div>
           <div class="formRoww">
-  <div class="formCol">
-    <div class="addUserInputGroup">
-      <p class="addUserInputLabel">City:</p>
-      <TextField
-        type="text"
-        name="city"
-        variant="outlined"
-        value={userData.city}
-        onChange={handleChange}
-        className="addUserInputField"
-      />
-    </div>
-  </div>
-  <div class="formCol">
-    <div class="addUserInputGroup">
-      <p class="addUserInputLabel">Alternate Number:</p>
-      <TextField
-        type="number"
-        name="alternateNumber"
-        variant="outlined"
-        value={userData.alternateNumber}
-        onChange={handleChange}
-        className="addUserInputField"
-      />
-    </div>
-  </div>
-  <div class="formCol">
-    <div class="addUserInputGroup">
-      <p class="addUserInputLabel">Pancard Number:</p>
-      <TextField
-        type="text"
-        name="pancardNumber"
-        variant="outlined"
-        value={userData.pancardNumber}
-        onChange={handleChange}
-        className="addUserInputField"
-      />
-    </div>
-  </div>
-</div>
-<div style={{display:"flex", justifyContent: "center"}}>
+            <div class="formCol">
+              <div class="addUserInputGroup">
+                <p class="addUserInputLabel">City:</p>
+                <TextField
+                  type="text"
+                  name="city"
+                  variant="outlined"
+                  value={userData.city}
+                  onChange={handleChange}
+                  className="addUserInputField"
+                />
+              </div>
+            </div>
+            <div class="formCol">
+              <div class="addUserInputGroup">
+                <p class="addUserInputLabel">Alternate Number:</p>
+                <TextField
+                  type="number"
+                  name="alternateNumber"
+                  variant="outlined"
+                  value={userData.alternateNumber}
+                  onChange={handleChange}
+                  className="addUserInputField"
+                />
+              </div>
+            </div>
+            <div class="formCol">
+              <div class="addUserInputGroup">
+                <p class="addUserInputLabel">Pancard Number:</p>
+                <TextField
+                  type="text"
+                  name="pancardNumber"
+                  variant="outlined"
+                  value={userData.pancardNumber}
+                  onChange={handleChange}
+                  className="addUserInputField"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="addUserInputGroup">
+            <FormControl style={{ width: '45%' }}>
+              <InputLabel id="commission-surcharge-label">Commission/Surcharge</InputLabel>
+              <Select
+                labelId="commission-surcharge-label"
+                id="commission-surcharge"
+                name="commissionSurcharge"
+                value={userData.commissionSurcharge}
+                onChange={handleChange}
+              >
+                <MenuItem value="commission">Commission</MenuItem>
+                <MenuItem value="surcharge">Surcharge</MenuItem>
+              </Select>
+            </FormControl>
+            <TextField
+              style={{ marginLeft: '10px', width: '45%' }}
+              type="number"
+              name="percentage"
+              label="Percentage"
+              variant="outlined"
+              value={userData.percentage}
+              onChange={handleChange}
+            />
+          </div>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <Button
+              onClick={handleSubmit}
+              type="submit"
+              variant="contained"
+              color="primary"
+              className="submit-button"
+            >
+              Create User
+            </Button>
+          </div>
+          {/* <div style={{display:"flex", justifyContent: "center"}}>
           <Button
           onClick={handleSubmit}
             type="submit"
@@ -451,7 +491,7 @@ const AddUser = () => {
           >
             Create User
           </Button>
-          </div>
+          </div> */}
         </form>
       </section>
     </>

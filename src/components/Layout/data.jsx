@@ -175,11 +175,11 @@ export const menuAdminArray  =  [
       //   subTitle: "Transaction History",
       //   path: "./report/transactionHistory",
       // },
-      // {
-      //   id: 63,
-      //   subTitle: "Transaction history with Parent",
-      //   path: "./report/transactionHistorywithParent",
-      // },
+       {
+        id: 63,
+        subTitle: "Transaction history with Parent",
+        path: "./report/transactionHistorywithParent",
+      },
 
       // {
       //   id: 66,
@@ -1817,11 +1817,11 @@ export const menuDistriArray  =  [
       //   subTitle: "Transaction History",
       //   path: "./report/transactionHistory",
       // },
-      // {
-      //   id: 63,
-      //   subTitle: "Transaction history with Parent",
-      //   path: "./report/transactionHistorywithParent",
-      // },
+      {
+        id: 63,
+        subTitle: "Transaction history with Parent",
+        path: "./report/transactionHistorywithParent",
+      },
 
       // {
       //   id: 66,
