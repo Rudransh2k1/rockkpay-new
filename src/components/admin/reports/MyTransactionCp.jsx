@@ -2,35 +2,47 @@ import { useState } from 'react';
 import { Container, Grid, TextField, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 import axios from 'axios';
 
 export default function MyTransactionCp() {
-  const [fromDate, setFromDate] = useState("");
-  const [toDate, setToDate] = useState("");
-  const [transactions, setTransactions] = useState([]);
-  const [transactionType, setTransactionType] = useState("");
-
-  const handleSearch = async () => {
-    try {
-      let apiUrl = "";
-      if (transactionType === "wallet") {
-        apiUrl = `http://localhost:5000/api/protected/my-transactions`;
-      } else if (transactionType === "transactions") {
-        apiUrl = `http://localhost:5000/api/protected/adminalltransactions`;
+  const [transactions, setTransactions] = useState([]); // Added transactions state
+  const formik = useFormik({
+    initialValues: {
+      fromDate: "",
+      toDate: "",
+      transactionType: "",
+    },
+    validationSchema: yup.object({
+      fromDate: yup.string().required("From Date is required"),
+      toDate: yup.string().required("To Date is required"),
+      transactionType: yup.string().required("Transaction Type is required"),
+    }),
+    onSubmit: async (values) => {
+      try {
+        let apiUrl = "";
+        if (values.transactionType === "wallet") {
+          apiUrl = `http://localhost:5000/api/protected/my-transactions`;
+        } else if (values.transactionType === "transactions") {
+          apiUrl = `http://localhost:5000/api/protected/adminalltransactions`;
+        }
+        const token = localStorage.getItem("jwt");
+        const response = await axios.get(apiUrl, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+        });
+        setTransactions(response.data);
+      } catch (error) {
+        console.error("Error fetching transactions:", error);
       }
-      const token = localStorage.getItem("jwt");
-      const response = await axios.get(apiUrl, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-      });
-      setTransactions(response.data);
-    } catch (error) {
-      console.error("Error fetching transactions:", error);
-    }
-  };
-console.log(transactions,"these are the transactionnnnnnnn")
+    },
+  });
+
+  const { handleSubmit, handleChange, values, errors, touched } = formik;
+
   return (
     <Container>
       <Grid container spacing={2}>
@@ -39,8 +51,11 @@ console.log(transactions,"these are the transactionnnnnnnn")
             type="date"
             fullWidth
             placeholder="From Date"
-            value={fromDate}
-            onChange={(e) => setFromDate(e.target.value)}
+            name="fromDate"
+            value={values.fromDate}
+            onChange={handleChange}
+            error={touched.fromDate && Boolean(errors.fromDate)}
+            helperText={touched.fromDate && errors.fromDate}
           />
         </Grid>
         <Grid item xs={12} sm={1} alignSelf="center">
@@ -53,8 +68,11 @@ console.log(transactions,"these are the transactionnnnnnnn")
             type="date"
             fullWidth
             placeholder="To Date"
-            value={toDate}
-            onChange={(e) => setToDate(e.target.value)}
+            name="toDate"
+            value={values.toDate}
+            onChange={handleChange}
+            error={touched.toDate && Boolean(errors.toDate)}
+            helperText={touched.toDate && errors.toDate}
           />
         </Grid>
         <Grid item xs={12} sm={3}>
@@ -62,19 +80,21 @@ console.log(transactions,"these are the transactionnnnnnnn")
             name="transactionType"
             id="transactionType"
             fullWidth
-            value={transactionType}
-            onChange={(e) => setTransactionType(e.target.value)}
+            value={values.transactionType}
+            onChange={handleChange}
+            error={touched.transactionType && Boolean(errors.transactionType)}
           >
             <option value="">Select</option>
             <option value="wallet">Wallet</option>
             <option value="transactions">Transaction</option>
           </select>
+          {touched.transactionType && errors.transactionType && <div>{errors.transactionType}</div>}
         </Grid>
         <Grid item xs={12} sm={12}>
           <Button
             variant="contained"
             color="primary"
-            onClick={handleSearch}
+            onClick={handleSubmit}
           >
             <SearchIcon />
             Search
@@ -84,12 +104,12 @@ console.log(transactions,"these are the transactionnnnnnnn")
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <h2>
-            {transactionType === "wallet" ? "Wallet" : "Transaction"} Transactions
+            {values.transactionType === "wallet" ? "Wallet" : "Transaction"} Transactions
           </h2>
           <TableContainer component={Paper}>
             <Table>
               <TableHead>
-                {transactionType === "wallet" ? (
+                {values.transactionType === "wallet" ? (
                   <TableRow>
                     <TableCell>Transaction ID (Wallet)</TableCell>
                     <TableCell>Sender ID</TableCell>
@@ -121,8 +141,8 @@ console.log(transactions,"these are the transactionnnnnnnn")
               <TableBody>
                 {transactions.map((transaction, index) => (
                   <TableRow key={transaction.transaction_id}>
-                    <TableCell>{transactionType === "wallet" ? transaction.transaction_id : transaction.txnid}</TableCell>
-                    {transactionType === "wallet" ? (
+                    <TableCell>{values.transactionType === "wallet" ? transaction.transaction_id : transaction.txnid}</TableCell>
+                    {values.transactionType === "wallet" ? (
                       <>
                         <TableCell>{transaction.sender_id}</TableCell>
                         <TableCell>{transaction.receiver_id}</TableCell>

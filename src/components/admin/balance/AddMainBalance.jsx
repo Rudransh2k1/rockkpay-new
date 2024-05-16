@@ -45,6 +45,9 @@ const AddMainBalance = () => {
 
   const handleInputChange = async (e) => {
     const { name, value } = e.target;
+    if (name === "amount" && !/^\d*$/.test(value)) {
+      return; // Don't update the state if the value is not numeric
+    }
     setFormData({ ...formData, [name]: value });
   };
 
@@ -76,7 +79,6 @@ const AddMainBalance = () => {
 
     try {
       if (data.balance <= formData.amount) {
-        
         toast.error("Insufficient funds!");
         return;
       }
@@ -165,20 +167,18 @@ const AddMainBalance = () => {
               </div>
               <div className="form-group">
                 <p>Receiver Name:</p>
-                <input
-                  type="text"
+                <TextField
                   name="receiverName"
                   value={formData.receiverName}
-                  onChange={handleInputChange}
+                  disabled
                 />
               </div>
               <div className="form-group">
                 <p>Receiver Type:</p>
-                <input
-                  type="text"
+                <TextField
                   name="receiverType"
                   value={formData.receiverType}
-                  onChange={handleInputChange}
+                  disabled
                 />
               </div>
               <div className="form-group">
