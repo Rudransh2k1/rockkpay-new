@@ -6,6 +6,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const UserList = () => {
+  
   const [openEditModal, setOpenEditModal] = useState(false);
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
@@ -164,7 +165,8 @@ const UserList = () => {
                 <TableCell sx={{ width: '10%' }}>Created Date</TableCell>
                 <TableCell sx={{ width: '10%' }}>User Type</TableCell>
                 <TableCell sx={{ width: '10%' }}>Status</TableCell>
-                <TableCell sx={{ width: '10%' }}>Action</TableCell>
+                {userType == "Admin" ?<TableCell sx={{ width: '10%' }}>Action</TableCell>:<></>}
+                
               </TableRow>
             </TableHead>
             <TableBody>
@@ -182,11 +184,13 @@ const UserList = () => {
                 <TableCell>2024-05-11</TableCell>
                 <TableCell>Dealer</TableCell>
                 <TableCell>Active</TableCell>
-                <TableCell>
+                {userType == "Admin" ?<TableCell>
                   <EditIcon color="primary" onClick={() => handleEdit(12345)} />
                   {/* <VisibilityIcon color="primary" onClick={() => handleView(12345)} /> */}
                   <DeleteIcon color="error" onClick={() => handleDelete(12345)} />
-                </TableCell>
+                </TableCell>:<></>}
+
+                
               </TableRow>
             </TableBody>
           </Table>
