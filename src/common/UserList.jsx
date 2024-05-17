@@ -10,6 +10,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UserList = () => {
   const [openEditModal, setOpenEditModal] = useState(false);
@@ -21,7 +23,7 @@ const UserList = () => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("jwt");
-        const response = await axios.get("https://www.api.rockkpay.com/api/auth/fetch-hierarchical-data", {
+        const response = await axios.get("http://localhost:5000/api/auth/fetch-hierarchical-data", {
           headers: {
             "Authorization": token
           }
@@ -29,6 +31,7 @@ const UserList = () => {
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
+        toast.error("Error fetching user data");
       }
     };
 
@@ -51,7 +54,7 @@ const UserList = () => {
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       const token = localStorage.getItem('jwt');
-      const response = await axios.put(`https://www.api.rockkpay.com/api/update/user/${selectedUser.user_id}`, values, {
+      const response = await axios.put(`http://localhost:5000/api/update/user/${selectedUser.user_id}`, values, {
         headers: {
           'Authorization': token
         }
@@ -59,17 +62,17 @@ const UserList = () => {
       console.log('Edit user API response:', response.data);
       setUsers(users.map(user => user.user_id === selectedUser.user_id ? response.data : user));
       handleCloseEditModal();
+      toast.success("User updated successfully");
     } catch (error) {
       console.error('Error editing user:', error);
+      toast.error("Error editing user");
     } finally {
       setSubmitting(false);
     }
   };
 
-
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
-    //location: Yup.string().required('Location is required'),
     date_of_birth: Yup.date().required('Date of Birth is required'),
     mobile_number: Yup.string().required('Mobile Number is required'),
     city: Yup.string().required('City is required'),
@@ -80,36 +83,55 @@ const UserList = () => {
   const handleSwitchChange = async (userId, isActive) => {
     try {
       const token = localStorage.getItem("jwt");
-      const response = await axios.post(`https://www.api.rockkpay.com/api/auth/inactive_user?userId=${userId}`, null, {
-        headers: {
-          "Authorization": token
-        }
-      });
+      let response;
+      if (!isActive) {
+        // If the user is active, call the deactivate API
+        response = await axios.put(`http://localhost:5000/api/changeStatusInActive/${userId}`, null, {
+          headers: {
+            "Authorization": token
+          }
+        });
+      } else {
+        // If the user is inactive, call the activate API
+        response = await axios.put(`http://localhost:5000/api/changeStatusActive/${userId}`, null, {
+          headers: {
+            "Authorization": token
+          }
+        });
+      }
       console.log(response.data);
-      setUsers(users.map(user => user.user_id === userId ? { ...user, status: isActive ? "Active" : "Inactive" } : user));
+      // Update the user status in the local state based on the response
+      setUsers(users.map(user => user.user_id === userId ? { ...user, status: isActive ? "Inactive" : "Active" } : user));
+      toast.success(`User ${isActive ? "deactivated" : "activated"} successfully`);
     } catch (error) {
       console.error("Error:", error);
+      toast.error(`Error ${isActive ? "deactivating" : "activating"} user`);
     }
   };
+  
+  
 
   const handleDelete = async (userId) => {
     console.log(`Delete user with ID: ${userId}`);
     try {
       const token = localStorage.getItem("jwt");
-      const response = await axios.delete(`https://www.api.rockkpay.com/api/protected/delete/${userId}`, {
+      const response = await axios.delete(`http://localhost:5000/api/protected/delete/${userId}`, {
         headers: {
           "Authorization": token
         }
       });
       console.log(response.data);
-      // setUsers(users.map(user => user.user_id === userId ? { ...user, status: isActive ? "Active" : "Inactive" } : user));
+      setUsers(users.filter(user => user.user_id !== userId));
+      toast.success("User deleted successfully");
     } catch (error) {
       console.error("Error:", error);
+      toast.error("Error deleting user");
     }
   };
 
   return (
     <section className="registration-form">
+      <ToastContainer />
       <div className="table-container">
         <p className="table-title">Registered Partners</p>
         <TableContainer component={Paper}>
@@ -173,7 +195,6 @@ const UserList = () => {
             <Formik
               initialValues={{
                 name: selectedUser.name,
-                //location: selectedUser.location,
                 date_of_birth: selectedUser.date_of_birth,
                 mobile_number: selectedUser.mobile_number,
                 city: selectedUser.city,
@@ -196,17 +217,6 @@ const UserList = () => {
                     error={Boolean(errors.name)}
                     helperText={<ErrorMessage name="name" />}
                   />
-                  {/* <Field
-                    as={TextField}
-                    margin="dense"
-                    id="location"
-                    name="location"
-                    label="Location"
-                    type="text"
-                    fullWidth
-                    error={Boolean(errors.location)}
-                    helperText={<ErrorMessage name="location" />}
-                  /> */}
                   <Field
                     as={TextField}
                     margin="dense"

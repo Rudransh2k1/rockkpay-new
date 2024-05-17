@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
-import { Login_bg } from "../../Assets/login/login_image.jpg";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import desktopscreen from "../../Assets/login/desktopscreen.jpg";
 import MainLogo from "../../Assets/navbar/RockkpayLogo.png";
 import breadcrumimg from "../../Assets/login/groupscreen.png";
 import axios from "axios";
-import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [credentials, setCredentials] = useState({
@@ -21,34 +21,22 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     if (!credentials.user_id.trim() || !credentials.password.trim()) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Please enter both user ID and password.",
-      });
+      toast.error("Please enter both user ID and password.");
       return;
     }
     try {
       const response = await axios.post(
-        "https://www.api.rockkpay.com/api/auth/signin",
+        "http://localhost:5000/api/auth/signin",
         credentials
       );
       localStorage.setItem("jwt", response.data.token);
       localStorage.setItem("user_type", response.data.user.user_type);
       const userData = response.data.user;
       navigate("/home");
-      Swal.fire({
-        icon: "success",
-        title: "Success!",
-        text: "Login successful.",
-      });
+      toast.success("Login successful.");
     } catch (error) {
       console.error("Login failed:", error);
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Incorrect username or password. Please try again.",
-      });
+      toast.error("Incorrect username or password. Please try again.");
     }
   };
 
@@ -57,6 +45,7 @@ const LoginPage = () => {
       className="w-full h-full bg-center bg-cover bg-no-repeat"
       style={{ backgroundImage: `url(${desktopscreen})` }}
     >
+      
       <section className="web-container w-full h-screen flex gap-6 pt-12">
         <div className="w-full h-full flex flex-col item-start justify-start gap-10">
           <span className="w-full">

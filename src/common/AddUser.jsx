@@ -41,7 +41,7 @@ const AddUser = () => {
     try {
       const token = localStorage.getItem("jwt");
       const response = await axios.post(
-        "https://www.api.rockkpay.com/api/auth/register",
+        "http://localhost:5000/api/auth/register",
         userData,
         {
           headers: {
@@ -75,12 +75,6 @@ const AddUser = () => {
         city: "",
         alternateNumber: "",
         pancardNumber: "",
-      });
-      Swal.fire({
-        icon: "success",
-        title: "User Created Successfully!",
-        showConfirmButton: false,
-        timer: 1500,
       });
       toast.success("User created successfully!");
     } catch (error) {

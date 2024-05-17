@@ -5,6 +5,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import { TextField, Button } from "@mui/material";
 import "./AddMainBalance.css";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
+
 
 const AddMainBalance = () => {
   const [data, setData] = useState();
@@ -20,7 +22,7 @@ const AddMainBalance = () => {
         Authorization: token,
       };
       const responsebalance = await axios.get(
-        "https://www.api.rockkpay.com/api/protected/balance",
+        "http://localhost:5000/api/protected/balance",
         {
           headers: headers,
         }
@@ -55,7 +57,7 @@ const AddMainBalance = () => {
     try {
       const token = localStorage.getItem("jwt");
       const response = await axios.get(
-        `https://www.api.rockkpay.com/api/protected/userrr/${formData.receiverId}`,
+        `http://localhost:5000/api/protected/userrr/${formData.receiverId}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -84,7 +86,7 @@ const AddMainBalance = () => {
       }
       const token = localStorage.getItem("jwt");
       const response = await axios.post(
-        "https://www.api.rockkpay.com/api/protected/transfer",
+        "http://localhost:5000/api/protected/transfer",
         formData,
         {
           headers: {
@@ -94,12 +96,6 @@ const AddMainBalance = () => {
         }
       );
       if (response.data.message) {
-        Swal.fire({
-          icon: "success",
-          title: response.data.message,
-          showConfirmButton: false,
-          timer: 1500,
-        });
         toast.success("Funds Transfer Successfully");
         fetchData(); // Fetch balance again after successful transfer
       }
@@ -107,29 +103,18 @@ const AddMainBalance = () => {
       if (error.response && error.response.data.message) {
         const errorMessage = error.response.data.message;
         if (errorMessage === "Receiver is not under the sender") {
-          Swal.fire({
-            icon: "error",
-            title: "Receiver is not under you",
-          });
+          toast.error("Receiver is not under you");
         } else if (errorMessage === "Receiver does not exist") {
-          Swal.fire({
-            icon: "error",
-            title: "Receiver does not exist",
-          });
+          toast.error("Receiver does not exist");
         } else {
-          Swal.fire({
-            icon: "error",
-            title: "Error transferring funds",
-          });
+          toast.error("Error transferring funds");
         }
       } else {
-        Swal.fire({
-          icon: "error",
-          title: "Error transferring funds",
-        });
+        toast.error("Error transferring funds");
       }
     }
   };
+
 
   return (
     <>

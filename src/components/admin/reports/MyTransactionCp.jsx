@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Container, Grid, TextField, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -23,9 +23,9 @@ export default function MyTransactionCp() {
       try {
         let apiUrl = "";
         if (values.transactionType === "wallet") {
-          apiUrl = `https://www.api.rockkpay.com/api/auth/my-transactions`;
+          apiUrl = `http://localhost:5000/api/auth/my-transactions`;
         } else if (values.transactionType === "transactions") {
-          apiUrl = `https://www.api.rockkpay.com/api/auth/adminalltransactions`;
+          apiUrl = `http://localhost:5000/api/auth/adminalltransactions`;
         }
         const token = localStorage.getItem("jwt");
         const response = await axios.get(apiUrl, {
@@ -42,6 +42,11 @@ export default function MyTransactionCp() {
   });
 
   const { handleSubmit, handleChange, values, errors, touched } = formik;
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-CA'); // Formats to 'YYYY-MM-DD'
+  };
 
   return (
     <Container>
@@ -150,12 +155,12 @@ export default function MyTransactionCp() {
                         <TableCell>{transaction.receiver_type}</TableCell>
                         <TableCell>{transaction.amount}</TableCell>
                         <TableCell>{transaction.reason}</TableCell>
-                        <TableCell>{transaction.created_at}</TableCell>
+                        <TableCell>{formatDate(transaction.created_at)}</TableCell>
                       </>
                     ) : (
                       <>
                         <TableCell>{transaction.pg_type}</TableCell>
-                        <TableCell>{transaction.addedon}</TableCell>
+                        <TableCell>{formatDate(transaction.addedon)}</TableCell>
                         <TableCell>{transaction.amount}</TableCell>
                         <TableCell>{transaction.bank_name}</TableCell>
                         <TableCell>{transaction.bank_ref_num}</TableCell>

@@ -67,7 +67,7 @@ const AddBalanceEasebuzz = () => {
       const initiatePayment = async () => {
         try {
           const response = await axios.post(
-            "https://api.ipaisa.site/initiate-payment",
+            "https://api.ipaisa.site/initiate-web-payment",
             { ...paymentData, amount: calculatedAmount.toString() }
           );
           console.log(response.data);
