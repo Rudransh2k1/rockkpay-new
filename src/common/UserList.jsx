@@ -66,11 +66,12 @@ const UserList = () => {
     }
   };
 
+
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
-    location: Yup.string().required('Location is required'),
-    dob: Yup.date().required('Date of Birth is required'),
-    mobileNumber: Yup.string().required('Mobile Number is required'),
+    //location: Yup.string().required('Location is required'),
+    date_of_birth: Yup.date().required('Date of Birth is required'),
+    mobile_number: Yup.string().required('Mobile Number is required'),
     city: Yup.string().required('City is required'),
     pincode: Yup.string().required('PIN Code is required'),
     address: Yup.string().required('Address is required'),
@@ -101,7 +102,7 @@ const UserList = () => {
         }
       });
       console.log(response.data);
-     // setUsers(users.map(user => user.user_id === userId ? { ...user, status: isActive ? "Active" : "Inactive" } : user));
+      // setUsers(users.map(user => user.user_id === userId ? { ...user, status: isActive ? "Active" : "Inactive" } : user));
     } catch (error) {
       console.error("Error:", error);
     }
@@ -172,9 +173,9 @@ const UserList = () => {
             <Formik
               initialValues={{
                 name: selectedUser.name,
-                location: selectedUser.location,
-                dob: selectedUser.dob,
-                mobileNumber: selectedUser.mobile_number,
+                //location: selectedUser.location,
+                date_of_birth: selectedUser.date_of_birth,
+                mobile_number: selectedUser.mobile_number,
                 city: selectedUser.city,
                 pincode: selectedUser.pincode,
                 address: selectedUser.address,
@@ -195,7 +196,7 @@ const UserList = () => {
                     error={Boolean(errors.name)}
                     helperText={<ErrorMessage name="name" />}
                   />
-                  <Field
+                  {/* <Field
                     as={TextField}
                     margin="dense"
                     id="location"
@@ -205,29 +206,29 @@ const UserList = () => {
                     fullWidth
                     error={Boolean(errors.location)}
                     helperText={<ErrorMessage name="location" />}
-                  />
+                  /> */}
                   <Field
                     as={TextField}
                     margin="dense"
-                    id="dob"
-                    name="dob"
+                    id="date_of_birth"
+                    name="date_of_birth"
                     label="Date of Birth"
                     type="date"
                     fullWidth
                     InputLabelProps={{ shrink: true }}
-                    error={Boolean(errors.dob)}
-                    helperText={<ErrorMessage name="dob" />}
+                    error={Boolean(errors.date_of_birth)}
+                    helperText={<ErrorMessage name="date_of_birth" />}
                   />
                   <Field
                     as={TextField}
                     margin="dense"
-                    id="mobileNumber"
-                    name="mobileNumber"
+                    id="mobile_number"
+                    name="mobile_number"
                     label="Mobile Number"
                     type="tel"
                     fullWidth
-                    error={Boolean(errors.mobileNumber)}
-                    helperText={<ErrorMessage name="mobileNumber" />}
+                    error={Boolean(errors.mobile_number)}
+                    helperText={<ErrorMessage name="mobile_number" />}
                   />
                   <Field
                     as={TextField}
