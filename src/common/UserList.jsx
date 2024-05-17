@@ -21,7 +21,7 @@ const UserList = () => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("jwt");
-        const response = await axios.get("http://localhost:5000/api/auth/fetch-hierarchical-data", {
+        const response = await axios.get("https://www.api.rockkpay.com/api/auth/fetch-hierarchical-data", {
           headers: {
             "Authorization": token
           }
@@ -51,7 +51,7 @@ const UserList = () => {
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       const token = localStorage.getItem('jwt');
-      const response = await axios.put(`http://localhost:5000/api/update/user/${selectedUser.user_id}`, values, {
+      const response = await axios.put(`https://www.api.rockkpay.com/api/update/user/${selectedUser.user_id}`, values, {
         headers: {
           'Authorization': token
         }
@@ -80,7 +80,7 @@ const UserList = () => {
   const handleSwitchChange = async (userId, isActive) => {
     try {
       const token = localStorage.getItem("jwt");
-      const response = await axios.post(`http://localhost:5000/api/auth/inactive_user?userId=${userId}`, null, {
+      const response = await axios.post(`https://www.api.rockkpay.com/api/auth/inactive_user?userId=${userId}`, null, {
         headers: {
           "Authorization": token
         }
@@ -96,7 +96,7 @@ const UserList = () => {
     console.log(`Delete user with ID: ${userId}`);
     try {
       const token = localStorage.getItem("jwt");
-      const response = await axios.delete(`http://localhost:5000/api/protected/delete/${userId}`, {
+      const response = await axios.delete(`https://www.api.rockkpay.com/api/protected/delete/${userId}`, {
         headers: {
           "Authorization": token
         }
