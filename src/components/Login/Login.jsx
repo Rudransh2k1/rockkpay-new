@@ -26,7 +26,7 @@ const LoginPage = () => {
     }
     try {
       const response = await axios.post(
-        "https://www.api.rockkpay.com/api/auth/signin",
+        "https://api.rockkpay.com/api/auth/signin",
         credentials
       );
       localStorage.setItem("jwt", response.data.token);

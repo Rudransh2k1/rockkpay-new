@@ -23,9 +23,9 @@ export default function MyTransactionCp() {
       try {
         let apiUrl = "";
         if (values.transactionType === "wallet") {
-          apiUrl = `https://www.api.rockkpay.com/api/auth/my-transactions`;
+          apiUrl = `https://api.rockkpay.com/api/auth/my-transactions`;
         } else if (values.transactionType === "transactions") {
-          apiUrl = `https://www.api.rockkpay.com/api/auth/adminalltransactions`;
+          apiUrl = `https://api.rockkpay.com/api/auth/adminalltransactions`;
         }
         const token = localStorage.getItem("jwt");
         const response = await axios.get(apiUrl, {
