@@ -49,7 +49,9 @@ const UserList = () => {
   const handleCloseEditModal = () => {
     setOpenEditModal(false);
     setSelectedUser(null);
+    fetchData();
   };
+
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
@@ -63,6 +65,7 @@ const UserList = () => {
       setUsers(users.map(user => user.user_id === selectedUser.user_id ? response.data : user));
       handleCloseEditModal();
       toast.success("User updated successfully");
+      fetchData();
     } catch (error) {
       console.error('Error editing user:', error);
       toast.error("Error editing user");
@@ -70,6 +73,7 @@ const UserList = () => {
       setSubmitting(false);
     }
   };
+
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
@@ -102,7 +106,7 @@ const UserList = () => {
       console.log(response.data);
       // Fetch the latest user data after changing the status
       fetchData();
-      toast.success(`User ${isActive ? "deactivated" : "activated"} successfully`);
+      toast.success(`User ${isActive ? "activated" : "deactivated"} successfully`);
     } catch (error) {
       console.error("Error:", error);
       toast.error(`Error ${isActive ? "deactivating" : "activating"} user`);
