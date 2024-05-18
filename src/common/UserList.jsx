@@ -19,22 +19,22 @@ const UserList = () => {
   const [users, setUsers] = useState([]);
   const userType = localStorage.getItem("user_type");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const token = localStorage.getItem("jwt");
-        const response = await axios.get("http://localhost:5000/api/auth/fetch-hierarchical-data", {
-          headers: {
-            "Authorization": token
-          }
-        });
-        setUsers(response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        toast.error("Error fetching user data");
-      }
-    };
+  const fetchData = async () => {
+    try {
+      const token = localStorage.getItem("jwt");
+      const response = await axios.get("http://localhost:5000/api/auth/fetch-hierarchical-data", {
+        headers: {
+          "Authorization": token
+        }
+      });
+      setUsers(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      toast.error("Error fetching user data");
+    }
+  };
 
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -100,16 +100,14 @@ const UserList = () => {
         });
       }
       console.log(response.data);
-      // Update the user status in the local state based on the response
-      setUsers(users.map(user => user.user_id === userId ? { ...user, status: isActive ? "Inactive" : "Active" } : user));
+      // Fetch the latest user data after changing the status
+      fetchData();
       toast.success(`User ${isActive ? "deactivated" : "activated"} successfully`);
     } catch (error) {
       console.error("Error:", error);
       toast.error(`Error ${isActive ? "deactivating" : "activating"} user`);
     }
   };
-  
-  
 
   const handleDelete = async (userId) => {
     console.log(`Delete user with ID: ${userId}`);
