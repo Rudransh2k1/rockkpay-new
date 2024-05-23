@@ -15,6 +15,7 @@ const LoginPage = () => {
   });
   const navigate = useNavigate();
 
+
   const handleInputChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
@@ -26,12 +27,21 @@ const LoginPage = () => {
     }
     try {
       const response = await axios.post(
-        "https://api.rockkpay.com/api/auth/signin",
+        "http://localhost:5000/api/auth/signin",
         credentials
       );
       localStorage.setItem("jwt", response.data.token);
       localStorage.setItem("user_type", response.data.user.user_type);
+      localStorage.setItem("name", response.data.user.name);
+      localStorage.setItem("email", response.data.user.email);
+      localStorage.setItem("phone", response.data.user.mobile_number);
+
+
       const userData = response.data.user;
+      const { token, user } = response.data;
+
+
+
       navigate("/home");
       toast.success("Login successful.");
     } catch (error) {
@@ -45,7 +55,7 @@ const LoginPage = () => {
       className="w-full h-full bg-center bg-cover bg-no-repeat"
       style={{ backgroundImage: `url(${desktopscreen})` }}
     >
-      
+
       <section className="web-container w-full h-screen flex gap-6 pt-12">
         <div className="w-full h-full flex flex-col item-start justify-start gap-10">
           <span className="w-full">
@@ -123,7 +133,7 @@ const LoginPage = () => {
               <span className="w-full flex justify-end">
                 <p
                   className="text-white text-sm capitalize cursor-pointer"
-                  // onClick={handleForgotPasswordClick}
+                // onClick={handleForgotPasswordClick}
                 >
                   Forgot password ?
                 </p>
