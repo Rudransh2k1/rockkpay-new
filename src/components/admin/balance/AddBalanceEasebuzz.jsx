@@ -19,9 +19,9 @@ const AddBalanceEasebuzz = () => {
   const [amountNumber, setAmountNumber] = useState("");
   const [calculatedAmount, setCalculatedAmount] = useState(0);;
   const [paymentData, setPaymentData] = useState({
-    txnid: "ROCKKPAY" + new Date().getTime().toString().slice(-6),
+    txnid: "iPaisa" + new Date().getTime().toString().slice(-6),
     amount: "",
-    productinfo: "ROCKKPAY",
+    productinfo: "iPaisa",
     firstname: localStorage.getItem("name"),
     phone: localStorage.getItem("phone"),
     email: localStorage.getItem("email",),
@@ -31,8 +31,8 @@ const AddBalanceEasebuzz = () => {
   useEffect(() => {
     setPaymentData((prevState) => ({
       ...prevState,
-      surl: `http://localhost:3000/home/balance/addBalanceEaseBuzz/payment-webhook`,
-      furl: `http://localhost:3000/home/balance/addBalanceEaseBuzz/payment-webhook`,
+      surl: `https://rockkpay.com`,
+      furl: `https://rockkpay.com`,
     }));
 
   }, []);
@@ -82,6 +82,8 @@ const AddBalanceEasebuzz = () => {
     }
   };
 
+
+
   const initiatePayment = async () => {
     try {
       const response = await axios.post(
@@ -100,6 +102,7 @@ const AddBalanceEasebuzz = () => {
       console.error("Error initiating payment:", error);
     }
   };
+  const [hitApi, setHitApi] = useState(true);
 
   const openPaymentGateway = (accessKey) => {
     console.log("Opening payment gateway with access key:", accessKey);
@@ -109,25 +112,23 @@ const AddBalanceEasebuzz = () => {
         handlePaymentStatus(paymentData.txnid);
       } else {
         setTimeout(checkPaymentStatus, 1000);
+        
       }
-      // handlePaymentStatus(paymentData.txnid);
+      handlePaymentStatus(paymentData.txnid);
     };
     checkPaymentStatus();
+    setHitApi(false);
   };
 
   const handlePaymentStatus = async (txnid) => {
-    const token = localStorage.getItem("jwt");
     try {
       const response = await axios.post(
         "http://localhost:5000/transaction-api-v2",
-        { txnid },
-        {
-          headers: {
-            "Authorization": token
-          }
-        }
+        { txnid }
       );
       handlePaymentSuccess(response.data);
+      // console.log("mddsg"+response.data);
+
     } catch (error) {
       console.error("Error verifying payment:", error);
       handlePaymentSuccess({ status: 0, message: 'Error verifying payment' });
@@ -135,11 +136,15 @@ const AddBalanceEasebuzz = () => {
   };
 
   const handlePaymentSuccess = (response) => {
-    console.log("Payment success response:", response);
+    console.log("Payment success response:", response.msg.status);
+    if (response.msg.status === "userCancelled") {
+      setHitApi(false);
+      console.log(hitApi, "This is hit api");
+    }
     if (response.status === 1) {
-      alert('Payment successful');
+      //alert('Payment successful');
     } else {
-      alert('Payment failed: ' + response.message);
+      // alert('Payment failed: ' + response.message);
     }
   };
 

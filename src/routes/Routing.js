@@ -42,6 +42,7 @@ import LoginPage from '../components/Login/Login'
 import TransactionHistory from '../components/admin/reports/TransactionHistory'
 import TransactionHistWithParent from '../components/admin/reports/TransactionHistWithParent'
 import MyTransactionCp from '../components/admin/reports/MyTransactionCp'
+import PayoutDashboard from '../components/distributor/PayoutDashboard'
 
 const Routing = () => {
   // const router = createBrowserRouter([
@@ -56,57 +57,58 @@ const Routing = () => {
   // ])
   return (
     <>
-    {/* <RouterProvider router={router} /> */}
-    <Routes>
-    <Route path="/" element={<Dashboard />} />
-      {/* <Route index element={<Dashboard />} /> */}
-      {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-      <Route path="/commissionPay" element={<CreateComissionAdmin />} />
-      <Route path="/surchargePay" element={<CreateComissionAdmin />} />
-      <Route path="/addUser" element={<AddUser />} />
-      <Route path="/userList" element={<UserList />} />
-      <Route path="/user/changeParent" element={<ChangeParent />} />
-      <Route path="/user/changeMobileNoKYC" element={<ChangeMobileNoKYC />} />
-      <Route path="/user/KYCVerification" element={<KycVerfication />} />
-      <Route path="/balance/addMainBalance" element={<AddMainBalance />} />
-      <Route path="/balance/reverseBalance" element={<ReverseMainBalance />} />
-      <Route path="/balance/addBalanceEaseBuzz" element={<AddBalanceEasebuzz />} />
-      <Route path="/report/transactionHistory" element={<TransactionHistory />} />
-      <Route path="/report/transactionHistorywithParent" element={<TransactionHistWithParent />} />
-      <Route path="/otherReport/mtr" element={<MTR />} />
-      <Route path="/otherReport/aeps" element={<AEPSReport />} />
-      <Route path="/otherReport/userWise" element={<UserWiseReport />} />
-      <Route path="/otherReport/individual" element={<IndividualReport />} />
-      <Route path="/otherReport/opening-closing" element={<OpeningClosingReport />} />
-      <Route path="/otherReport/operatorWiseCommission" element={<OperatorWCReport />} />
-      <Route path="/otherReport/commissionDistribution" element={<CommissionDistriReport />} />
-      <Route path="/otherReport/refundSuccess" element={<RefundSucessStory />} />
-      <Route path="/otherReport/statusChange" element={<StatusChangeReport />} />
-      <Route path="/otherReport/lastDaySecondary" element={<LastDaySecReport />} />
-      <Route path="/otherReport/retailerStockNotDone" element={<RetailerStockNotDone />} />
-      <Route path="/otherReport/retailerSaleNotDone" element={<RetailerSaleNotDone />} />
-      <Route path="/otherReport/userSaleDone" element={<UserSaleDone />} />
-      <Route path="/report/transactionHistory" element={<TransactionHistory />} />
-      <Route path="/report/transactionHistorywithParent" element={<TransactionHistWithParent />} />
-      <Route path="/report/myTransaction" element={<MyTransactionCp />} />
+      {/* <RouterProvider router={router} /> */}
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        {/* <Route index element={<Dashboard />} /> */}
+        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+        <Route path="/commissionPay" element={<CreateComissionAdmin />} />
+        <Route path="/surchargePay" element={<CreateComissionAdmin />} />
+        <Route path="/PayoutDashboard" element={<PayoutDashboard />} />
+        <Route path="/addUser" element={<AddUser />} />
+        <Route path="/userList" element={<UserList />} />
+        <Route path="/user/changeParent" element={<ChangeParent />} />
+        <Route path="/user/changeMobileNoKYC" element={<ChangeMobileNoKYC />} />
+        <Route path="/user/KYCVerification" element={<KycVerfication />} />
+        <Route path="/balance/addMainBalance" element={<AddMainBalance />} />
+        <Route path="/balance/reverseBalance" element={<ReverseMainBalance />} />
+        <Route path="/balance/addBalanceEaseBuzz" element={<AddBalanceEasebuzz />} />
+        <Route path="/report/transactionHistory" element={<TransactionHistory />} />
+        <Route path="/report/transactionHistorywithParent" element={<TransactionHistWithParent />} />
+        <Route path="/otherReport/mtr" element={<MTR />} />
+        <Route path="/otherReport/aeps" element={<AEPSReport />} />
+        <Route path="/otherReport/userWise" element={<UserWiseReport />} />
+        <Route path="/otherReport/individual" element={<IndividualReport />} />
+        <Route path="/otherReport/opening-closing" element={<OpeningClosingReport />} />
+        <Route path="/otherReport/operatorWiseCommission" element={<OperatorWCReport />} />
+        <Route path="/otherReport/commissionDistribution" element={<CommissionDistriReport />} />
+        <Route path="/otherReport/refundSuccess" element={<RefundSucessStory />} />
+        <Route path="/otherReport/statusChange" element={<StatusChangeReport />} />
+        <Route path="/otherReport/lastDaySecondary" element={<LastDaySecReport />} />
+        <Route path="/otherReport/retailerStockNotDone" element={<RetailerStockNotDone />} />
+        <Route path="/otherReport/retailerSaleNotDone" element={<RetailerSaleNotDone />} />
+        <Route path="/otherReport/userSaleDone" element={<UserSaleDone />} />
+        <Route path="/report/transactionHistory" element={<TransactionHistory />} />
+        <Route path="/report/transactionHistorywithParent" element={<TransactionHistWithParent />} />
+        <Route path="/report/myTransaction" element={<MyTransactionCp />} />
 
-      <Route path="/admin/addAdmin" element={<AddAdmin />} />
-      <Route path="/admin/notice" element={<Notice />} />
-      <Route path="/admin/userKYC" element={<UserKYC />} />
-      <Route path="/admin/sendSMS" element={<SendSMS />} />
-      <Route path="/admin/sendWhatsapp" element={<SendWhatsapp />} />
-      <Route path="/admin/sendEmail" element={<SendEmail />} />
-      <Route path="/admin/sendNotification" element={<SendNotification />} />
-      <Route path="/admin/banks" element={<Banks />} />
-      <Route path="/admin/settings" element={<Settings />} />
-      <Route path="/admin/circleMaster" element={<CircleMasterScreen />} />
-      <Route path="/admin/websiteLog" element={<WebsiteLogsScreen />} />
-      <Route path="/admin/websiteLogArchive" element={<WebLogsArchive />} />
-      <Route path="/admin/smsLogs" element={<SMSLogs />} />
-      <Route path="/admin/ipWhitelist" element={<Whitelist />} />
+        <Route path="/admin/addAdmin" element={<AddAdmin />} />
+        <Route path="/admin/notice" element={<Notice />} />
+        <Route path="/admin/userKYC" element={<UserKYC />} />
+        <Route path="/admin/sendSMS" element={<SendSMS />} />
+        <Route path="/admin/sendWhatsapp" element={<SendWhatsapp />} />
+        <Route path="/admin/sendEmail" element={<SendEmail />} />
+        <Route path="/admin/sendNotification" element={<SendNotification />} />
+        <Route path="/admin/banks" element={<Banks />} />
+        <Route path="/admin/settings" element={<Settings />} />
+        <Route path="/admin/circleMaster" element={<CircleMasterScreen />} />
+        <Route path="/admin/websiteLog" element={<WebsiteLogsScreen />} />
+        <Route path="/admin/websiteLogArchive" element={<WebLogsArchive />} />
+        <Route path="/admin/smsLogs" element={<SMSLogs />} />
+        <Route path="/admin/ipWhitelist" element={<Whitelist />} />
 
-  </Routes>
-  </>
+      </Routes>
+    </>
   )
 }
 

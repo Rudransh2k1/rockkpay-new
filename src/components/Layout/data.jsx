@@ -1681,6 +1681,12 @@ export const menuDistriArray  =  [
         subTitle: "Surcharge Pay",
         path: "./surchargePay",
       },
+
+      {
+        id: 24,
+        subTitle: "Payout Pay",
+        path: "./PayoutDashboard",
+      },
     ],
   },
 
