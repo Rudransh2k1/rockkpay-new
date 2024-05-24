@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, Box, Button, MenuItem, FormControl, InputLabel, Select, Typography, TextField } from '@mui/material';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -8,11 +8,12 @@ const TransferModal = ({ visible, onCancel, onSubmit, accounts }) => {
     const handleSubmit = (values) => {
         onSubmit(values);
     };
+    const [paymentMode, setPaymentMode] = useState(["NEFT", "IMPS"]);
 
     return (
         <Modal open={visible} onClose={onCancel} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Box sx={{ width: 400, bgcolor: 'background.paper', p: 3 }}>
-            <Typography variant="h5" gutterBottom sx={{ bgcolor: blue[400], color: 'white', p: 1 }}>
+                <Typography variant="h5" gutterBottom sx={{ bgcolor: blue[400], color: 'white', p: 1 }}>
                     Transfer Amount
                 </Typography>
                 <Formik
@@ -29,40 +30,38 @@ const TransferModal = ({ visible, onCancel, onSubmit, accounts }) => {
                 >
                     {({ values, errors, touched }) => (
                         <Form>
-                            <FormControl fullWidth sx={{ my: 2 }}>
-                                <InputLabel htmlFor="bankAccount">Bank Account</InputLabel>
+                            <FormControl fullWidth sx={{ my: 2 }} variant="outlined">
                                 <Field
-                                    as={Select}
+                                    as={TextField}
                                     id="bankAccount"
                                     name="bankAccount"
+                                    label="Bank Account"
                                     variant="outlined"
                                     error={touched.bankAccount && Boolean(errors.bankAccount)}
-                                >
-                                    {accounts.map((account, index) => (
-                                        <MenuItem key={index} value={account}>{account}</MenuItem>
-                                    ))}
-                                </Field>
+                                />
                                 <ErrorMessage name="bankAccount" component="div" style={{ color: 'red' }} />
                             </FormControl>
-                            <FormControl fullWidth sx={{ my: 2 }}>
+                            <FormControl fullWidth sx={{ my: 2 }} variant="outlined">
                                 <InputLabel htmlFor="paymentMode">Payment Mode</InputLabel>
                                 <Field
                                     as={Select}
                                     id="paymentMode"
                                     name="paymentMode"
-                                    variant="outlined"
+                                    label="Payment Mode"
                                     error={touched.paymentMode && Boolean(errors.paymentMode)}
                                 >
-                                    {/* Render payment mode options */}
+                                    {paymentMode.map((mode, index) => (
+                                        <MenuItem key={index} value={mode}>{mode}</MenuItem>
+                                    ))}
                                 </Field>
                                 <ErrorMessage name="paymentMode" component="div" style={{ color: 'red' }} />
                             </FormControl>
-                            <FormControl fullWidth sx={{ my: 2 }}>
-                                <InputLabel htmlFor="amount">Amount</InputLabel>
+                            <FormControl fullWidth sx={{ my: 2 }} variant="outlined">
                                 <Field
                                     as={TextField}
                                     id="amount"
                                     name="amount"
+                                    label="Amount"
                                     type="number"
                                     variant="outlined"
                                     error={touched.amount && Boolean(errors.amount)}

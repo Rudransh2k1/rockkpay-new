@@ -7,7 +7,8 @@ const { TabPane } = Tabs;
 
 const PayoutDashboard = () => {
     const [modalVisible, setModalVisible] = useState(false);
-    const [accounts, setAccounts] = useState(['Bank Account 1', 'Bank Account 2', 'Bank Account 3']);
+    // const [accounts, setAccounts] = useState(['Bank Account 1', 'Bank Account 2', 'Bank Account 3']);
+    // const [accountNumber, setAccountNumber] = useState("");
 
     const handleTransferSubmit = (values) => {
         console.log('Submitting transfer:', values);
@@ -37,7 +38,7 @@ const PayoutDashboard = () => {
                 visible={modalVisible}
                 onCancel={handleCancel}
                 onSubmit={handleTransferSubmit}
-                accounts={accounts}
+                // accounts={accountNumber}
             />
         </>
     );

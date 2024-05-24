@@ -22,7 +22,7 @@ const AddMainBalance = () => {
         Authorization: token,
       };
       const responsebalance = await axios.get(
-        "https://api.rockkpay.com/api/protected/balance",
+        "http://localhost:5000/api/protected/balance",
         {
           headers: headers,
         }
@@ -57,7 +57,7 @@ const AddMainBalance = () => {
     try {
       const token = localStorage.getItem("jwt");
       const response = await axios.get(
-        `https://api.rockkpay.com/api/protected/userrr/${formData.receiverId}`,
+        `http://localhost:5000/api/protected/userrr/${formData.receiverId}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -86,7 +86,7 @@ const AddMainBalance = () => {
       }
       const token = localStorage.getItem("jwt");
       const response = await axios.post(
-        "https://api.rockkpay.com/api/protected/transfer",
+        "http://localhost:5000/api/protected/transfer",
         formData,
         {
           headers: {
@@ -145,10 +145,10 @@ const AddMainBalance = () => {
                     color="primary"
                     onClick={fetchReceiverDetails}
                   >
-                    <SearchIcon />
+                    <SearchIcon /> 
                     Search
                   </Button>
-                </div>
+                </div>  
               </div>
               <div className="form-group">
                 <p>Receiver Name:</p>
