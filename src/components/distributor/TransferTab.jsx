@@ -1,9 +1,47 @@
-import React from 'react';
-import { Grid, Card, CardContent, Typography, Button, TextField, Box } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Grid, Card, CardContent, Typography, Button, TextField, Box, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import { useDispatch, useSelector } from 'react-redux';
+import { instantTransfer } from '../../stores/TransferPay/transferPaySlice';
+// import { instantTransfer } from '../../stores/TransferPay/transferPaySlice';
 
-const TransferTab = ({ availableAmount, buttonText,onButtonClick }) => (
+const TransferTab = ({ availableAmount, buttonText,onButtonClick }) =>{
+//     const usser = [{
+//         "id" : "1",
+//         "bank_details" : "HDFC",
+//         "transaction" : {
+//             "orderId" : "MTMO1234",
+//             "txnId" : "MTMT1233333",
+//             "utr": "1234"
+
+//         } ,
+//         "amount" : "500",
+//         "status" : "SUCCESS",
+//     },
+// {
+//     "id" : "2",
+//     "bank_details" : "HDFC",
+//     "transaction" : {
+//         "orderId" : "MTMO1234",
+//         "txnId" : "MTMT1233333",
+//         "utr": "1234"
+
+//     } ,
+//     "amount" : "500",
+//     "status" : "SUCCESS",
+// }]
+const users = useSelector(state => state.transferPay.instantTransferInfoData)
+const dispatch = useDispatch();
+useEffect(() => {
+dispatch(instantTransfer());
+}, [])
+
+console.log(users,"This is usser")
+   return (
+  
+    <>
+      
     <Grid container spacing={3}>
         <Grid item xs={12} md={3} marginTop={0}>
             <Card>
@@ -19,7 +57,7 @@ const TransferTab = ({ availableAmount, buttonText,onButtonClick }) => (
         </Grid>
         <Grid item xs={12} md={4} sx={{ marginLeft: 5 }}>
             <Card>
-                <CardContent>
+                <CardContent>   
                     <Box display="flex" flexDirection="row" alignItems="center" marginTop={2} gap={2}>
                         <TextField
                             type="date"
@@ -48,6 +86,92 @@ const TransferTab = ({ availableAmount, buttonText,onButtonClick }) => (
             </CardContent>
         </Grid>
     </Grid>
+    {buttonText == "Instant Transfer" ? <> <TableContainer sx={{marginTop: "5%"}} component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Payment ID</TableCell>
+                <TableCell >Bank Details</TableCell>
+                <TableCell >Transaction Details</TableCell>
+                <TableCell >Amount</TableCell>
+                <TableCell >Status</TableCell>
+                {/* {userType === "Admin" && <TableCell align="center" sx={{ width: '10%', textAlign: 'center' }}>Status</TableCell>} */}
+                {/* {userType === "Admin" && <TableCell align="center" sx={{ width: '10%', textAlign: 'center' }}>Action</TableCell>} */}
+              </TableRow>
+            </TableHead>
+
+            <TableBody>
+              {users.map((user, index) => (
+                <TableRow key={user.user_id}>
+                  <TableCell>{index + 1}</TableCell>
+                  <TableCell >{user.bank_details}</TableCell>
+                  <TableCell >{`Order Id: ${user.transaction.orderId}`}<br />{`Txn Id: ${user.transaction.txnId}`}<br />{`UTR Number: ${user.transaction.utr}`}</TableCell>
+                  <TableCell >{user.amount}</TableCell>
+                  <TableCell >{user.status}</TableCell>
+                  {/* {userType === "Admin" && (
+                    <TableCell sx={{ width: '10%' }}>
+                      <Switch
+                        checked={user.status === "Active"}
+                        color="primary"
+                        onChange={(event) => handleSwitchChange(user.user_id, event.target.checked)}
+                      />
+                    </TableCell>
+                  )}
+                  {userType === "Admin" && (
+                    <TableCell sx={{ width: '10%' }}>
+                      <EditIcon color="primary" onClick={() => handleEdit(user.user_id)} />
+                      <DeleteIcon color="error" onClick={() => handleDelete(user.user_id)} />
+                    </TableCell>
+                  )} */}
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer> </> : null}
+    {/* <TableContainer sx={{marginTop: "5%"}} component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Payment ID</TableCell>
+                <TableCell >Bank Details</TableCell>
+                <TableCell >Transaction Details</TableCell>
+                <TableCell >Amount</TableCell>
+                <TableCell >Status</TableCell> */}
+                {/* {userType === "Admin" && <TableCell align="center" sx={{ width: '10%', textAlign: 'center' }}>Status</TableCell>} */}
+                {/* {userType === "Admin" && <TableCell align="center" sx={{ width: '10%', textAlign: 'center' }}>Action</TableCell>} */}
+              {/* </TableRow> */}
+            {/* </TableHead>
+
+            <TableBody>
+              {users.map((user, index) => (
+                <TableRow key={user.user_id}>
+                  <TableCell>{index + 1}</TableCell>
+                  <TableCell >{user.bank_details}</TableCell>
+                  <TableCell >{`Order Id: ${user.transaction.orderId}`}<br />{`Txn Id: ${user.transaction.txnId}`}<br />{`UTR Number: ${user.transaction.utr}`}</TableCell>
+                  <TableCell >{user.amount}</TableCell>
+                  <TableCell >{user.status}</TableCell> */}
+                  {/* {userType === "Admin" && (
+                    <TableCell sx={{ width: '10%' }}>
+                      <Switch
+                        checked={user.status === "Active"}
+                        color="primary"
+                        onChange={(event) => handleSwitchChange(user.user_id, event.target.checked)}
+                      />
+                    </TableCell>
+                  )}
+                  {userType === "Admin" && (
+                    <TableCell sx={{ width: '10%' }}>
+                      <EditIcon color="primary" onClick={() => handleEdit(user.user_id)} />
+                      <DeleteIcon color="error" onClick={() => handleDelete(user.user_id)} />
+                    </TableCell>
+                  )} */}
+                {/* </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer> */}
+    </>
 );
+}
 
 export default TransferTab;

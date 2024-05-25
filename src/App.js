@@ -28,10 +28,13 @@ import TransactionHistory from './components/admin/reports/TransactionHistory';
 import TransactionHistWithParent from './components/admin/reports/TransactionHistWithParent';
 import WebRoutes from './routes/WebRoutes';
 import MyTransactionCp from './components/admin/reports/MyTransactionCp';
+import { Provider } from 'react-redux';
+import { store } from './stores';
 
 function App() {
   return (
     <>
+    <Provider store={store}>
     <BrowserRouter>
     {/* <TransactionHistory /> */}
     {/* <TransactionHistWithParent /> */}
@@ -40,13 +43,14 @@ function App() {
     <WebRoutes />
     </BrowserRouter>
      {/* <MTR /> */}
+     </Provider>
     </>
-    // <UserWiseReport />
-    // <ComingSoon />
-    // <MTR />
-    // <UserCashback />
-    // <ActivationReport />
-    // <PaymentRequestPage />
+    //  {/* <UserWiseReport /> */}
+    //  {/* <ComingSoon /> */}
+    //  {/* <MTR /> */}
+    //  {/* <UserCashback /> */}
+    //  {/* <ActivationReport /> */}
+    //  {/* <PaymentRequestPage /> */}
    
   );
 }
