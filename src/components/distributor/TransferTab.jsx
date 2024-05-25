@@ -95,8 +95,6 @@ console.log(users,"This is usser")
                 <TableCell >Transaction Details</TableCell>
                 <TableCell >Amount</TableCell>
                 <TableCell >Status</TableCell>
-                {/* {userType === "Admin" && <TableCell align="center" sx={{ width: '10%', textAlign: 'center' }}>Status</TableCell>} */}
-                {/* {userType === "Admin" && <TableCell align="center" sx={{ width: '10%', textAlign: 'center' }}>Action</TableCell>} */}
               </TableRow>
             </TableHead>
 
@@ -108,27 +106,11 @@ console.log(users,"This is usser")
                   <TableCell >{`Order Id: ${user.transaction.orderId}`}<br />{`Txn Id: ${user.transaction.txnId}`}<br />{`UTR Number: ${user.transaction.utr}`}</TableCell>
                   <TableCell >{user.amount}</TableCell>
                   <TableCell >{user.status}</TableCell>
-                  {/* {userType === "Admin" && (
-                    <TableCell sx={{ width: '10%' }}>
-                      <Switch
-                        checked={user.status === "Active"}
-                        color="primary"
-                        onChange={(event) => handleSwitchChange(user.user_id, event.target.checked)}
-                      />
-                    </TableCell>
-                  )}
-                  {userType === "Admin" && (
-                    <TableCell sx={{ width: '10%' }}>
-                      <EditIcon color="primary" onClick={() => handleEdit(user.user_id)} />
-                      <DeleteIcon color="error" onClick={() => handleDelete(user.user_id)} />
-                    </TableCell>
-                  )} */}
                 </TableRow>
               ))}
             </TableBody>
           </Table>
-        </TableContainer> </> : null}
-    {/* <TableContainer sx={{marginTop: "5%"}} component={Paper}>
+        </TableContainer> </> : <><TableContainer sx={{marginTop: "5%"}} component={Paper}>
           <Table>
             <TableHead>
               <TableRow>
@@ -136,11 +118,9 @@ console.log(users,"This is usser")
                 <TableCell >Bank Details</TableCell>
                 <TableCell >Transaction Details</TableCell>
                 <TableCell >Amount</TableCell>
-                <TableCell >Status</TableCell> */}
-                {/* {userType === "Admin" && <TableCell align="center" sx={{ width: '10%', textAlign: 'center' }}>Status</TableCell>} */}
-                {/* {userType === "Admin" && <TableCell align="center" sx={{ width: '10%', textAlign: 'center' }}>Action</TableCell>} */}
-              {/* </TableRow> */}
-            {/* </TableHead>
+                <TableCell >Status</TableCell>
+              </TableRow>
+            </TableHead>
 
             <TableBody>
               {users.map((user, index) => (
@@ -149,27 +129,12 @@ console.log(users,"This is usser")
                   <TableCell >{user.bank_details}</TableCell>
                   <TableCell >{`Order Id: ${user.transaction.orderId}`}<br />{`Txn Id: ${user.transaction.txnId}`}<br />{`UTR Number: ${user.transaction.utr}`}</TableCell>
                   <TableCell >{user.amount}</TableCell>
-                  <TableCell >{user.status}</TableCell> */}
-                  {/* {userType === "Admin" && (
-                    <TableCell sx={{ width: '10%' }}>
-                      <Switch
-                        checked={user.status === "Active"}
-                        color="primary"
-                        onChange={(event) => handleSwitchChange(user.user_id, event.target.checked)}
-                      />
-                    </TableCell>
-                  )}
-                  {userType === "Admin" && (
-                    <TableCell sx={{ width: '10%' }}>
-                      <EditIcon color="primary" onClick={() => handleEdit(user.user_id)} />
-                      <DeleteIcon color="error" onClick={() => handleDelete(user.user_id)} />
-                    </TableCell>
-                  )} */}
-                {/* </TableRow>
+                  <TableCell >{user.status}</TableCell>
+                </TableRow>
               ))}
             </TableBody>
           </Table>
-        </TableContainer> */}
+        </TableContainer></>}
     </>
 );
 }
