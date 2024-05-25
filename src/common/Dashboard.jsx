@@ -10,6 +10,7 @@ const Dashboard = () => {
   // }]
   useEffect(() => {
     fetchData();
+    mtmLogin();
   }, []);
 
   const fetchData = async () => {
@@ -30,6 +31,24 @@ const Dashboard = () => {
       console.log(error);
     }
   };
+
+  const mtmLogin = async () => {
+    try {
+      const email = localStorage.getItem("email");
+      const password = localStorage.getItem("password");
+
+      const mtmresponse = await axios.post("https://api.mtmpay.in/api-login-merchant", {
+        email,
+        password
+      });
+
+      console.log(mtmresponse.data);
+      // Handle the response data here as needed
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <section className='section'>
       <div className='mainCardDiv'>
