@@ -7,19 +7,29 @@ import { useDispatch } from 'react-redux';
 import { instantTransfer } from '../../stores/TransferPay/transferPaySlice';
 
 const TransferModal = ({ visible, onCancel, onSubmit, userCount }) => {
-   const dispatch = useDispatch();
-   
+    const dispatch = useDispatch();
+
     const handleSubmit = (values) => {
         dispatch(instantTransfer(values));
         onSubmit(values);
     };
     const [Mode, setPaymentMode] = useState(["NEFT", "IMPS"]);
-    const [orderId,setOrderId] = useState(1);
-useEffect(() => {
-    if(userCount > 1){
-        setOrderId(userCount);
-    }
-}, [])
+    const [orderId, setOrderId] = useState(1);
+    const [transferAmount, setTransferAmount] = useState('');
+    const [fees, setFees] = useState(0);
+    const [actualAmount, setActualAmount] = useState(0);
+    useEffect(() => {
+        if (userCount > 1) {
+            setOrderId(userCount);
+        }
+        if (transferAmount) {
+            const calculatedFees = transferAmount * 0.02;
+            const calculatedActualAmount = transferAmount - calculatedFees;
+            setFees(calculatedFees);
+            setActualAmount(calculatedActualAmount);
+        }
+
+    }, [transferAmount])
     return (
         <Modal open={visible} onClose={onCancel} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Box sx={{ width: 400, bgcolor: 'background.paper', p: 3 }}>
@@ -37,12 +47,12 @@ useEffect(() => {
                         Amount: Yup.number().typeError('Amount must be a number').positive('Amount must be positive').required('Amount is required')
                     })}
                     onSubmit={(values, { resetForm }) => {
-                        console.log(values,"Values inside form");
-                        handleSubmit(values);
+                        console.log(values, "Values inside form");
+                        handleSubmit({...values, Amount: actualAmount});
                         resetForm();
                     }}
                 >
-                    {({ values, errors, touched }) => (
+                    {({ values, errors, touched,setFieldValue }) => (
                         <Form>
                             <FormControl fullWidth sx={{ my: 2 }} variant="outlined">
                                 <Field
@@ -101,9 +111,23 @@ useEffect(() => {
                                     type="number"
                                     variant="outlined"
                                     error={touched.Amount && Boolean(errors.Amount)}
+                                    onChange={(e) => {
+                                        setFieldValue("Amount", e.target.value);
+                                        setTransferAmount(parseFloat(e.target.value));
+                                      }}
                                 />
                                 <ErrorMessage name="Amount" component="div" style={{ color: 'red' }} />
                             </FormControl>
+                            {transferAmount && (
+                <>
+                  <Typography variant="body2" gutterBottom>
+                    Fees (2%): {fees.toFixed(2)}
+                  </Typography>
+                  <Typography variant="body2" gutterBottom>
+                    Actual Amount to be Transferred: {actualAmount.toFixed(2)}
+                  </Typography>
+                </>
+              )}
                             <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
                                 <Button onClick={onCancel} variant="outlined">Cancel</Button>
                                 <Button type="submit" variant="contained" color="primary">Transfer</Button>
