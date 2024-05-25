@@ -4,6 +4,7 @@ import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import SummarizeIcon from "@mui/icons-material/Summarize";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 // const userType = localStorage.getItem("user_type");
@@ -1682,13 +1683,35 @@ export const menuDistriArray  =  [
         path: "./surchargePay",
       },
 
+      // {
+      //   id: 24,
+      //   subTitle: "Payout Pay",
+      //   path: "./PayoutDashboard",
+      // },
+    ],
+  },
+  {
+    id: 3,
+    
+
+    title: "Payout",
+    icon: <AccountBalanceIcon className="!text-white" />,
+
+    subMenu: [
+      // {
+      //   id: 21,
+      //   subTitle: "Commission Pay",
+      //   path: "/commissionPay",
+      // },
+  
       {
-        id: 24,
+        id: 88,
         subTitle: "Payout Pay",
         path: "./PayoutDashboard",
       },
     ],
   },
+
 
   {
     
