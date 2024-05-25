@@ -4,12 +4,21 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import { useDispatch, useSelector } from 'react-redux';
 import { instantTransfer } from '../../stores/TransferPay/transferPaySlice';
+import TransferModal from './TransferModal';
 // import { instantTransfer } from '../../stores/TransferPay/transferPaySlice';
 
 const TransferTab = ({ availableAmount, buttonText, onButtonClick }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [modalVisible, setModalVisible] = useState(false);
 
+
+//   const handleOpenModal = () => {
+//     setModalVisible(true);
+//   };
+  const handleCloseModal = () => {
+    setModalVisible(false);
+  };
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -87,7 +96,7 @@ const TransferTab = ({ availableAmount, buttonText, onButtonClick }) => {
               </TableHead>
 
               <TableBody>
-                {users
+                {/* {users
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((user, index) => (
                     <TableRow key={user.user_id}>
@@ -97,7 +106,7 @@ const TransferTab = ({ availableAmount, buttonText, onButtonClick }) => {
                       <TableCell>{user.amount}</TableCell>
                       <TableCell>{user.status}</TableCell>
                     </TableRow>
-                  ))}
+                  ))} */}
               </TableBody>
             </Table>
           </TableContainer>
@@ -111,6 +120,11 @@ const TransferTab = ({ availableAmount, buttonText, onButtonClick }) => {
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
           />
+          <TransferModal
+        visible={modalVisible}
+        onCancel={handleCloseModal}
+        userCount={users.length}
+      />
         </>
   );
 }

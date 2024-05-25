@@ -46,6 +46,7 @@ export const mtmLoginApi = async (payload) => {
     }]
 export const instantTransferApi = async (payload) => {
     const token = localStorage.getItem("mtmToken")
+    console.log(token,"tokeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
 try {
     // const token = localStorage.getItem("jwt");
     // return users;
