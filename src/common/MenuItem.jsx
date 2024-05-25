@@ -62,19 +62,19 @@ const SubMenuList = styled(List)(
 
 const MenuItem = ({ text, index }) => {
   const [expanded, setExpanded] = useState(false);
-console.log(text)
+// console.log(text)
   const navigate = useNavigate();
   const toggleMenu = () => {
     setExpanded(!expanded);
   };
   const onClickRoute = () => {
-    console.log()
+    // console.log()
     if(text?.subMenu && text?.subMenu.length > 0){
       toggleMenu();
-      console.log("IfFFFFFFFFFFFFFFFFFFcondition");
+      // console.log("IfFFFFFFFFFFFFFFFFFFcondition");
     }
     else {
-      console.log("ELSEEEEEEE condition")
+      // console.log("ELSEEEEEEE condition")
       navigate(text.path)
     }
     

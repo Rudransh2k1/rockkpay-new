@@ -20,7 +20,7 @@ export const instantTransfer = createAsyncThunk(
     async payload => {
       try {
         const response = await instantTransferApi(payload);
-        console.log(response, 'Response in slice for announcements');
+        console.log(response, 'RESPONSE FROM INSTANT TRANSFERRRRRRRRRRRRRR');
         return response;
       } catch (error) {
         //('error', error);
@@ -58,7 +58,7 @@ export const instantTransfer = createAsyncThunk(
             state.instantTransferLoading = true;
           })
           .addCase(instantTransfer.fulfilled, (state, action) => {
-            console.log(action.payload,"This is users in store")
+            // console.log(action.payload,"This is users in store")
             state.instantTransferInfoData = action.payload;
             state.instantTransferLoading = false;
           })

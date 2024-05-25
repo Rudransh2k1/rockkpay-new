@@ -61,7 +61,7 @@ const UserList = () => {
           'Authorization': token
         }
       });
-      console.log('Edit user API response:', response.data);
+      // console.log('Edit user API response:', response.data);
       setUsers(users.map(user => user.user_id === selectedUser.user_id ? response.data : user));
       handleCloseEditModal();
       toast.success("User updated successfully");
@@ -103,7 +103,7 @@ const UserList = () => {
           }
         });
       }
-      console.log(response.data);
+      // console.log(response.data);
       // Fetch the latest user data after changing the status
       fetchData();
       toast.success(`User ${isActive ? "activated" : "deactivated"} successfully`);
@@ -114,7 +114,7 @@ const UserList = () => {
   };
 
   const handleDelete = async (userId) => {
-    console.log(`Delete user with ID: ${userId}`);
+    // console.log(`Delete user with ID: ${userId}`);
     try {
       const token = localStorage.getItem("jwt");
       const response = await axios.delete(`http://localhost:5000/api/protected/delete/${userId}`, {
@@ -122,7 +122,7 @@ const UserList = () => {
           "Authorization": token
         }
       });
-      console.log(response.data);
+      // console.log(response.data);
       setUsers(users.filter(user => user.user_id !== userId));
       toast.success("User deleted successfully");
     } catch (error) {

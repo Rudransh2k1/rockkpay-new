@@ -30,7 +30,7 @@ useEffect(() => {
                     OrderId: {orderId}
                 </Typography>
                 <Formik
-                    initialValues={{ AccountNumber: '', Mode: '', Amount: '', OrderId: orderId }}
+                    initialValues={{ AccountNumber: '', Mode: '', Amount: '', OrderId: `RP${orderId}` }}
                     validationSchema={Yup.object({
                         AccountNumber: Yup.string().required('Bank account is required'),
                         Mode: Yup.string().required('Payment mode is required'),

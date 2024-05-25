@@ -46,12 +46,12 @@ const AddUser = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: token,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
-      console.log(response.data);
-      console.log("User created successfully!");
+      // console.log(response.data);
+      // console.log("User created successfully!");
 
       setUserData({
         name: "",

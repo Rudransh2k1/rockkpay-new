@@ -47,6 +47,7 @@ export const mtmLoginApi = async (payload) => {
 export const instantTransferApi = async (payload) => {
     const token = localStorage.getItem("mtmToken")
     console.log(token,"tokeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+    console.log(payload,"tokeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
 try {
     // const token = localStorage.getItem("jwt");
     // return users;
@@ -56,7 +57,7 @@ try {
       {
         headers: {
           "Content-Type": "application/json",
-          Authorization: token,
+          Authorization: `Bearer ${token}`,
         },
       }
     );
