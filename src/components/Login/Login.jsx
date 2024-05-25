@@ -3,10 +3,10 @@ import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 import desktopscreen from "../../Assets/login/desktopscreen.jpg";
 import MainLogo from "../../Assets/navbar/RockkpayLogo.png";
 import breadcrumimg from "../../Assets/login/groupscreen.png";
-import axios from "axios";
 
 const LoginPage = () => {
   const [credentials, setCredentials] = useState({
@@ -14,7 +14,6 @@ const LoginPage = () => {
     password: "",
   });
   const navigate = useNavigate();
-
 
   const handleInputChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -30,17 +29,22 @@ const LoginPage = () => {
         "http://localhost:5000/api/auth/signin",
         credentials
       );
-      localStorage.setItem("jwt", response.data.token);
+      const token = response.data.token;
+      localStorage.setItem("jwt", token);
       localStorage.setItem("user_type", response.data.user.user_type);
       localStorage.setItem("name", response.data.user.name);
       localStorage.setItem("email", response.data.user.email);
       localStorage.setItem("phone", response.data.user.mobile_number);
 
+      // Fetch user data with the token
+      const userResponse = await axios.get("http://localhost:5000/api/mpmdata", {
+        headers: {
+          Authorization: token
+        }
+      });
 
-      const userData = response.data.user;
-      const { token, user } = response.data;
-
-
+      const userData = userResponse.data;
+      console.log("User data fetched:", userData);
 
       navigate("/home");
       toast.success("Login successful.");
@@ -55,7 +59,6 @@ const LoginPage = () => {
       className="w-full h-full bg-center bg-cover bg-no-repeat"
       style={{ backgroundImage: `url(${desktopscreen})` }}
     >
-
       <section className="web-container w-full h-screen flex gap-6 pt-12">
         <div className="w-full h-full flex flex-col item-start justify-start gap-10">
           <span className="w-full">
@@ -133,7 +136,6 @@ const LoginPage = () => {
               <span className="w-full flex justify-end">
                 <p
                   className="text-white text-sm capitalize cursor-pointer"
-                // onClick={handleForgotPasswordClick}
                 >
                   Forgot password ?
                 </p>
@@ -153,6 +155,7 @@ const LoginPage = () => {
           </div>
         </div>
       </section>
+      <ToastContainer />
     </section>
   );
 };
