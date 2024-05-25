@@ -37,15 +37,15 @@ const LoginPage = () => {
       localStorage.setItem("phone", response.data.user.mobile_number);
 
       // Fetch user data with the token
-      // const userResponse = await axios.get("http://localhost:5000/api/mpmdata", {
-      //   headers: {
-      //     Authorization: token
-      //   }
-      // });
+      const userResponse = await axios.get("http://localhost:5000/api/mpmdata", {
+        headers: {
+          Authorization: token
+        }
+      });
 
-      //const userData = userResponse.data;
-      //console.log("User data fetched:", userData);
-
+      const userData = userResponse.data;
+      console.log("User data fetched:", userData);
+      localStorage.setItem("password", userData.original_password);
       navigate("/home");
       toast.success("Login successful.");
     } catch (error) {
