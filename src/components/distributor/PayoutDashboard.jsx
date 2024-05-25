@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { Tabs } from 'antd';
 import TransferTab from './TransferTab';
 import TransferModal from './TransferModal';
+import BulkTransferModal from './BulkTransferModal';
 
 const { TabPane } = Tabs;
 
 const PayoutDashboard = () => {
     const [modalVisible, setModalVisible] = useState(false);
+
+    const [modalVisibleBulk, setModalVisibleBulk] = useState(false);
     const [accounts, setAccounts] = useState(['Bank Account 1', 'Bank Account 2', 'Bank Account 3']);
 
     const handleTransferSubmit = (values) => {
@@ -18,7 +21,15 @@ const PayoutDashboard = () => {
     const handleCancel = () => {
         setModalVisible(false);
     };
+    const handleTransferSubmitBulk = (values) => {
+        console.log('Submitting transfer:', values);
+        // You can perform transfer logic here
+        setModalVisibleBulk(false);
+    };
 
+    const handleBulkCancel = () => {
+        setModalVisibleBulk(false);
+    };
     return (
         <>
             <Tabs defaultActiveKey="1">
@@ -30,7 +41,8 @@ const PayoutDashboard = () => {
                     />
                 </TabPane>
                 <TabPane tab="Bulk Transfer" key="2">
-                    <TransferTab availableAmount={5000} buttonText="Bulk Transfer" />
+                    <TransferTab availableAmount={5000} buttonText="Bulk Transfer"
+                        onButtonClick={() => setModalVisibleBulk(true)} />
                 </TabPane>
             </Tabs>
             <TransferModal
@@ -38,6 +50,12 @@ const PayoutDashboard = () => {
                 onCancel={handleCancel}
                 onSubmit={handleTransferSubmit}
                 accounts={accounts}
+            />
+
+            <BulkTransferModal
+                visible={modalVisibleBulk}
+                onCancel={handleBulkCancel}
+                onSubmit={handleTransferSubmitBulk}
             />
         </>
     );
