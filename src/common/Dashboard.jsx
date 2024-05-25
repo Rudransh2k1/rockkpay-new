@@ -43,6 +43,7 @@ const Dashboard = () => {
       });
 
       console.log(mtmresponse.data);
+      localStorage.setItem("mtmToken",mtmresponse.data.access_token);
       // Handle the response data here as needed
     } catch (error) {
       console.log(error);

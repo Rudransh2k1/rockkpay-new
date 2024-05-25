@@ -45,20 +45,20 @@ export const mtmLoginApi = async (payload) => {
     "status" : "SUCCESS",
     }]
 export const instantTransferApi = async (payload) => {
-    
+    const token = localStorage.getItem("mtmToken")
 try {
     // const token = localStorage.getItem("jwt");
-    return users;
-    // return axios.post(
-    //   "https://api.mtmpay.in/partner/payout",
-    //   payload,
-    //   {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     //   Authorization: token,
-    //     },
-    //   }
-    // );
+    // return users;
+    return axios.post(
+      "https://api.mtmpay.in/partner/payout",
+      payload,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      }
+    );
 } catch (error) {
     console.log(error);
     toast.error("Error in transferring funds. Please try again later.")
