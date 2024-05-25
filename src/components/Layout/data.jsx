@@ -1711,16 +1711,21 @@ export const menuDistriArray = [
       },
       {
         id: 89,
+        subTitle: "Wallet Top Up",
+        path: "./walletTopUp",
+      },
+      {
+        id: 90,
         subTitle: "Add Beneficiary",
         path: "./addbeneficiary",
       },
       {
-        id: 90,
+        id: 91,
         subTitle: "Instant Reports",
         path: "./instantreport",
       },
       {
-        id: 91,
+        id: 92,
         subTitle: "Ledger",
         path: "./ledger",
       },

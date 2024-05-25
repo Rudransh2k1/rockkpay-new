@@ -46,6 +46,7 @@ import PayoutDashboard from '../components/distributor/PayoutDashboard'
 import AddBeneficiary from '../components/distributor/AddBeneficiary'
 import InstantReport from '../components/distributor/InstantReport'
 import Ledger from '../components/distributor/Ledger'
+import WalletTopup from '../components/distributor/WalletTopup'
 
 const Routing = () => {
   // const router = createBrowserRouter([
@@ -68,6 +69,7 @@ const Routing = () => {
         <Route path="/commissionPay" element={<CreateComissionAdmin />} />
         <Route path="/surchargePay" element={<CreateComissionAdmin />} />
         <Route path="/PayoutDashboard" element={<PayoutDashboard />} />
+        <Route path="/walletTopUp" element={<WalletTopup />} />
         <Route path="/addbeneficiary" element={<AddBeneficiary />} />
         <Route path="/instantreport" element={<InstantReport />} />
         <Route path="/ledger" element={<Ledger />} />
