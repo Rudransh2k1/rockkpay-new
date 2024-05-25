@@ -9,17 +9,17 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 // const userType = localStorage.getItem("user_type");
 
-export const menuAdminArray  =  [
+export const menuAdminArray = [
   {
     id: 1,
-    
+
     title: "Dashboard",
     icon: <DashboardIcon className="!text-white" />,
-    path: ".", 
+    path: ".",
   },
   {
     id: 2,
-    
+
 
     title: "Commission",
     icon: <CurrencyExchangeIcon className="!text-white" />,
@@ -44,9 +44,9 @@ export const menuAdminArray  =  [
   },
 
   {
-    
+
     id: 4,
-        
+
 
     title: "Users",
     icon: <SupervisedUserCircleIcon className="!text-white" />,
@@ -62,7 +62,7 @@ export const menuAdminArray  =  [
         subTitle: "User List",
         path: "./userList",
       },
-     
+
       // {
       //   id: 43,
       //   subTitle: "Master distributors",
@@ -176,7 +176,7 @@ export const menuAdminArray  =  [
       //   subTitle: "Transaction History",
       //   path: "./report/transactionHistory",
       // },
-       {
+      {
         id: 63,
         subTitle: "Transaction history with Parent",
         path: "./report/transactionHistorywithParent",
@@ -421,17 +421,17 @@ export const menuAdminArray  =  [
 ];
 
 
-export const menuChannelArray  =  [
+export const menuChannelArray = [
   {
     id: 1,
-    
+
     title: "Dashboard",
     icon: <DashboardIcon className="!text-white" />,
-    path: ".", 
+    path: ".",
   },
   {
     id: 2,
-    
+
 
     title: "Commission",
     icon: <CurrencyExchangeIcon className="!text-white" />,
@@ -456,9 +456,9 @@ export const menuChannelArray  =  [
   },
 
   {
-    
+
     id: 4,
-        
+
 
     title: "Users",
     icon: <SupervisedUserCircleIcon className="!text-white" />,
@@ -474,7 +474,7 @@ export const menuChannelArray  =  [
         subTitle: "User List",
         path: "./userList",
       },
-     
+
       // {
       //   id: 43,
       //   subTitle: "Master distributors",
@@ -831,17 +831,17 @@ export const menuChannelArray  =  [
     ],
   },
 ];
-export const menuSuperArray  =  [
+export const menuSuperArray = [
   {
     id: 1,
-    
+
     title: "Dashboard",
     icon: <DashboardIcon className="!text-white" />,
-    path: ".", 
+    path: ".",
   },
   {
     id: 2,
-    
+
 
     title: "Commission",
     icon: <CurrencyExchangeIcon className="!text-white" />,
@@ -866,9 +866,9 @@ export const menuSuperArray  =  [
   },
 
   {
-    
+
     id: 4,
-        
+
 
     title: "Users",
     icon: <SupervisedUserCircleIcon className="!text-white" />,
@@ -884,7 +884,7 @@ export const menuSuperArray  =  [
         subTitle: "User List",
         path: "./userList",
       },
-     
+
       // {
       //   id: 43,
       //   subTitle: "Master distributors",
@@ -1241,17 +1241,17 @@ export const menuSuperArray  =  [
     ],
   },
 ];
-export const menuMasterArray  =  [
+export const menuMasterArray = [
   {
     id: 1,
-    
+
     title: "Dashboard",
     icon: <DashboardIcon className="!text-white" />,
-    path: ".", 
+    path: ".",
   },
   {
     id: 2,
-    
+
 
     title: "Commission",
     icon: <CurrencyExchangeIcon className="!text-white" />,
@@ -1276,9 +1276,9 @@ export const menuMasterArray  =  [
   },
 
   {
-    
+
     id: 4,
-        
+
 
     title: "Users",
     icon: <SupervisedUserCircleIcon className="!text-white" />,
@@ -1294,7 +1294,7 @@ export const menuMasterArray  =  [
         subTitle: "User List",
         path: "./userList",
       },
-     
+
       // {
       //   id: 43,
       //   subTitle: "Master distributors",
@@ -1651,17 +1651,17 @@ export const menuMasterArray  =  [
     ],
   },
 ];
-export const menuDistriArray  =  [
+export const menuDistriArray = [
   {
     id: 1,
-    
+
     title: "Dashboard",
     icon: <DashboardIcon className="!text-white" />,
-    path: ".", 
+    path: ".",
   },
   {
     id: 2,
-    
+
 
     title: "Commission",
     icon: <CurrencyExchangeIcon className="!text-white" />,
@@ -1692,7 +1692,7 @@ export const menuDistriArray  =  [
   },
   {
     id: 3,
-    
+
 
     title: "Payout",
     icon: <AccountBalanceIcon className="!text-white" />,
@@ -1703,20 +1703,35 @@ export const menuDistriArray  =  [
       //   subTitle: "Commission Pay",
       //   path: "/commissionPay",
       // },
-  
+
       {
         id: 88,
         subTitle: "Payout Pay",
         path: "./PayoutDashboard",
+      },
+      {
+        id: 89,
+        subTitle: "Add Beneficiary",
+        path: "./addbeneficiary",
+      },
+      {
+        id: 90,
+        subTitle: "Instant Reports",
+        path: "./instantreport",
+      },
+      {
+        id: 91,
+        subTitle: "Ledger",
+        path: "./ledger",
       },
     ],
   },
 
 
   {
-    
+
     id: 4,
-        
+
 
     title: "Users",
     icon: <SupervisedUserCircleIcon className="!text-white" />,
@@ -1732,7 +1747,7 @@ export const menuDistriArray  =  [
         subTitle: "User List",
         path: "./userList",
       },
-     
+
       // {
       //   id: 43,
       //   subTitle: "Master distributors",
@@ -2089,13 +2104,13 @@ export const menuDistriArray  =  [
     ],
   },
 ];
-export const menuRetailArray  =  [
+export const menuRetailArray = [
   {
     id: 1,
     // 
     title: "Dashboard",
     icon: <DashboardIcon className="!text-white" />,
-    path: ".", 
+    path: ".",
   },
   {
     id: 2,
@@ -2124,9 +2139,9 @@ export const menuRetailArray  =  [
   },
 
   {
-    
+
     id: 4,
-        // 
+    // 
 
     title: "Users",
     icon: <SupervisedUserCircleIcon className="!text-white" />,
@@ -2142,7 +2157,7 @@ export const menuRetailArray  =  [
       //   subTitle: "User List",
       //   path: "./userList",
       // },
-     
+
       // {
       //   id: 43,
       //   subTitle: "Master distributors",

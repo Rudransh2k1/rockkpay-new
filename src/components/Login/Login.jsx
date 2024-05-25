@@ -43,8 +43,8 @@ const LoginPage = () => {
       //   }
       // });
 
-      // const userData = userResponse.data;
-      // console.log("User data fetched:", userData);
+      //const userData = userResponse.data;
+      //console.log("User data fetched:", userData);
 
       navigate("/home");
       toast.success("Login successful.");
