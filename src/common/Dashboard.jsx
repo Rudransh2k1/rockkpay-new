@@ -21,7 +21,7 @@ const Dashboard = () => {
         Authorization: token,
       };
       const responsebalance = await axios.get(
-        "https://api.rockkpay.com/api/protected/balance",
+        "https://www.api.rockkpay.com/api/protected/balance",
         {
           headers: headers,
         }

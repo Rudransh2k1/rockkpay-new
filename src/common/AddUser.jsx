@@ -41,7 +41,7 @@ const AddUser = () => {
     try {
       const token = localStorage.getItem("jwt");
       const response = await axios.post(
-        "https://api.rockkpay.com/api/auth/register",
+        "https://www.api.rockkpay.com/api/auth/register",
         userData,
         {
           headers: {

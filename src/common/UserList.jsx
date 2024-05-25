@@ -22,7 +22,7 @@ const UserList = () => {
   const fetchData = async () => {
     try {
       const token = localStorage.getItem("jwt");
-      const response = await axios.get("https://api.rockkpay.com/api/auth/fetch-hierarchical-data", {
+      const response = await axios.get("https://www.api.rockkpay.com/api/auth/fetch-hierarchical-data", {
         headers: {
           "Authorization": token
         }
@@ -56,7 +56,7 @@ const UserList = () => {
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       const token = localStorage.getItem('jwt');
-      const response = await axios.put(`https://api.rockkpay.com/api/update/user/${selectedUser.user_id}`, values, {
+      const response = await axios.put(`https://www.api.rockkpay.com/api/update/user/${selectedUser.user_id}`, values, {
         headers: {
           'Authorization': token
         }
@@ -90,14 +90,14 @@ const UserList = () => {
       let response;
       if (!isActive) {
         // If the user is active, call the deactivate API
-        response = await axios.put(`https://api.rockkpay.com/api/changeStatusInActive/${userId}`, null, {
+        response = await axios.put(`https://www.api.rockkpay.com/api/changeStatusInActive/${userId}`, null, {
           headers: {
             "Authorization": token
           }
         });
       } else {
         // If the user is inactive, call the activate API
-        response = await axios.put(`https://api.rockkpay.com/api/changeStatusActive/${userId}`, null, {
+        response = await axios.put(`https://www.api.rockkpay.com/api/changeStatusActive/${userId}`, null, {
           headers: {
             "Authorization": token
           }
@@ -117,7 +117,7 @@ const UserList = () => {
     // console.log(`Delete user with ID: ${userId}`);
     try {
       const token = localStorage.getItem("jwt");
-      const response = await axios.delete(`https://api.rockkpay.com/api/protected/delete/${userId}`, {
+      const response = await axios.delete(`https://www.api.rockkpay.com/api/protected/delete/${userId}`, {
         headers: {
           "Authorization": token
         }
