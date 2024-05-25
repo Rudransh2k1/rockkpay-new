@@ -26,7 +26,7 @@ const LoginPage = () => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/signin",
+        "https://api.rockkpay.com/api/auth/signin",
         credentials
       );
       const token = response.data.token;
@@ -37,7 +37,7 @@ const LoginPage = () => {
       localStorage.setItem("phone", response.data.user.mobile_number);
 
       // Fetch user data with the token
-      const userResponse = await axios.get("http://localhost:5000/api/mpmdata", {
+      const userResponse = await axios.get("https://api.rockkpay.com/api/mpmdata", {
         headers: {
           Authorization: token
         }

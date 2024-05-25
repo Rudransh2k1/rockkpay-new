@@ -87,7 +87,7 @@ const AddBalanceEasebuzz = () => {
   const initiatePayment = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/initiate-payment",
+        "https://api.rockkpay.com/initiate-payment",
         { ...paymentData, amount: calculatedAmount.toString() }
       );
       console.log(response.data.data);
@@ -123,7 +123,7 @@ const AddBalanceEasebuzz = () => {
   const handlePaymentStatus = async (txnid) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/transaction-api-v2",
+        "https://api.rockkpay.com/transaction-api-v2",
         { txnid }
       );
       handlePaymentSuccess(response.data);

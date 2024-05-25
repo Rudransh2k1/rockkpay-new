@@ -10,7 +10,7 @@ const TransactionHistWithParent = () => {
         const fetchTransactions = async () => {
             try {
                 const token = localStorage.getItem("jwt");
-                const response = await axios.get("http://localhost:5000/api/auth/transactionsWithParent", {
+                const response = await axios.get("https://api.rockkpay.com/api/auth/transactionsWithParent", {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: token,
