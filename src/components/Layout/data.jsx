@@ -7,6 +7,7 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
+import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
 // const userType = localStorage.getItem("user_type");
 
 export const menuAdminArray = [
@@ -17,6 +18,7 @@ export const menuAdminArray = [
     icon: <DashboardIcon className="!text-white" />,
     path: ".",
   },
+  
   {
     id: 2,
 
@@ -25,11 +27,7 @@ export const menuAdminArray = [
     icon: <CurrencyExchangeIcon className="!text-white" />,
 
     subMenu: [
-      // {
-      //   id: 21,
-      //   subTitle: "Commission Pay",
-      //   path: "/commissionPay",
-      // },
+      
       {
         id: 22,
         subTitle: "Commission Pay",
@@ -42,11 +40,25 @@ export const menuAdminArray = [
       },
     ],
   },
+  {
+    id: 3,
+    title: "Services",
+    icon: <MiscellaneousServicesIcon className="!text-white" />,
+
+    subMenu: [
+      
+      {
+        id: 22,
+        subTitle: "Retailer Services",
+        path: "./retailerservices",
+      },
+     
+    ],
+  },
 
   {
 
     id: 4,
-
 
     title: "Users",
     icon: <SupervisedUserCircleIcon className="!text-white" />,
@@ -63,65 +75,6 @@ export const menuAdminArray = [
         path: "./userList",
       },
 
-      // {
-      //   id: 43,
-      //   subTitle: "Master distributors",
-      //   ultraSubMenu: [
-      //     {
-      //       id: 431,
-      //       subTitle: "Master distributor list",
-      //       path: "./masterdistributor",
-      //     },
-      //     {
-      //       id: 432,
-      //       subTitle: "Add master distributor",
-      //       path: "./addmasterdistributor",
-      //     },
-      //   ],
-      // },
-      // {
-      //   id: 44,
-      //   subTitle: "Distributors",
-      //   ultraSubMenu: [
-      //     {
-      //       id: 441,
-      //       subTitle: "Distributor list",
-      //       path: "./distributorlist",
-      //     },
-      //     {
-      //       id: 442,
-      //       subTitle: "Add distributor",
-      //       path: "./adddistributor",
-      //     },
-      //   ],
-      // },
-      // {
-      //   id: 45,
-      //   subTitle: "Retailers",
-      //   ultraSubMenu: [
-      //     {
-      //       id: 451,
-      //       subTitle: "Retailer list",
-      //       path: "../retailers",
-      //     },
-      //     {
-      //       id: 452,
-      //       subTitle: "Add retailer",
-      //       path: "./addretailer",
-      //     },
-      //   ],
-      // },
-      // {
-      //   id: 46,
-      //   subTitle: "Members",
-      //   ultraSubMenu: [
-      //     {
-      //       id: 461,
-      //       subTitle: "Members list",
-      //       path: "./comingsoon",
-      //     },
-      //   ],
-      // },
       {
         id: 47,
         subTitle: "Change Parent",
@@ -1274,6 +1227,7 @@ export const menuMasterArray = [
       },
     ],
   },
+  
 
   {
 
@@ -2140,6 +2094,22 @@ export const menuRetailArray = [
         subTitle: "Surcharge Pay",
         path: "./surchargePay",
       },
+    ],
+  },
+  {
+    id: 3,
+    title: "Services",
+    icon: <MiscellaneousServicesIcon className="!text-white" />,
+
+    subMenu: [
+      
+      {
+        id: 22,
+        subTitle: "Retailer Services",
+        path: "./retailerservices",
+      },
+     
+     
     ],
   },
 

@@ -47,6 +47,22 @@ import AddBeneficiary from '../components/distributor/AddBeneficiary'
 import InstantReport from '../components/distributor/InstantReport'
 import Ledger from '../components/distributor/Ledger'
 import WalletTopup from '../components/distributor/WalletTopup'
+import RetailerServices from '../components/Services/RetailerServices'
+// retailer
+// import RRecharge from '../components/Services/RRecharge';
+import RRecharge from '../components/Services/RRecharge'
+import GasCylinderBooking from '../components/Services/GasCylinderBooking';
+import BroadBand from '../components/Services/BroadBand';
+import LandLine from '../components/Services/LandLine';
+import PostPaidRecharge from '../components/Services/PostPaidRecharge';
+import FastTagRecharge from '../components/Services/FASTag';
+import DthRecharge from '../components/Services/DthRecharge';
+import RElectricity from '../components/Services/RElectricity';
+import RetailerWater from '../components/Services/RetailerWater';
+import RPipedGas from '../components/Services/RPipedGas';
+import RMuncipalTax from '../components/Services/RMuncipalTax';
+import RHouseRent from '../components/Services/RHouseRent';
+import REducationFees from '../components/Services/REducationFees';
 
 const Routing = () => {
   // const router = createBrowserRouter([
@@ -115,7 +131,22 @@ const Routing = () => {
         <Route path="/admin/websiteLogArchive" element={<WebLogsArchive />} />
         <Route path="/admin/smsLogs" element={<SMSLogs />} />
         <Route path="/admin/ipWhitelist" element={<Whitelist />} />
-
+        <Route path="/retailerservices" element={<RetailerServices/>} />
+        {/* retailer routes */}
+        <Route path="/retailerservices/rrecharge" element={<RRecharge />}/>
+          <Route path="/retailerservices/gascylinderbooking" element={<GasCylinderBooking/>} />
+          <Route path="/retailerservices/rbroadband" element={<BroadBand/>} />
+          <Route path="/retailerservices/landline" element={<LandLine/>} />
+          <Route path="/retailerservices/postpaidrecharge" element={<PostPaidRecharge/>} />
+          <Route path="/retailerservices/fasttagrecharge" element={<FastTagRecharge/>} />
+          <Route path="/retailerservices/retailerservices" element={<RetailerServices />} />
+          <Route path="/retailerservices/dthrecharge" element={<DthRecharge />} />
+          <Route path="/retailerservices/rectricityrecharge" element={<RElectricity />} />
+          <Route path="/retailerservices/retailerwater" element={<RetailerWater />} />
+          <Route path="/retailerservices/rpipegas" element={<RPipedGas />} />
+          <Route path="/retailerservices/rmuncipaltax" element={<RMuncipalTax />} />
+          <Route path="/retailerservices/rpayloan" element={<RHouseRent />} />
+          <Route path="/retailerservices/reducationfees" element={<REducationFees />} />
       </Routes>
     </>
   )
